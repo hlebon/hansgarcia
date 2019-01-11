@@ -3,8 +3,7 @@ path: 'my-primer-post-md'
 date: '2017-11-28'
 title: "The First Things, Empieza la aventura, Bienvenido a mi blog \U0001F44B"
 public: true
-tags:
-  - blog
+tags: ["tags"]
 ---
 ## Primer titulo
 

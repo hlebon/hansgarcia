@@ -34,9 +34,11 @@ exports.createPages = ({ graphql, actions }) => {
       }
     `).then(result => {
       const posts = result.data.allMarkdownRemark.edges;
+      const tags = [];
       posts.forEach(({ node }, index) => {
         const { public: publicPost } = node.frontmatter;
         if (publicPost) {
+          tags.push(...node.frontmatter.tags);
           const newPath = node.fields.slug;
           createPage({
             path: newPath,
@@ -48,6 +50,25 @@ exports.createPages = ({ graphql, actions }) => {
             }
           });
         }
+      });
+
+      const myTags = [];
+      tags.forEach(tag => {
+        console.log(tags);
+        if (!myTags.includes(tag)) {
+          myTags.push(tag);
+        }
+      });
+      console.log("testTags", myTags);
+      myTags.forEach(tag => {
+        console.log("tag: ", tag);
+        createPage({
+          path: `/tags/${tag.trim()}/`,
+          component: path.resolve(`./src/templates/tags.js`),
+          context: {
+            tag
+          }
+        });
       });
       resolve();
     });
