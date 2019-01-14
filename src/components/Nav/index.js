@@ -89,7 +89,7 @@ function Nav({ location, maxWidth }) {
         ${container};
         ${!rootPath &&
           `position: relative;
-          background: linear-gradient(to left, rgba(210, 66, 210, 1), rgba(139, 63, 158, 1))`};
+          background: linear-gradient(to left, rgba(33, 150, 243, 0.9), rgba(3, 169, 244, 0.8))`};
       `}
     >
       <Content maxWidth={maxWidth}>
