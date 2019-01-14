@@ -10,7 +10,7 @@ export const heroStyle = css`
   position: relative;
   text-align: center;
   transform-style: preserve-3d;
-  background: linear-gradient(rgba(210, 66, 210, 0.8), rgba(139, 63, 158, 0.8)),
+  background: linear-gradient(rgba(33, 150, 243, 0.8), rgba(3, 169, 244, 0.8)),
     url(${BgHero}) no-repeat bottom;
   background-attachment: fixed;
   background-position: center;

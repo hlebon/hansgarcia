@@ -24,7 +24,6 @@ function Header() {
             <div>
               <h1
                 style={{
-                  fontFamily: "'Dancing Script', cursive",
                   ...scale(1.5)
                 }}
               >
@@ -33,8 +32,7 @@ function Header() {
               {subtitle.trim().length > 0 && (
                 <p
                   style={{
-                    fontSize: "1.5rem",
-                    fontFamily: "'Dancing Script', cursive"
+                    fontSize: "1.5rem"
                   }}
                 >
                   {subtitle}
