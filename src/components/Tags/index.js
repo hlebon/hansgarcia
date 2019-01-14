@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { Link } from "gatsby";
 import { css } from "@emotion/core";
 
 import { FaTags } from "react-icons/fa";
@@ -12,26 +13,30 @@ function Tags({ data: tags }) {
           key={tag}
           style={{}}
           css={css`
-            padding: 5px 12px;
+            padding: 3px;
             margin: 0 10px 0 0;
             border-radius: 25px;
             font-size: 14px;
             font-weight: 400;
-            background: white;
-            color: gray;
-            cursor: pointer;
-            border: 1px solid #ff5722;
-            box-shadow: 1px 3px 10px #c2c1c1;
-            transition: color 300ms ease-in, background 300ms ease-in;
-            &:hover {
-              color: white;
-              background: #ff5722;
-              transition: color 300ms ease-in, background 300ms ease-in;
-            }
           `}
         >
           <FaTags style={{ marginRight: "3px" }} />
-          {`${tag}`}
+          <Link
+            to={`/tags/{tag}`}
+            css={css`
+              color: gray;
+              box-shadow: none;
+              transition: color 200ms ease-in, text-decoration 200ms ease-in-out;
+              &:hover {
+                color: orange;
+                text-decoration: underline;
+                transition: color 300ms ease-in,
+                  text-decoraion 300ms ease-in-out;
+              }
+            `}
+          >
+            {tag}
+          </Link>
         </li>
       ))}
     </ul>
