@@ -2,6 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 
+import { FaTags } from "react-icons/fa";
+
 function Tags({ data: tags }) {
   return (
     <ul style={{ display: "flex ", listStyleType: "none", marginLeft: 0 }}>
@@ -28,7 +30,8 @@ function Tags({ data: tags }) {
             }
           `}
         >
-          {`#${tag}`}
+          <FaTags style={{ marginRight: "3px" }} />
+          {`${tag}`}
         </li>
       ))}
     </ul>

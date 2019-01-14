@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
+
+import { FaFire } from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
 import { getDate } from "../../utils/helpers";
 import { rhythm } from "../../utils/typography";
 import Tags from "../Tags";
@@ -44,9 +47,10 @@ export default ({ posts }) => (
                   marginRight: rhythm(1 / 2)
                 }}
               >
+                <MdDateRange style={{ marginRight: "3px" }} />
                 {getDate(node.frontmatter.date)}
               </span>
-              📖
+              <FaFire fill="orange" />
               <span>{node.timeToRead}</span>
               min de lectura
             </small>

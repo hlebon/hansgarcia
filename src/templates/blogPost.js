@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
 import { DiscussionEmbed } from "disqus-react";
 import { css } from "@emotion/core";
+import { FaFire } from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
 import Layout, { Content } from "../components/layout";
 import Signup from "../components/SignUp";
 import SEO from "../components/Seo";
@@ -17,12 +19,12 @@ export default function BlogPost({ data, pageContext, location }) {
     title: post.frontmatter.title
   };
   return (
-    <Layout location={location} maxWidth="700px">
+    <Layout location={location} maxWidth="650px">
       <SEO
         title={`Clau blog | ${post.frontmatter.title}`}
         keywords={[`finanzas`, ...post.frontmatter.tags]}
       />
-      <Content maxWidth="700px">
+      <Content maxWidth="650px">
         <article>
           <header
             css={css`
@@ -40,9 +42,10 @@ export default function BlogPost({ data, pageContext, location }) {
                   margin-right: 0.5rem;
                 `}
               >
+                <MdDateRange style={{ marginRight: "3px" }} />
                 {getDate(post.frontmatter.date)}
               </span>
-              🗸📖☕
+              <FaFire fill="orange" />
               <span
                 css={css`
                   margin-left: 0.3rem;
