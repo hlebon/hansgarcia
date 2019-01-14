@@ -22,7 +22,7 @@ function Tags({ data: tags }) {
         >
           <FaTags style={{ marginRight: "3px" }} />
           <Link
-            to={`/tags/{tag}`}
+            to={`/tags/${tag}`}
             css={css`
               color: gray;
               box-shadow: none;
