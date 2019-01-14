@@ -18,8 +18,6 @@ function Aside() {
     >
       <Bio />
       <br />
-      <Instagram />
-      <br />
       <section>
         <Signup clean />
       </section>
