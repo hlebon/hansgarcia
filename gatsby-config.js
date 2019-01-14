@@ -1,10 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `ClauKishin`,
-    subtitle: `El Blog de Clau`,
-    description: `Tips financieros`,
-    author: `Clau`,
-    siteUrl: `https://claukishin.com/`
+    title: `Hans Blog`,
+    subtitle: `Web developer, pizza lover`,
+    description: `web developer`,
+    author: `Hans`,
+    siteUrl: `https://hanslebon.com/`
   },
   pathPrefix: `/`,
   plugins: [
@@ -148,7 +148,7 @@ module.exports = {
             }
             `,
             output: "/rss.xml",
-            title: "Clau Kishin's Blog RSS Feed"
+            title: "Hans's Blog RSS Feed"
           }
         ]
       }
