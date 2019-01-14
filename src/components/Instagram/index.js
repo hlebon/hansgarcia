@@ -38,7 +38,6 @@ function Instagram() {
       <header>
         <h3
           style={{
-            fontSize: rhythm(3 / 5),
             margin: `${rhythm(2 / 4)} 0`
           }}
         >

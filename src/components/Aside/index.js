@@ -2,27 +2,27 @@ import React from "react";
 import { css } from "@emotion/core";
 import Bio from "../Bio";
 import Instagram from "../Instagram";
+import Signup from "../SignUp";
 
 function Aside() {
   return (
     <aside
       css={css`
         padding: 1em;
-        border: 1px dashed #c641c9;
+        border-left: 1px solid #e6b3a3;
         background-color: white;
-        transition: all 0.2s ease-in-out;
-        &:hover {
-          box-shadow: 0 5px 12px #a8a8a8;
-          transform: scale(1.01);
-          transition: all 0.2s ease-in-out;
-        }
         section {
           width: 100%;
         }
       `}
     >
       <Bio />
+      <br />
       <Instagram />
+      <br />
+      <section>
+        <Signup clean />
+      </section>
     </aside>
   );
 }

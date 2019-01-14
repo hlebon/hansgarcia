@@ -3,6 +3,8 @@ import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
 import { DiscussionEmbed } from "disqus-react";
 import { css } from "@emotion/core";
+import { FaFire } from "react-icons/fa";
+import { MdDateRange } from "react-icons/md";
 import Layout, { Content } from "../components/layout";
 import Signup from "../components/SignUp";
 import SEO from "../components/Seo";
@@ -17,12 +19,12 @@ export default function BlogPost({ data, pageContext, location }) {
     title: post.frontmatter.title
   };
   return (
-    <Layout location={location} maxWidth="700px">
+    <Layout location={location} maxWidth="650px">
       <SEO
         title={`Clau blog | ${post.frontmatter.title}`}
         keywords={[`finanzas`, ...post.frontmatter.tags]}
       />
-      <Content maxWidth="700px">
+      <Content maxWidth="650px">
         <article>
           <header
             css={css`
@@ -30,15 +32,20 @@ export default function BlogPost({ data, pageContext, location }) {
             `}
           >
             <h1>{post.frontmatter.title}</h1>
-            <small>
+            <small
+              css={css`
+                font-size: 16px;
+              `}
+            >
               <span
                 css={css`
                   margin-right: 0.5rem;
                 `}
               >
+                <MdDateRange style={{ marginRight: "3px" }} />
                 {getDate(post.frontmatter.date)}
               </span>
-              🗸📖☕
+              <FaFire fill="orange" />
               <span
                 css={css`
                   margin-left: 0.3rem;
@@ -52,6 +59,7 @@ export default function BlogPost({ data, pageContext, location }) {
           <div
             dangerouslySetInnerHTML={{ __html: post.html }}
             css={css`
+              font-size: 18px;
               & img {
                 display: flex;
                 width: 100%;

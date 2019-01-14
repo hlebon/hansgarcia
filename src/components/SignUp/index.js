@@ -64,6 +64,7 @@ class Signup extends React.Component {
 
   render() {
     const { name, lastName, email, error, msg, canSubmitForm } = this.state;
+    const { clean = false } = this.props;
     return (
       <form
         onSubmit={this.handleOnSubmit}
@@ -78,11 +79,12 @@ class Signup extends React.Component {
             width: 100%;
             display: flex;
             flex-direction: column;
-            padding: 30px 20px;
-            border: 1px solid #e4e3e3;
-            box-shadow: 1px 2px 10px #e4e3e3;
-            @media (min-width: 620px) {
-              flex-direction: row;
+            ${!clean && `padding: 30px 20px;`}
+            ${!clean && `border: 1px solid #e4e3e3;`}
+            ${!clean && `box-shadow: 1px 2px 10px #e4e3e3;`}
+            ${!clean &&
+              `@media (min-width: 620px) {
+              flex-direction: row ;
               justify-content: space-between;
               & > div:nth-of-type(1) {
                 width: 45%;
@@ -94,17 +96,19 @@ class Signup extends React.Component {
                 width: 55%;
                 padding: 20px;
               }
-            }
+            }`}
           `}
         >
           <div id="newsletter">
             <h3 style={{ margin: 0, marginBottom: "1rem" }}>
               Únete a mi Newsletter
             </h3>
-            <p style={{ marginTop: "5px" }}>
-              Suscribete para recibir mi contenido por email y no te pierdas
-              ninguno de mis artículos
-            </p>
+            {!clean && (
+              <p style={{ marginTop: "5px" }}>
+                Suscribete para recibir mi contenido por email y no te pierdas
+                ninguno de mis artículos
+              </p>
+            )}
           </div>
           <div
             id="form"
@@ -120,21 +124,18 @@ class Signup extends React.Component {
               }
             `}
           >
-            <input
-              type="text"
-              placeholder="Nombre"
-              name="name"
-              value={name}
-              onChange={this.handleOnChange}
-              required
-            />
-            <input
-              type="text"
-              placeholder="Apellido"
-              name="lastName"
-              value={lastName}
-              onChange={this.handleOnChange}
-            />
+            {!clean && (
+              <React.Fragment>
+                <input
+                  type="text"
+                  placeholder="Nombre"
+                  name="name"
+                  value={name}
+                  onChange={this.handleOnChange}
+                  required
+                />
+              </React.Fragment>
+            )}
             <input
               type="email"
               placeholder="Email"
@@ -143,6 +144,7 @@ class Signup extends React.Component {
               onChange={this.handleOnChange}
               required
             />
+
             <button
               type="submit"
               css={css`
