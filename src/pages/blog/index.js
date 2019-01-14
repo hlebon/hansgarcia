@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, StaticQuery } from "gatsby";
+import PropTypes from "prop-types";
 import SEO from "../../components/Seo";
 import Posts from "../../components/Posts";
 import Layout, { Content } from "../../components/layout";
@@ -30,30 +31,35 @@ const queryPosts = graphql`
   }
 `;
 
-export default ({ location }) => (
-  <Layout location={location}>
-    <SEO
-      title="Mis artículos"
-      keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-    />
-    <Content>
-      <section>
-        <h1
-          style={{
-            marginTop: "1rem",
-            marginBottom: "1.5rem"
-          }}
-        >
-          Artículos
-        </h1>
-        <StaticQuery
-          query={queryPosts}
-          render={({ allMarkdownRemark }) => {
-            const { edges } = allMarkdownRemark;
-            return <Posts posts={edges} />;
-          }}
-        />
-      </section>
-    </Content>
-  </Layout>
-);
+function Blog({ location }) {
+  return (
+    <Layout location={location}>
+      <SEO title="Mis artículos" keywords={[`blog`, `javascript`, `react`]} />
+      <Content>
+        <section>
+          <h1
+            style={{
+              marginTop: "1rem",
+              marginBottom: "1.5rem"
+            }}
+          >
+            Artículos
+          </h1>
+          <StaticQuery
+            query={queryPosts}
+            render={({ allMarkdownRemark }) => {
+              const { edges } = allMarkdownRemark;
+              return <Posts posts={edges} />;
+            }}
+          />
+        </section>
+      </Content>
+    </Layout>
+  );
+}
+
+Blog.propTypes = {
+  location: PropTypes.object.isRequired
+};
+
+export default Blog;
