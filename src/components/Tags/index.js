@@ -28,7 +28,7 @@ function Tags({ data: tags }) {
               box-shadow: none;
               transition: color 200ms ease-in, text-decoration 200ms ease-in-out;
               &:hover {
-                color: orange;
+                color: #2196f3;
                 text-decoration: underline;
                 transition: color 300ms ease-in,
                   text-decoraion 300ms ease-in-out;

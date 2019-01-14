@@ -1,5 +1,6 @@
 import { css } from "@emotion/core";
-import BgHero from "../../assets/images/hero.MozJPEG.jpg";
+// import BgHero from "../../assets/images/hero.MozJPEG.jpg";
+import BgHero from "../../assets/images/panama.jpg";
 
 export const heroStyle = css`
   width: 100%;

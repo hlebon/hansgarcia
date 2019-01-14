@@ -30,7 +30,7 @@ function Tags({ location }) {
               marginBottom: "1.5rem"
             }}
           >
-            Etiquetas
+            All Tags
           </h1>
           <StaticQuery
             query={query}

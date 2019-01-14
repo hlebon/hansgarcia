@@ -52,7 +52,7 @@ export default ({ posts }) => (
               </span>
               <FaFire fill="orange" />
               <span>{node.timeToRead}</span>
-              min de lectura
+              min read
             </small>
           </header>
           <p>{node.excerpt}</p>

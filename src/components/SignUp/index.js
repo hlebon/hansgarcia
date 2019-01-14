@@ -101,12 +101,11 @@ class Signup extends React.Component {
         >
           <div id="newsletter">
             <h3 style={{ margin: 0, marginBottom: "1rem" }}>
-              Únete a mi Newsletter
+              Join the Newsletter
             </h3>
             {!clean && (
               <p style={{ marginTop: "5px" }}>
-                Suscribete para recibir mi contenido por email y no te pierdas
-                ninguno de mis artículos
+                Subscribe to get my latest content by email.
               </p>
             )}
           </div>
@@ -128,7 +127,7 @@ class Signup extends React.Component {
               <React.Fragment>
                 <input
                   type="text"
-                  placeholder="Nombre"
+                  placeholder="Name"
                   name="name"
                   value={name}
                   onChange={this.handleOnChange}
@@ -150,18 +149,18 @@ class Signup extends React.Component {
               css={css`
                 width: 100%;
                 max-width: 120px;
-                border: 1px solid #9d40ab;
+                border: 1px solid rgba(33, 150, 243, 1);
                 padding: 9px 7px;
                 border-radius: 7px;
-                background-color: #c441c8;
+                background-color: #2196f3;
                 color: white;
                 cursor: pointer;
                 &:hover {
-                  background-color: #9c3faa;
+                  background-color: #1166a9;
                 }
               `}
             >
-              Suscribirse
+              Subscribe
             </button>
             {error && <div style={{ color: "red" }}>{msg}</div>}
           </div>

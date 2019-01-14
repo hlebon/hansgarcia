@@ -9,7 +9,7 @@ function Aside() {
     <aside
       css={css`
         padding: 1em;
-        border-left: 1px solid #03a9f4;
+        border-left: 1px solid #b0def3;
         background-color: white;
         section {
           width: 100%;

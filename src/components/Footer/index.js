@@ -9,11 +9,11 @@ function Footer({ maxWidth }) {
       <Content maxWidth={maxWidth}>
         <div css={footerContent}>
           <div>
-            Sígueme en
+            Social media
             <ul css={ul}>
               <li css={li}>
                 <a
-                  href="https://www.instagram.com/claukishin/"
+                  href="https://www.instagram.com/hans.lebon/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -23,9 +23,11 @@ function Footer({ maxWidth }) {
             </ul>
           </div>
           <div>
-            Clau
-            <span style={{ color: "#b91d73", margin: "0 0.4rem" }}>|</span>
-            Finanzas
+            Hans
+            <span style={{ color: "rgba(33,150,243,1)", margin: "0 0.4rem" }}>
+              |
+            </span>
+            Fullstack developer
           </div>
         </div>
       </Content>

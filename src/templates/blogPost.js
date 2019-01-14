@@ -22,7 +22,7 @@ export default function BlogPost({ data, pageContext, location }) {
     <Layout location={location} maxWidth="650px">
       <SEO
         title={`Clau blog | ${post.frontmatter.title}`}
-        keywords={[`finanzas`, ...post.frontmatter.tags]}
+        keywords={[`web developer`, ...post.frontmatter.tags]}
       />
       <Content maxWidth="650px">
         <article>
@@ -53,7 +53,7 @@ export default function BlogPost({ data, pageContext, location }) {
               >
                 {post.timeToRead}
               </span>
-              min de lectura
+              min read
             </small>
           </header>
           <div
@@ -98,12 +98,6 @@ export default function BlogPost({ data, pageContext, location }) {
               background-color: white;
               padding: 1rem;
               margin: 2rem 0;
-              & a {
-                color: gray;
-                &:hover {
-                  color: #383737;
-                }
-              }
             `}
           >
             <ul
@@ -123,14 +117,15 @@ export default function BlogPost({ data, pageContext, location }) {
                     aria-label="back"
                     css={css`
                       margin-right: 8px;
+                      font-weight: 600;
                     `}
                   >
-                    Anterior ⬅️ :
+                    previous:
                   </span>
                   <Link
                     to={prev.fields.slug}
                     style={{
-                      boxShadow: "none"
+                      color: "#2196f3"
                     }}
                   >
                     {prev.frontmatter.title}
@@ -144,14 +139,15 @@ export default function BlogPost({ data, pageContext, location }) {
                     aria-label="foward"
                     css={css`
                       margin-right: 8px;
+                      font-weight: 600;
                     `}
                   >
-                    Siguiente ➡️ :
+                    Next:
                   </span>
                   <Link
                     to={next.fields.slug}
                     style={{
-                      boxShadow: "none"
+                      color: "#2196f3"
                     }}
                   >
                     {next.frontmatter.title}

@@ -5,18 +5,16 @@ import { Link, graphql } from "gatsby";
 import SEO from "../components/Seo";
 import Layout, { Content } from "../components/layout";
 
-// Components
-
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
-  const tagHeader = `${totalCount} articulo${
-    totalCount > 1 ? `s` : ``
-  } etiquetado${totalCount > 1 ? `s` : ``} con "${tag}"`;
+  const tagHeader = `${totalCount} post${
+    totalCount === 1 ? "" : "s"
+  } tagged with "${tag}"`;
 
   return (
     <Layout location={location} maxWidth="700px">
-      <SEO title={`Clau blog | ${tag}`} keywords={[`finanzas`, tag]} />
+      <SEO title={`Hans blog | ${tag}`} keywords={[`web development`, tag]} />
       <Content maxWidth="700px">
         <h1 style={{ marginTop: "2rem" }}>{tagHeader}</h1>
         <ul
@@ -44,10 +42,6 @@ const Tags = ({ pageContext, data, location }) => {
             );
           })}
         </ul>
-        {/*
-              This links to a page that does not yet exist.
-              We'll come back to it!
-            */}
         <Link to="/tags">All tags</Link>
       </Content>
     </Layout>

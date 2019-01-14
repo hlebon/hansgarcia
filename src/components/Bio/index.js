@@ -11,12 +11,9 @@ function Bio() {
               margin: `${rhythm(2 / 4)} 0 ${rhythm(2 / 4)} 0`
             }}
           >
-            Bio
+            About me
           </h3>
-          <p>
-            Hola, soy Clau! me encanta conversar sobre finanzas tanto así que he
-            creado este blog. Mi meta personal? libertad financiera.
-          </p>
+          <p>Hello, my name is Hans, I am a software engineer from Panama.</p>
         </header>
       </article>
     </section>

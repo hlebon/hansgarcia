@@ -89,14 +89,14 @@ function Nav({ location, maxWidth }) {
         ${container};
         ${!rootPath &&
           `position: relative;
-          background: linear-gradient(to left, rgba(33, 150, 243, 0.9), rgba(3, 169, 244, 0.8))`};
+          background: linear-gradient(to left, rgba(33, 150, 243, 0.9), rgba(87, 148, 197, 1))`};
       `}
     >
       <Content maxWidth={maxWidth}>
         <nav css={siteNav}>
           <div>
             <Link to="/" style={{ boxShadow: "none" }}>
-              Clau
+              Hans
             </Link>
           </div>
           <ul css={navList}>
