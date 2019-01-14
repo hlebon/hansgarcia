@@ -54,12 +54,10 @@ exports.createPages = ({ graphql, actions }) => {
 
       const myTags = [];
       tags.forEach(tag => {
-        console.log(tags);
         if (!myTags.includes(tag)) {
           myTags.push(tag);
         }
       });
-      console.log("testTags", myTags);
       myTags.forEach(tag => {
         console.log("tag: ", tag);
         createPage({
