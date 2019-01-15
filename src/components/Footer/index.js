@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Content } from "../layout";
 import instaIcon from "../../assets/instagram.svg";
 import { footerContent, footerContainer, ul, li } from "./style";
@@ -17,7 +18,7 @@ function Footer({ maxWidth }) {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <img src={instaIcon} alt="instagram page" />
+                  <img src={instaIcon} alt="Instagram page" />
                 </a>
               </li>
             </ul>
@@ -34,5 +35,9 @@ function Footer({ maxWidth }) {
     </footer>
   );
 }
+
+Footer.propTypes = {
+  maxWidth: PropTypes.number.isRequired
+};
 
 export default Footer;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Layout, { Content } from "../components/layout";
 
 function Thanks({ location }) {
@@ -17,14 +18,8 @@ function Thanks({ location }) {
   );
 }
 
-// export const pageQuery = graphql`
-//   query ThanksSiteData {
-//     site {
-//       siteMetadata {
-//         title
-//       }
-//     }
-//   }
-// `;
+Thanks.propTypes = {
+  location: PropTypes.object.isRequired
+};
 
 export default Thanks;

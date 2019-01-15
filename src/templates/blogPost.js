@@ -13,7 +13,7 @@ import { getDate } from "../utils/helpers";
 export default function BlogPost({ data, pageContext, location }) {
   const { prev, next } = pageContext;
   const post = data.markdownRemark;
-  const disqusShortname = "https-claukishin-com";
+  const disqusShortname = "hansgarcia";
   const disqusConfig = {
     identifier: post.fields.slug,
     title: post.frontmatter.title
@@ -120,7 +120,7 @@ export default function BlogPost({ data, pageContext, location }) {
                       font-weight: 600;
                     `}
                   >
-                    previous:
+                    Previous:
                   </span>
                   <Link
                     to={prev.fields.slug}

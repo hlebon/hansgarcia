@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Bio from "../Bio";
-import Instagram from "../Instagram";
 import Signup from "../SignUp";
 
 function Aside() {
@@ -11,9 +10,6 @@ function Aside() {
         padding: 1em;
         border-left: 1px solid #b0def3;
         background-color: white;
-        section {
-          width: 100%;
-        }
       `}
     >
       <Bio />
