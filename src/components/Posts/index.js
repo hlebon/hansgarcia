@@ -7,7 +7,7 @@ import { getDate } from "../../utils/helpers";
 import { rhythm } from "../../utils/typography";
 import Tags from "../Tags";
 
-export default ({ posts }) => (
+export default ({ posts, panamaFlag }) => (
   <ul style={{ listStyle: "none", marginLeft: 0 }}>
     {posts.map(({ node, last }) => (
       <li key={node.fields.slug}>
@@ -26,6 +26,16 @@ export default ({ posts }) => (
               marginBottom: `${rhythm(2 / 4)}`
             }}
           >
+            {node.frontmatter.language === "PA" ? (
+              <div>
+                <img
+                  src={panamaFlag}
+                  alt="Logo"
+                  style={{ width: 25, height: 25, borderRadius: "7px" }}
+                />
+              </div>
+            ) : null}
+
             <h2
               style={{
                 margin: "1rem 0"

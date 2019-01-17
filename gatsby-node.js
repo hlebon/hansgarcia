@@ -24,6 +24,7 @@ exports.createPages = ({ graphql, actions }) => {
                 date
                 tags
                 public
+                language
               }
               fields {
                 slug

@@ -4,6 +4,7 @@ title: "Como escribir un post 👋"
 date: "2017-12-10"
 public: true
 author: "Clau"
+language: "PA"
 tags: ["blog", "third"]
 ---
 ## Primer titulo

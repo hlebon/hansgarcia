@@ -7,6 +7,7 @@ import Header from "../components/Header";
 import Aside from "../components/Aside";
 import Posts from "../components/Posts";
 import { rhythm } from "../utils/typography";
+import panamaFlag from "../assets/images/panama_flag.svg";
 
 const queryPosts = graphql`
   query {
@@ -22,6 +23,7 @@ const queryPosts = graphql`
             date
             tags
             public
+            language
           }
           excerpt
           timeToRead
@@ -70,7 +72,7 @@ export default ({ location }) => (
             render={({ allMarkdownRemark }) => {
               const { edges } = allMarkdownRemark;
               edges[0].last = true;
-              return <Posts posts={edges} />;
+              return <Posts posts={edges} panamaFlag={panamaFlag}/>;
             }}
           />
         </section>

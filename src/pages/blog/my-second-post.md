@@ -4,6 +4,7 @@ title: "Segundo post👋"
 date: "2017-12-02"
 public: true
 author: "Clau"
+language: "EU"
 tags: ["blog", "second"]
 ---
 ## Primer titulo

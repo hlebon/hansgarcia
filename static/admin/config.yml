@@ -16,4 +16,5 @@ collections:
       - { name: title, label: Title }
       - { name: public, label: Public, widget: "boolean", default: false }
       - { name: tags, label: Tags, widget: "list", default: ["finanzas"] }
+      - { name: language, label: Language }
       - { name: body, label: Body, widget: markdown }
