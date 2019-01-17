@@ -37,10 +37,13 @@ const queryPosts = graphql`
 `;
 
 export default ({ location }) => (
-  <Layout location={location}>
-    <SEO title="Clau blog" keywords={[`emprendeder`, `finanzas`, `finanzas`]} />
+  <div>
     <Header />
-    <Content>
+    <Layout location={location}>
+      <SEO
+        title="Hans blog"
+        keywords={[`web developer`, `javascript`, `tech`]}
+      />
       <main
         css={css`
           width: 100%;
@@ -72,12 +75,12 @@ export default ({ location }) => (
             render={({ allMarkdownRemark }) => {
               const { edges } = allMarkdownRemark;
               edges[0].last = true;
-              return <Posts posts={edges} panamaFlag={panamaFlag}/>;
+              return <Posts posts={edges} panamaFlag={panamaFlag} />;
             }}
           />
         </section>
         <Aside />
       </main>
-    </Content>
-  </Layout>
+    </Layout>
+  </div>
 );

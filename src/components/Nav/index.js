@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
+import PropTypes from "prop-types";
 import { Content } from "../layout";
 
 const container = css`
@@ -120,6 +121,9 @@ function Nav({ location, maxWidth }) {
 
 Nav.defaultProp = {};
 
-Nav.propTypes = {};
+Nav.propTypes = {
+  location: PropTypes.object.isRequired,
+  maxWidth: PropTypes.number.isRequired
+};
 
 export default Nav;

@@ -25,12 +25,6 @@ module.exports = {
         name: `post`
       }
     },
-    {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `claukishin`
-      }
-    },
     // for gatsby image
     "gatsby-plugin-sharp",
     {
@@ -103,7 +97,7 @@ module.exports = {
               allMarkdownRemark.edges.map(edge => {
                 const { siteUrl } = site.siteMetadata;
                 const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Este articulo fue publicado en mi blog claukishin.com. Puedes leer online <a href="${siteUrl +
+                <div style="margin-top=55px; font-style: italic;">(Este articulo fue publicado en mi blog hanslebon.com. Puedes leer online <a href="${siteUrl +
                   edge.node.fields.slug}">clicking here</a>.)</div>
               `;
 

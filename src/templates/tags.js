@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 import { Link, graphql } from "gatsby";
 import SEO from "../components/Seo";
-import Layout, { Content } from "../components/layout";
+import Layout from "../components/layout";
 
 const Tags = ({ pageContext, data, location }) => {
   const { tag } = pageContext;
@@ -15,35 +15,33 @@ const Tags = ({ pageContext, data, location }) => {
   return (
     <Layout location={location} maxWidth="700px">
       <SEO title={`Hans blog | ${tag}`} keywords={[`web development`, tag]} />
-      <Content maxWidth="700px">
-        <h1 style={{ marginTop: "2rem" }}>{tagHeader}</h1>
-        <ul
-          css={css`
-            margin-left: 2rem;
-          `}
-        >
-          {edges.map(({ node }) => {
-            const { title } = node.frontmatter;
-            const { slug: path } = node.fields;
-            return (
-              <li key={path}>
-                <Link
-                  to={path}
-                  css={css`
-                    box-shadow: none;
-                    &:hover {
-                      text-decoration: underline;
-                    }
-                  `}
-                >
-                  {title}
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
-        <Link to="/tags">All tags</Link>
-      </Content>
+      <h1 style={{ marginTop: "2rem" }}>{tagHeader}</h1>
+      <ul
+        css={css`
+          margin-left: 2rem;
+        `}
+      >
+        {edges.map(({ node }) => {
+          const { title } = node.frontmatter;
+          const { slug: path } = node.fields;
+          return (
+            <li key={path}>
+              <Link
+                to={path}
+                css={css`
+                  box-shadow: none;
+                  &:hover {
+                    text-decoration: underline;
+                  }
+                `}
+              >
+                {title}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      <Link to="/tags">All tags</Link>
     </Layout>
   );
 };

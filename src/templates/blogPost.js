@@ -21,146 +21,144 @@ export default function BlogPost({ data, pageContext, location }) {
   return (
     <Layout location={location} maxWidth="650px">
       <SEO
-        title={`Clau blog | ${post.frontmatter.title}`}
+        title={`${post.frontmatter.title}`}
         keywords={[`web developer`, ...post.frontmatter.tags]}
       />
-      <Content maxWidth="650px">
-        <article>
-          <header
+      <article>
+        <header
+          css={css`
+            margin: 2rem 0;
+          `}
+        >
+          <h1>{post.frontmatter.title}</h1>
+          <small
             css={css`
-              margin: 2rem 0;
+              font-size: 16px;
             `}
           >
-            <h1>{post.frontmatter.title}</h1>
-            <small
+            <span
               css={css`
-                font-size: 16px;
+                margin-right: 0.5rem;
               `}
             >
-              <span
-                css={css`
-                  margin-right: 0.5rem;
-                `}
-              >
-                <MdDateRange style={{ marginRight: "3px" }} />
-                {getDate(post.frontmatter.date)}
-              </span>
-              <FaFire fill="orange" />
-              <span
-                css={css`
-                  margin-left: 0.3rem;
-                `}
-              >
-                {post.timeToRead}
-              </span>
-              min read
-            </small>
-          </header>
-          <div
-            dangerouslySetInnerHTML={{ __html: post.html }}
-            css={css`
-              font-size: 18px;
-              & img {
-                display: flex;
-                width: 100%;
-                max-width: 500px;
-                height: auto;
-                margin: auto;
-                box-shadow: 0 2px 20px #d4d3d3;
-              }
-              & blockquote {
-                font-style: italic;
-                background: #f9f9f9;
-                border-left: 10px solid #ccc;
-                margin: 1.5em 10px;
-                padding: 0.5em 10px;
-                font-size: 1.1rem;
-              }
-              & blockquote p {
-                display: inline;
-              }
-            `}
-          />
-        </article>
-        <br />
-        {true && (
-          <React.Fragment>
-            <div style={{ margin: "90px 0 40px 0" }}>
-              <Signup pathname={location.pathname} />
-            </div>
-            <br />
-          </React.Fragment>
-        )}
-        {(prev && prev.frontmatter.public) ||
-        (next && next.frontmatter.public) ? (
-          <section
-            css={css`
-              background-color: white;
-              padding: 1rem;
-              margin: 2rem 0;
-            `}
-          >
-            <ul
+              <MdDateRange style={{ marginRight: "3px" }} />
+              {getDate(post.frontmatter.date)}
+            </span>
+            <FaFire fill="orange" />
+            <span
               css={css`
+                margin-left: 0.3rem;
+              `}
+            >
+              {post.timeToRead}
+            </span>
+            min read
+          </small>
+        </header>
+        <div
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          css={css`
+            font-size: 18px;
+            & img {
+              display: flex;
+              width: 100%;
+              max-width: 500px;
+              height: auto;
+              margin: auto;
+              box-shadow: 0 2px 20px #d4d3d3;
+            }
+            & blockquote {
+              font-style: italic;
+              background: #f9f9f9;
+              border-left: 10px solid #ccc;
+              margin: 1.5em 10px;
+              padding: 0.5em 10px;
+              font-size: 1.1rem;
+            }
+            & blockquote p {
+              display: inline;
+            }
+          `}
+        />
+      </article>
+      <br />
+      {true && (
+        <React.Fragment>
+          <div style={{ margin: "90px 0 40px 0" }}>
+            <Signup pathname={location.pathname} />
+          </div>
+          <br />
+        </React.Fragment>
+      )}
+      {(prev && prev.frontmatter.public) ||
+      (next && next.frontmatter.public) ? (
+        <section
+          css={css`
+            background-color: white;
+            padding: 1rem;
+            margin: 2rem 0;
+          `}
+        >
+          <ul
+            css={css`
+              margin-bottom: 0;
+              margin-left: 0;
+              list-style: none;
+              & > li:last-child {
                 margin-bottom: 0;
-                margin-left: 0;
-                list-style: none;
-                & > li:last-child {
-                  margin-bottom: 0;
-                }
-              `}
-            >
-              {prev && (
-                <li key="before">
-                  <span
-                    role="img"
-                    aria-label="back"
-                    css={css`
-                      margin-right: 8px;
-                      font-weight: 600;
-                    `}
-                  >
-                    Previous:
-                  </span>
-                  <Link
-                    to={prev.fields.slug}
-                    style={{
-                      color: "#2196f3"
-                    }}
-                  >
-                    {prev.frontmatter.title}
-                  </Link>
-                </li>
-              )}
-              {next && (
-                <li key="next">
-                  <span
-                    role="img"
-                    aria-label="foward"
-                    css={css`
-                      margin-right: 8px;
-                      font-weight: 600;
-                    `}
-                  >
-                    Next:
-                  </span>
-                  <Link
-                    to={next.fields.slug}
-                    style={{
-                      color: "#2196f3"
-                    }}
-                  >
-                    {next.frontmatter.title}
-                  </Link>
-                </li>
-              )}
-            </ul>
-          </section>
-        ) : null}
-        <section>
-          <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+              }
+            `}
+          >
+            {prev && (
+              <li key="before">
+                <span
+                  role="img"
+                  aria-label="back"
+                  css={css`
+                    margin-right: 8px;
+                    font-weight: 600;
+                  `}
+                >
+                  Previous:
+                </span>
+                <Link
+                  to={prev.fields.slug}
+                  style={{
+                    color: "#2196f3"
+                  }}
+                >
+                  {prev.frontmatter.title}
+                </Link>
+              </li>
+            )}
+            {next && (
+              <li key="next">
+                <span
+                  role="img"
+                  aria-label="foward"
+                  css={css`
+                    margin-right: 8px;
+                    font-weight: 600;
+                  `}
+                >
+                  Next:
+                </span>
+                <Link
+                  to={next.fields.slug}
+                  style={{
+                    color: "#2196f3"
+                  }}
+                >
+                  {next.frontmatter.title}
+                </Link>
+              </li>
+            )}
+          </ul>
         </section>
-      </Content>
+      ) : null}
+      <section>
+        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
+      </section>
     </Layout>
   );
 }

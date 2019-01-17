@@ -35,25 +35,23 @@ function Blog({ location }) {
   return (
     <Layout location={location}>
       <SEO title="Mis artículos" keywords={[`blog`, `javascript`, `react`]} />
-      <Content>
-        <section>
-          <h1
-            style={{
-              marginTop: "1rem",
-              marginBottom: "1.5rem"
-            }}
-          >
-            Artículos
-          </h1>
-          <StaticQuery
-            query={queryPosts}
-            render={({ allMarkdownRemark }) => {
-              const { edges } = allMarkdownRemark;
-              return <Posts posts={edges} />;
-            }}
-          />
-        </section>
-      </Content>
+      <section>
+        <h1
+          style={{
+            marginTop: "1rem",
+            marginBottom: "1.5rem"
+          }}
+        >
+          Artículos
+        </h1>
+        <StaticQuery
+          query={queryPosts}
+          render={({ allMarkdownRemark }) => {
+            const { edges } = allMarkdownRemark;
+            return <Posts posts={edges} />;
+          }}
+        />
+      </section>
     </Layout>
   );
 }

@@ -6,15 +6,13 @@ function Confirm(props) {
   const { location } = props;
   return (
     <Layout location={location}>
-      <Content>
-        <div style={{ marginTop: "2rem" }}>
-          <h1>Just one more step...</h1>
-          <p>
-            Thanks for subscribing. You must verify your mail and confirm your
-            subscription.
-          </p>
-        </div>
-      </Content>
+      <div style={{ marginTop: "2rem" }}>
+        <h1>Just one more step...</h1>
+        <p>
+          Thanks for subscribing. You must verify your mail and confirm your
+          subscription.
+        </p>
+      </div>
     </Layout>
   );
 }
