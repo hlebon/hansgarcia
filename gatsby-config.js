@@ -1,12 +1,29 @@
 module.exports = {
+  pathPrefix: "/",
   siteMetadata: {
     title: `Hans Blog`,
     subtitle: `Web developer, pizza lover`,
-    description: `web developer`,
-    author: `Hans`,
-    siteUrl: `https://hanslebon.com/`
+    description: `web developer posts`,
+    author: {
+      name: "Hans Garcia",
+      minibio: `
+      <strong>hanslebon</strong> is a personal blog about software development.
+    `
+    },
+    siteUrl: `https://hanslebon.com/`,
+    keywords: ["Video Blogger"],
+    canonicalUrl: "https://hanslebon.com",
+    image: "",
+    organization: {
+      name: "Hans Garcia",
+      url: "https://hanslebon.com",
+      logo: ""
+    },
+    social: {
+      twitter: "@HansLGarcia",
+      fbAppID: ""
+    }
   },
-  pathPrefix: `/`,
   plugins: [
     {
       resolve: "gatsby-plugin-emotion",

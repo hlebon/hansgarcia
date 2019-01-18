@@ -21,7 +21,7 @@ const query = graphql`
 function Tags({ location }) {
   return (
     <Layout location={location} maxWidth="650px">
-      <SEO title="Tags" keywords={[`blog`, `etiquetas`]} />
+      <SEO />
       <section>
         <h1
           style={{

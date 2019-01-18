@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import SEO from "../../components/Seo";
 import Posts from "../../components/Posts";
-import Layout, { Content } from "../../components/layout";
+import Layout from "../../components/layout";
 
 const queryPosts = graphql`
   query {
@@ -34,7 +34,7 @@ const queryPosts = graphql`
 function Blog({ location }) {
   return (
     <Layout location={location}>
-      <SEO title="Mis artículos" keywords={[`blog`, `javascript`, `react`]} />
+      <SEO />
       <section>
         <h1
           style={{
