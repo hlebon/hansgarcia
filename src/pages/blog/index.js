@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from "gatsby";
 import PropTypes from "prop-types";
 import SEO from "../../components/Seo";
 import Posts from "../../components/Posts";
-import Layout, { Content } from "../../components/layout";
+import Layout from "../../components/layout";
 
 const queryPosts = graphql`
   query {
