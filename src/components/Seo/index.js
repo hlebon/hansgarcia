@@ -1,7 +1,9 @@
 import React from "react";
+import path from "path";
 import PropTypes from "prop-types";
 import Helmet from "react-helmet";
 import { StaticQuery, graphql } from "gatsby";
+import SchemaOrg from "./components/SchemaOrg";
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
@@ -9,88 +11,101 @@ const detailsQuery = graphql`
       siteMetadata {
         title
         description
-        author
+        canonicalUrl
+        image
+        author {
+          name
+        }
+        organization {
+          name
+          url
+          logo
+        }
+        social {
+          twitter
+          fbAppID
+        }
       }
     }
   }
 `;
 
-function SEO({ description, lang, meta, keywords, title }) {
+function SEO({ postData, frontmatter = {}, postImage, isBlogPost }) {
   return (
     <StaticQuery
       query={detailsQuery}
-      render={data => {
-        const metaDescription =
-          description || data.site.siteMetadata.description;
+      render={({ site: { siteMetadata: seo } }) => {
+        const postMeta =
+          frontmatter || postData.childMarkdownRemark.frontmatter || {};
+
+        const title = postMeta.title || seo.title;
+        const description = postMeta.description || seo.description;
+        const image = postImage ? `${seo.canonicalUrl}${postImage}` : seo.image;
+        const url = postMeta.slug
+          ? `${seo.canonicalUrl}${path.sep}${postMeta.slug}`
+          : seo.canonicalUrl;
+        const datePublished = isBlogPost ? postMeta.datePublished : false;
         return (
-          <Helmet
-            htmlAttributes={{
-              lang
-            }}
-            title={title}
-            titleTemplate={`%s | ${data.site.siteMetadata.title}`}
-            meta={[
-              {
-                name: `description`,
-                content: metaDescription
-              },
-              {
-                property: `og:title`,
-                content: title
-              },
-              {
-                property: `og:description`,
-                content: metaDescription
-              },
-              {
-                property: `og:type`,
-                content: `website`
-              },
-              {
-                name: `twitter:card`,
-                content: `summary`
-              },
-              {
-                name: `twitter:creator`,
-                content: data.site.siteMetadata.author
-              },
-              {
-                name: `twitter:title`,
-                content: title
-              },
-              {
-                name: `twitter:description`,
-                content: metaDescription
-              }
-            ]
-              .concat(
-                keywords.length > 0
-                  ? {
-                      name: `keywords`,
-                      content: keywords.join(`, `)
-                    }
-                  : []
-              )
-              .concat(meta)}
-          />
+          <React.Fragment>
+            <Helmet>
+              {/* General tags */}
+              <title>{title}</title>
+              <meta name="description" content={description} />
+              <meta name="image" content={image} />
+
+              {/* OpenGraph tags */}
+              <meta property="og:url" content={url} />
+              {isBlogPost ? (
+                <meta property="og:type" content="article" />
+              ) : null}
+              <meta property="og:title" content={title} />
+              <meta property="og:description" content={description} />
+              <meta property="og:image" content={image} />
+              <meta property="fb:app_id" content={seo.social.fbAppID} />
+
+              {/* Twitter Card tags */}
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:creator" content={seo.social.twitter} />
+              <meta name="twitter:title" content={title} />
+              <meta name="twitter:description" content={description} />
+              <meta name="twitter:image" content={image} />
+            </Helmet>
+            <SchemaOrg
+              isBlogPost={isBlogPost}
+              url={url}
+              title={title}
+              image={image}
+              description={description}
+              datePublished={datePublished}
+              canonicalUrl={seo.canonicalUrl}
+              author={seo.author}
+              organization={seo.organization}
+              defaultTitle={seo.title}
+            />
+          </React.Fragment>
         );
       }}
     />
   );
 }
 
-SEO.defaultProps = {
-  lang: `es`,
-  meta: [],
-  keywords: []
+SEO.propTypes = {
+  isBlogPost: PropTypes.bool,
+  postData: PropTypes.shape({
+    childMarkdownRemark: PropTypes.shape({
+      frontmatter: PropTypes.any,
+      excerpt: PropTypes.any
+    })
+  }),
+  postImage: PropTypes.string,
+  frontmatter: PropTypes.any
 };
 
-SEO.propTypes = {
-  description: PropTypes.string,
-  lang: PropTypes.string,
-  meta: PropTypes.array,
-  keywords: PropTypes.arrayOf(PropTypes.string),
-  title: PropTypes.string.isRequired
+SEO.defaultProps = {
+  isBlogPost: false,
+  postData: { childMarkdownRemark: {} },
+  postImage: null,
+  frontmatter: {}
 };
 
 export default SEO;
