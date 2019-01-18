@@ -34,7 +34,7 @@ const queryPosts = graphql`
 function Blog({ location }) {
   return (
     <Layout location={location}>
-      <SEO title="Mis artículos" keywords={[`blog`, `javascript`, `react`]} />
+      <SEO />
       <section>
         <h1
           style={{
