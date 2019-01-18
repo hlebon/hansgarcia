@@ -5,7 +5,7 @@ import { DiscussionEmbed } from "disqus-react";
 import { css } from "@emotion/core";
 import { FaFire } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
-import Layout, { Content } from "../components/layout";
+import Layout from "../components/layout";
 import Signup from "../components/SignUp";
 import SEO from "../components/Seo";
 import { getDate } from "../utils/helpers";
@@ -20,10 +20,7 @@ export default function BlogPost({ data, pageContext, location }) {
   };
   return (
     <Layout location={location} maxWidth="650px">
-      <SEO
-        title={`${post.frontmatter.title}`}
-        keywords={[`web developer`, ...post.frontmatter.tags]}
-      />
+      <SEO frontmatter={post.frontmatter} isBlogPost />
       <article>
         <header
           css={css`
@@ -165,7 +162,8 @@ export default function BlogPost({ data, pageContext, location }) {
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired
+  pageContext: PropTypes.object.isRequired,
+  location: PropTypes.object.isRequired
 };
 
 export const query = graphql`
