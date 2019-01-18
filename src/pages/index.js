@@ -1,7 +1,7 @@
 import React from "react";
 import { graphql, StaticQuery } from "gatsby";
 import { css } from "@emotion/core";
-import Layout, { Content } from "../components/layout";
+import Layout from "../components/layout";
 import SEO from "../components/Seo";
 import Header from "../components/Header";
 import Aside from "../components/Aside";
@@ -40,10 +40,7 @@ export default ({ location }) => (
   <div>
     <Header />
     <Layout location={location}>
-      <SEO
-        title="Hans blog"
-        keywords={[`web developer`, `javascript`, `tech`]}
-      />
+      <SEO />
       <main
         css={css`
           width: 100%;
