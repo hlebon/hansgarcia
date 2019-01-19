@@ -72,3 +72,7 @@ yarn-error.log
 .amplifyrc
 
 /amplify
+
+
+# ENV
+.env.*
