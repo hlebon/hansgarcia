@@ -27,4 +27,6 @@ In this blog I will be writing about what I am passionate about, what I learn an
 
 We'll see a bit of `javascript`, `react`,`testing`, `graphql`,`web performance`, `redux`, `firebase`,`aws` and more ...
 
-Thanks for visiting this blog and come back soon.
+nothing more to add
+
+thanks for visiting this blog and I hope you come back soon.

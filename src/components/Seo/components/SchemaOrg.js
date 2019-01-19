@@ -84,14 +84,16 @@ const SchemaOrg = React.memo(
 );
 
 SchemaOrg.propTypes = {
-  author: PropTypes.string.isRequired,
+  author: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired,
   canonicalUrl: PropTypes.string.isRequired,
-  datePublished: PropTypes.string.isRequired,
+  datePublished: PropTypes.any.isRequired,
   defaultTitle: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
   image: PropTypes.string.isRequired,
-  isBlogPost: PropTypes.string.isRequired,
-  organization: PropTypes.string.isRequired,
+  isBlogPost: PropTypes.bool.isRequired,
+  organization: PropTypes.object.isRequired,
   title: PropTypes.string.isRequired,
   url: PropTypes.string.isRequired
 };

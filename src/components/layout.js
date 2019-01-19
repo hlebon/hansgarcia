@@ -3,8 +3,9 @@ import { css } from "@emotion/core";
 import PropTypes from "prop-types";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import "../styles/app.css";
 import "../styles/reboot.css";
+import "../styles/prims-line-number.css";
+import "../styles/app.css";
 
 export default function Layout(props) {
   const { children, location, maxWidth } = props;
@@ -47,7 +48,7 @@ export default function Layout(props) {
 
 Layout.propTypes = {
   location: PropTypes.object.isRequired,
-  maxWidth: PropTypes.number.isRequired
+  maxWidth: PropTypes.string.isRequired
 };
 
 export const Content = ({ children, maxWidth = "960px" }) => (
@@ -77,5 +78,5 @@ export const Content = ({ children, maxWidth = "960px" }) => (
 );
 
 Content.propTypes = {
-  maxWidth: PropTypes.number.isRequired
+  maxWidth: PropTypes.string.isRequired
 };

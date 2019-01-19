@@ -60,7 +60,6 @@ exports.createPages = ({ graphql, actions }) => {
         }
       });
       myTags.forEach(tag => {
-        console.log("tag: ", tag);
         createPage({
           path: `/tags/${tag.trim()}/`,
           component: path.resolve(`./src/templates/tags.js`),

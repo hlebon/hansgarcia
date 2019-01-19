@@ -123,7 +123,7 @@ Nav.defaultProp = {};
 
 Nav.propTypes = {
   location: PropTypes.object.isRequired,
-  maxWidth: PropTypes.number.isRequired
+  maxWidth: PropTypes.string.isRequired
 };
 
 export default Nav;
