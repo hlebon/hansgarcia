@@ -15,19 +15,6 @@ A inicio de cada año todos nos ponemos metas que queremos cumplir, crear un blo
 
 En este blog estaré escribiendo de lo que me apasiona, lo que aprendo y lo que se, todo enfocado al desarrollo de software.
 
-Así que veremos un poco de javascript, `react`, `testing`, `graphql`, `web performance`, `redux`, firebase`, `aws` y mucho más…
+Así que veremos un poco de javascript, `react`, `testing`, `graphql`, `web performance`, `redux`, `firebase`, `aws` y mucho más…
 
-Gracias por vistar este blog y qué empiece la aventura.
-
-```javascript
-function test({ a, b }){
-    console.log(a+b)
-}
-
-async function test2(a,b){
-    return a + b;
-}
-```
-
-Hola mundo
-[I'm an inline-style link](https://www.google.com)
+Sin más que agregar, gracias por vistar este blog y qué empiece la aventura.
