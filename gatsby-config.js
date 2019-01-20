@@ -1,8 +1,7 @@
 module.exports = {
-  pathPrefix: "/",
   siteMetadata: {
     title: `Hans Blog`,
-    subtitle: `fullstack developer`,
+    subtitle: `Fullstack developer`,
     description: `web developer articles about javascript, react, react-native`,
     author: {
       name: "Hans Garcia",
