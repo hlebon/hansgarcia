@@ -33,7 +33,7 @@ const queryPosts = graphql`
 
 function Blog({ location }) {
   return (
-    <Layout location={location}>
+    <Layout location={location} maxWidth="950px">
       <SEO />
       <section>
         <h1
@@ -42,7 +42,7 @@ function Blog({ location }) {
             marginBottom: "1.5rem"
           }}
         >
-          Artículos
+          All posts
         </h1>
         <StaticQuery
           query={queryPosts}

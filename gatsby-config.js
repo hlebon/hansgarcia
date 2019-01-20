@@ -1,13 +1,12 @@
 module.exports = {
-  pathPrefix: "/",
   siteMetadata: {
     title: `Hans Blog`,
-    subtitle: `Web developer, pizza lover`,
-    description: `web developer posts`,
+    subtitle: `Fullstack developer`,
+    description: `web developer articles about javascript, react, react-native`,
     author: {
       name: "Hans Garcia",
       minibio: `
-      <strong>hanslebon</strong> is a personal blog about software development.
+      <strong>hanslebon.com</strong> is a personal blog about software development.
     `
     },
     siteUrl: `https://hanslebon.com/`,
@@ -55,6 +54,16 @@ module.exports = {
               maxWidth: 590,
               showCaptions: true
             }
+          },
+          {
+            resolve: `gatsby-remark-prismjs`,
+            options: {
+              classPrefix: "language-",
+              inlineCodeMarker: null,
+              aliases: {},
+              showLineNumbers: false,
+              noInlineHighlight: false
+            }
           }
         ]
       }
@@ -77,7 +86,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: "UA-131805788-1",
+        trackingId: "UA-130239906-1",
         // Puts tracking script in the head instead of the body
         head: false,
         // Setting this parameter is optional

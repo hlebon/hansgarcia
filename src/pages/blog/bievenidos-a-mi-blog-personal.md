@@ -18,3 +18,16 @@ En este blog estaré escribiendo de lo que me apasiona, lo que aprendo y lo que 
 Así que veremos un poco de javascript, `react`, `testing`, `graphql`, `web performance`, `redux`, firebase`, `aws` y mucho más…
 
 Gracias por vistar este blog y qué empiece la aventura.
+
+```javascript
+function test({ a, b }){
+    console.log(a+b)
+}
+
+async function test2(a,b){
+    return a + b;
+}
+```
+
+Hola mundo
+[I'm an inline-style link](https://www.google.com)

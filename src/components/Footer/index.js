@@ -37,7 +37,7 @@ function Footer({ maxWidth }) {
 }
 
 Footer.propTypes = {
-  maxWidth: PropTypes.number.isRequired
+  maxWidth: PropTypes.string.isRequired
 };
 
 export default Footer;

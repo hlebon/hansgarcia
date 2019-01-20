@@ -39,7 +39,7 @@ const queryPosts = graphql`
 export default ({ location }) => (
   <div>
     <Header />
-    <Layout location={location}>
+    <Layout location={location} maxWidth="950px">
       <SEO />
       <main
         css={css`

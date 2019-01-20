@@ -44,7 +44,7 @@ function SEO({ postData, frontmatter = {}, postImage, isBlogPost }) {
         const url = postMeta.slug
           ? `${seo.canonicalUrl}${path.sep}${postMeta.slug}`
           : seo.canonicalUrl;
-        const datePublished = isBlogPost ? postMeta.datePublished : false;
+        const datePublished = isBlogPost ? postMeta.date : false;
         return (
           <React.Fragment>
             <Helmet>
