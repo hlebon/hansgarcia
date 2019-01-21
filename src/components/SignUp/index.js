@@ -10,7 +10,8 @@ class Signup extends React.Component {
     lastName: "",
     error: false,
     msg: "",
-    canSubmitForm: false
+    canSubmitForm: false,
+    loading: false
   };
 
   handleOnChange = e => {
@@ -27,14 +28,13 @@ class Signup extends React.Component {
 
   handleOnSubmit = async e => {
     e.preventDefault();
+    console.log("submit");
     const { email, name, lastName, canSubmitForm } = this.state;
-    if (!canSubmitForm) {
-      this.setState({
-        error: true,
-        msg: `Ingrese un email valido`
-      });
-      return;
-    }
+    this.setState({
+      loading: true,
+      error: !canSubmitForm,
+      msg: !canSubmitForm ? `Invalid email` : ``
+    });
     try {
       const { result, msg } = await addToMailchimp(email, {
         PATHNAME: this.props.pathname,
@@ -43,16 +43,21 @@ class Signup extends React.Component {
       });
       if (result === "error") {
         this.setState({
+          loading: false,
           error: true,
           msg: msg.split("<")[0]
         });
       } else {
-        navigate(`/confirmar`, { state: { name } });
+        this.setState({
+          loading: true
+        });
+        navigate(`/confirm/`, { state: { name } });
       }
     } catch (error) {
       this.setState({
+        loading: false,
         error: true,
-        msg: "Ups! Hemos tenido un problema, intentalo de nuevo"
+        msg: "Ups! We had a problem, try again"
       });
     }
   };
@@ -63,7 +68,15 @@ class Signup extends React.Component {
   };
 
   render() {
-    const { name, lastName, email, error, msg, canSubmitForm } = this.state;
+    const {
+      name,
+      lastName,
+      email,
+      error,
+      msg,
+      canSubmitForm,
+      loading
+    } = this.state;
     const { clean = false } = this.props;
     return (
       <form
@@ -158,9 +171,15 @@ class Signup extends React.Component {
                 &:hover {
                   background-color: #1166a9;
                 }
+                &:disabled {
+                  background-color: #c0c0c0;
+                  border-color: #c0c0c0;
+                  cursor: default;
+                }
               `}
+              disabled={loading}
             >
-              Subscribe
+              {loading ? `Subscribing...` : `Subscribe`}
             </button>
             {error && <div style={{ color: "red" }}>{msg}</div>}
           </div>
