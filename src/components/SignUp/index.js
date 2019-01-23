@@ -168,6 +168,7 @@ class Signup extends React.Component {
                 background-color: #2196f3;
                 color: white;
                 cursor: pointer;
+                box-shadow: 1px 2px 7px #bcbcbc;
                 &:hover {
                   background-color: #1166a9;
                 }
