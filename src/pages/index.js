@@ -6,6 +6,7 @@ import SEO from "../components/Seo";
 import Header from "../components/Header";
 import Aside from "../components/Aside";
 import Posts from "../components/Posts";
+import Band from "../components/Band";
 import { rhythm } from "../utils/typography";
 import panamaFlag from "../assets/images/panama_flag.svg";
 
@@ -39,6 +40,8 @@ const queryPosts = graphql`
 export default ({ location }) => (
   <div>
     <Header />
+    <Band panamaFlag={panamaFlag} maxWidth="950px" />
+    <br />
     <Layout location={location} maxWidth="950px">
       <SEO />
       <main
