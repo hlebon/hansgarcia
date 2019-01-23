@@ -55,7 +55,7 @@ export default ({ location }) => (
             width: 100%;
             height: 100%;
           }
-          @media (min-width: 100px) {
+          @media (min-width: 1000px) {
             & > section {
               width: 70%;
               padding-right: 2rem;
