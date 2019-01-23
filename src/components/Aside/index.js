@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "@emotion/core";
 import Bio from "../Bio";
 import Signup from "../SignUp";
+import SocialMedia from "../SocialMedia";
 
 function Aside() {
   return (
@@ -16,6 +17,9 @@ function Aside() {
       <br />
       <section>
         <Signup clean />
+      </section>
+      <section>
+        <SocialMedia title="Social Media" />
       </section>
     </aside>
   );
