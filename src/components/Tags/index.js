@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "gatsby";
 import { css } from "@emotion/core";
-
 import { FaTags } from "react-icons/fa";
 
 function Tags({ data: tags }) {
