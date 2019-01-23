@@ -19,7 +19,7 @@ export default function BlogPost({ data, pageContext, location }) {
     title: post.frontmatter.title
   };
   return (
-    <Layout location={location} maxWidth="650px">
+    <Layout location={location} maxWidth="750px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
       <article>
         <header
