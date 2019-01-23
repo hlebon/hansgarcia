@@ -26,11 +26,10 @@ export default function Layout(props) {
                 margin: auto;
                 padding: 0 7px;
                 @media (min-width: 700px) {
-                  width: 60%;
-                  margin: auto;
+                  width: 85%;
                 }
                 @media (min-width: 900px) {
-                  width: 80%;
+                  width: 90%;
                 }
               `}
             >
@@ -64,11 +63,10 @@ export const Content = ({ children, maxWidth = "960px" }) => (
         margin: auto;
         padding: 0 7px;
         @media (min-width: 700px) {
-          width: 60%;
-          margin: auto;
+          width: 85%;
         }
         @media (min-width: 900px) {
-          width: 80%;
+          width: 90%;
         }
       `}
     >
