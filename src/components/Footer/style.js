@@ -24,27 +24,3 @@ export const footerContent = css`
     justify-content: space-between;
   }
 `;
-
-export const ul = css`
-  padding-inline-start: 0;
-  list-style-type: none;
-  margin-inline-start: 0;
-  margin: 0;
-  li {
-    margin: 0;
-  }
-  a {
-    margin-left: 5px;
-    box-shadow: none;
-  }
-  img {
-    width: 100%;
-    heigt: auto;
-    max-width: 18px;
-    margin: auto;
-    border-radius: 7px;
-  }
-`;
-
-export const li = css`
-margin: 0`;
