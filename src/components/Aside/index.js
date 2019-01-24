@@ -14,7 +14,9 @@ function Aside() {
   return (
     <aside css={asideStyle}>
       <Bio />
-      <Signup clean />
+      <br />
+      <Signup clean pathname="aside" />
+      <br />
       <SocialMedia title="Follow me on" />
     </aside>
   );
