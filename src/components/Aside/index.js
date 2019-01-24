@@ -14,13 +14,8 @@ function Aside() {
       `}
     >
       <Bio />
-      <br />
-      <section>
-        <Signup clean />
-      </section>
-      <section>
-        <SocialMedia title="Social Media" />
-      </section>
+      <Signup clean />
+      <SocialMedia title="Follow me on" />
     </aside>
   );
 }
