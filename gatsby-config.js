@@ -170,6 +170,21 @@ module.exports = {
           }
         ]
       }
-    }
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Hans Personal Blog`,
+        short_name: `Hans Blog`,
+        start_url: `/`,
+        background_color: `#f7f0eb`,
+        theme_color: `#2196f3`,
+        // Enables "Add to Homescreen" prompt and disables browser UI (including back button)
+        // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
+        display: `standalone`,
+        icon: `src/assets/images/logo.PNG` // This path is relative to the root of the site.
+      }
+    },
+    "gatsby-plugin-offline"
   ]
 };
