@@ -1,20 +1,20 @@
 module.exports = {
   siteMetadata: {
-    title: `Hans Blog`,
+    title: `Hans García`,
     subtitle: `Fullstack developer`,
-    description: `web developer articles about javascript, react, react-native`,
+    description: `Web development articles, javascript, react, react-native, firestore, aws, PWA and more.`,
     author: {
-      name: "Hans Garcia",
+      name: "Hans García",
       minibio: `
       <strong>hanslebon.com</strong> is a personal blog about software development.
     `
     },
     siteUrl: `https://hanslebon.com/`,
-    keywords: ["Video Blogger"],
+    keywords: ["Video Blogger", "Javascript", "React", "PWA"],
     canonicalUrl: "https://hanslebon.com",
     image: "",
     organization: {
-      name: "Hans Garcia",
+      name: "Hans García",
       url: "https://hanslebon.com",
       logo: ""
     },
