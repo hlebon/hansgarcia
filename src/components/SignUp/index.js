@@ -3,6 +3,7 @@ import { navigate } from "gatsby";
 import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 import addToMailchimp from "gatsby-plugin-mailchimp";
+import { rhythm } from "../../utils/typography";
 
 class Signup extends React.Component {
   state = {
@@ -79,6 +80,7 @@ class Signup extends React.Component {
             display: flex;
             justify-content: center;
             align-items: center;
+            margin: 0;
           `}
         >
           <div
@@ -107,7 +109,11 @@ class Signup extends React.Component {
           `}
           >
             <div id="newsletter">
-              <h3 style={{ margin: 0, marginBottom: "1rem" }}>
+              <h3
+                style={{
+                  margin: `${rhythm(2 / 4)} 0 ${rhythm(2 / 4)} 0`
+                }}
+              >
                 Join the Newsletter
               </h3>
               {!clean && (
