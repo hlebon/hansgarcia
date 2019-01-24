@@ -83,7 +83,7 @@ const socialMedia = [
 
 function SocialMedia({ title }) {
   return (
-    <div>
+    <section>
       {title ? (
         <h3
           style={{
@@ -118,7 +118,7 @@ function SocialMedia({ title }) {
           </li>
         ))}
       </ul>
-    </div>
+    </section>
   );
 }
 
