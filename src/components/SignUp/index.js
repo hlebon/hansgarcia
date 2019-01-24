@@ -1,5 +1,6 @@
 import React from "react";
 import { navigate } from "gatsby";
+import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 import addToMailchimp from "gatsby-plugin-mailchimp";
 
@@ -28,8 +29,8 @@ class Signup extends React.Component {
 
   handleOnSubmit = async e => {
     e.preventDefault();
-    console.log("submit");
     const { email, name, lastName, canSubmitForm } = this.state;
+    const { pathname } = this.props;
     this.setState({
       loading: true,
       error: !canSubmitForm,
@@ -37,7 +38,7 @@ class Signup extends React.Component {
     });
     try {
       const { result, msg } = await addToMailchimp(email, {
-        PATHNAME: this.props.pathname,
+        PATHNAME: pathname,
         FNAME: name,
         LNAME: lastName
       });
@@ -68,27 +69,20 @@ class Signup extends React.Component {
   };
 
   render() {
-    const {
-      name,
-      lastName,
-      email,
-      error,
-      msg,
-      canSubmitForm,
-      loading
-    } = this.state;
-    const { clean = false } = this.props;
+    const { name, email, error, msg, loading } = this.state;
+    const { clean } = this.props;
     return (
-      <form
-        onSubmit={this.handleOnSubmit}
-        css={css`
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        `}
-      >
-        <div
+      <section>
+        <form
+          onSubmit={this.handleOnSubmit}
           css={css`
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          `}
+        >
+          <div
+            css={css`
             width: 100%;
             display: flex;
             flex-direction: column;
@@ -111,83 +105,93 @@ class Signup extends React.Component {
               }
             }`}
           `}
-        >
-          <div id="newsletter">
-            <h3 style={{ margin: 0, marginBottom: "1rem" }}>
-              Join the Newsletter
-            </h3>
-            {!clean && (
-              <p style={{ marginTop: "5px" }}>
-                Subscribe to get my latest content by email.
-              </p>
-            )}
-          </div>
-          <div
-            id="form"
-            css={css`
-              width: 100%;
-              display: flex;
-              flex-direction: column;
-              input {
-                margin-bottom: 10px;
-                padding: 8px;
-                border: 1px solid #d4d4d4;
-                border-radius: 5px;
-              }
-            `}
           >
-            {!clean && (
-              <React.Fragment>
-                <input
-                  type="text"
-                  placeholder="Name"
-                  name="name"
-                  value={name}
-                  onChange={this.handleOnChange}
-                  required
-                />
-              </React.Fragment>
-            )}
-            <input
-              type="email"
-              placeholder="Email"
-              name="email"
-              value={email}
-              onChange={this.handleOnChange}
-              required
-            />
-
-            <button
-              type="submit"
+            <div id="newsletter">
+              <h3 style={{ margin: 0, marginBottom: "1rem" }}>
+                Join the Newsletter
+              </h3>
+              {!clean && (
+                <p style={{ marginTop: "5px" }}>
+                  Subscribe to get my latest content by email.
+                </p>
+              )}
+            </div>
+            <div
+              id="form"
               css={css`
                 width: 100%;
-                max-width: 120px;
-                border: 1px solid rgba(33, 150, 243, 1);
-                padding: 9px 7px;
-                border-radius: 7px;
-                background-color: #2196f3;
-                color: white;
-                cursor: pointer;
-                box-shadow: 1px 2px 7px #bcbcbc;
-                &:hover {
-                  background-color: #1166a9;
-                }
-                &:disabled {
-                  background-color: #c0c0c0;
-                  border-color: #c0c0c0;
-                  cursor: default;
+                display: flex;
+                flex-direction: column;
+                input {
+                  margin-bottom: 10px;
+                  padding: 8px;
+                  border: 1px solid #d4d4d4;
+                  border-radius: 5px;
                 }
               `}
-              disabled={loading}
             >
-              {loading ? `Subscribing...` : `Subscribe`}
-            </button>
-            {error && <div style={{ color: "red" }}>{msg}</div>}
+              {!clean && (
+                <React.Fragment>
+                  <input
+                    type="text"
+                    placeholder="Name"
+                    name="name"
+                    value={name}
+                    onChange={this.handleOnChange}
+                    required
+                  />
+                </React.Fragment>
+              )}
+              <input
+                type="email"
+                placeholder="Email"
+                name="email"
+                value={email}
+                onChange={this.handleOnChange}
+                required
+              />
+
+              <button
+                type="submit"
+                css={css`
+                  width: 100%;
+                  max-width: 120px;
+                  border: 1px solid rgba(33, 150, 243, 1);
+                  padding: 9px 7px;
+                  border-radius: 7px;
+                  background-color: #2196f3;
+                  color: white;
+                  cursor: pointer;
+                  box-shadow: 1px 2px 7px #bcbcbc;
+                  &:hover {
+                    background-color: #1166a9;
+                  }
+                  &:disabled {
+                    background-color: #c0c0c0;
+                    border-color: #c0c0c0;
+                    cursor: default;
+                  }
+                `}
+                disabled={loading}
+              >
+                {loading ? `Subscribing...` : `Subscribe`}
+              </button>
+              {error && <div style={{ color: "red" }}>{msg}</div>}
+            </div>
           </div>
-        </div>
-      </form>
+        </form>
+      </section>
     );
   }
 }
+
+Signup.defaultProps = {
+  clean: false
+};
+
+Signup.propTypes = {
+  clean: PropTypes.bool,
+  pathname: PropTypes.string.isRequired
+};
 
 export default Signup;
