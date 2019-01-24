@@ -101,6 +101,7 @@ function SocialMedia({ title }) {
               target="_blank"
               rel="noopener noreferrer"
               css={css`
+                position: relative;
                 &:hover span {
                   visibility: visible;
                   opacity: 1;
@@ -110,9 +111,7 @@ function SocialMedia({ title }) {
                 }
               `}
             >
-              <div style={{ position: "relative" }}>
-                <span css={tooltip}>{alt}</span>
-              </div>
+              <span css={tooltip}>{alt}</span>
               <img src={icon} alt={`${alt} profile`} />
             </a>
           </li>
@@ -123,7 +122,7 @@ function SocialMedia({ title }) {
 }
 
 SocialMedia.defaultProps = {
-  title: false
+  title: ""
 };
 
 SocialMedia.propTypes = {
