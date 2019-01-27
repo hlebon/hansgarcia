@@ -4,7 +4,7 @@ import BgHero from "../../assets/images/panama.jpg";
 
 export const heroStyle = css`
   width: 100%;
-  padding: 5rem 1rem 4rem 1rem;
+  padding: 10rem 1rem 6rem 1rem;
   margin-bottom: 3rem;
   justify-content: center;
   overflow: hidden;
