@@ -16,25 +16,19 @@ export default function Layout(props) {
           <Nav location={location} maxWidth={maxWidth} />
           <div
             css={css`
-              width: 100%;
+              max-width: ${maxWidth};
+              height: 100%;
+              margin: auto;
+              padding: 0 7px;
+              @media (min-width: 700px) {
+                width: 85%;
+              }
+              @media (min-width: 900px) {
+                width: 90%;
+              }
             `}
           >
-            <div
-              css={css`
-                max-width: ${maxWidth};
-                height: 100%;
-                margin: auto;
-                padding: 0 7px;
-                @media (min-width: 700px) {
-                  width: 85%;
-                }
-                @media (min-width: 900px) {
-                  width: 90%;
-                }
-              `}
-            >
-              {children}
-            </div>
+            {children}
           </div>
         </div>
       </div>
