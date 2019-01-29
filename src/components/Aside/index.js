@@ -16,8 +16,6 @@ function Aside() {
       <Bio />
       <br />
       <Signup clean pathname="aside" />
-      <br />
-      <SocialMedia title="Follow me on" />
     </aside>
   );
 }
