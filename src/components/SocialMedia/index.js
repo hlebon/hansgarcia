@@ -70,12 +70,12 @@ const socialMedia = [
     alt: `Instagram`
   },
   {
-    ref: `https://www.instagram.com/hans.lebon/`,
+    ref: `https://twitter.com/HansLGarcia/`,
     icon: twitterIcon,
     alt: `Twitter`
   },
   {
-    ref: `https://twitter.com/HansLGarcia/`,
+    ref: `https://github.com/hlebon/`,
     icon: githubIcon,
     alt: `GitHub`
   }
