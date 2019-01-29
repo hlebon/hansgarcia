@@ -1,7 +1,6 @@
 import React from "react";
 import { css } from "@emotion/core";
 import Bio from "../Bio";
-import Signup from "../SignUp";
 import SocialMedia from "../SocialMedia";
 
 const asideStyle = css`
@@ -15,7 +14,7 @@ function Aside() {
     <aside css={asideStyle}>
       <Bio />
       <br />
-      <Signup clean pathname="aside" />
+      <SocialMedia title="Follow me on" />
     </aside>
   );
 }
