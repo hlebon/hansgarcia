@@ -79,7 +79,7 @@ export default function BlogPost({ data, pageContext, location }) {
         />
       </article>
       <br />
-      {true && (
+      {false && (
         <React.Fragment>
           <div style={{ margin: "90px 0 40px 0" }}>
             <Signup pathname={location.pathname} />
