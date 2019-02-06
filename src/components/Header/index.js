@@ -24,7 +24,8 @@ function Header() {
             <div>
               <h1
                 style={{
-                  ...scale(1.5)
+                  ...scale(1.5),
+                  textShadow: "2px 2px 2px #1C6EA4"
                 }}
               >
                 {title}
@@ -32,7 +33,10 @@ function Header() {
               {subtitle.trim().length > 0 && (
                 <p
                   style={{
-                    fontSize: "1.5rem"
+                    maxWidth: "550px",
+                    margin: "auto",
+                    fontSize: "1.5rem",
+                    textShadow: "2px 2px 2px #1C6EA4"
                   }}
                 >
                   {subtitle}
