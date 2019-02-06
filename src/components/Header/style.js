@@ -8,7 +8,6 @@ export const heroStyle = css`
   margin-bottom: 3rem;
   justify-content: center;
   overflow: hidden;
-  position: relative;
   text-align: center;
   transform-style: preserve-3d;
   background: linear-gradient(rgba(33, 150, 243, 0.8), rgba(3, 169, 244, 0.8)),
