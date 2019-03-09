@@ -6,7 +6,13 @@ import { FaTags } from "react-icons/fa";
 
 function Tags({ data: tags }) {
   return (
-    <ul style={{ display: "flex ", listStyleType: "none", marginLeft: 0 }}>
+    <ul
+      css={css`
+        margin: 0;
+        padding: 0;
+      `}
+      style={{ display: "flex ", listStyleType: "none", marginLeft: 0 }}
+    >
       {tags.map(tag => (
         <li
           key={tag}
@@ -19,16 +25,20 @@ function Tags({ data: tags }) {
             font-weight: 400;
           `}
         >
-          <FaTags style={{ marginRight: "3px" }} />
           <Link
             to={`/tags/${tag}`}
             css={css`
+              padding: 3px 6px;
+              border: 1px solid transparent;
+              background-color: #f7f7f7;
               color: gray;
+              text-decoration: none;
               box-shadow: none;
               transition: color 200ms ease-in, text-decoration 200ms ease-in-out;
               &:hover {
                 color: #2196f3;
-                text-decoration: underline;
+                border-color: #2196f3;
+                text-decoration: none;
                 transition: color 300ms ease-in,
                   text-decoraion 300ms ease-in-out;
               }

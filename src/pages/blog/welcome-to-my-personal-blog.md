@@ -1,7 +1,7 @@
 ---
 path: ''
 date: '2018-01-16'
-title: "Welcome to my personal blog \U0001F44B"
+title: "Welcome to my personal blog"
 public: true
 language: ""
 tags: ["blog", "2019", "start"]

@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import instaIcon from "../../assets/icons/instagram.svg";
 import twitterIcon from "../../assets/icons/twitter.svg";
 import githubIcon from "../../assets/icons/github.svg";
-import { rhythm } from "../../utils/typography";
 
 const tooltip = css`
   display: block;
@@ -84,15 +83,7 @@ const socialMedia = [
 function SocialMedia({ title }) {
   return (
     <section>
-      {title ? (
-        <h3
-          style={{
-            margin: `${rhythm(2 / 4)} 0 ${rhythm(2 / 4)} 0`
-          }}
-        >
-          {title}
-        </h3>
-      ) : null}
+      {title ? <h3>{title}</h3> : null}
       <ul css={ul}>
         {socialMedia.map(({ ref, icon, alt }) => (
           <li key={alt} css={li}>

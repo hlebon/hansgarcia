@@ -3,38 +3,39 @@ import { css } from "@emotion/core";
 import PropTypes from "prop-types";
 import Nav from "./Nav";
 import Footer from "./Footer";
-import "../styles/reboot.css";
 import "../styles/prims-line-number.css";
 import "../styles/app.css";
+import "typeface-roboto-slab";
 
 export default function Layout(props) {
   const { children, location, maxWidth } = props;
+  console.log(maxWidth);
   return (
-    <div style={{ display: "flex", flexDirection: "column", height: "100vh" }}>
+    <div
+      css={css`
+        font-family: "Roboto Slab", serif;
+      `}
+      style={{ display: "flex", flexDirection: "column", height: "100vh" }}
+    >
+      <Nav location={location} />
       <div style={{ flex: "1 0 auto" }}>
-        <div>
-          <Nav location={location} maxWidth={maxWidth} />
-          <div
-            css={css`
-              max-width: ${maxWidth};
-              height: 100%;
-              margin: auto;
-              padding: 0 7px;
-              @media (min-width: 700px) {
-                width: 85%;
-              }
-              @media (min-width: 900px) {
-                width: 90%;
-              }
-            `}
-          >
-            {children}
-          </div>
+        <div
+          css={css`
+            max-width: ${maxWidth};
+            width: 90%;
+            height: 100%;
+            margin: auto;
+            @media (min-width: 900px) {
+              width: 80%;
+            }
+          `}
+        >
+          {children}
         </div>
       </div>
-      <div style={{ flexShrink: 0 }}>
+      <footer style={{ flexShrink: 0 }}>
         <Footer maxWidth={maxWidth} />
-      </div>
+      </footer>
     </div>
   );
 }
@@ -55,6 +56,7 @@ export const Content = ({ children, maxWidth = "960px" }) => (
         max-width: ${maxWidth};
         height: 100%;
         margin: auto;
+        margin-top: 65px;
         padding: 0 7px;
         @media (min-width: 700px) {
           width: 85%;

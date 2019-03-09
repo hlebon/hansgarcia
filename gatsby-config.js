@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Hans García`,
-    subtitle: `Full Stack developer, pizza lover, I am passionate about performance, clean code, and software architecture`,
+    subtitle: `Full Stack developer, pizza and coffee lover`,
     description: `Web development articles, javascript, react, react-native, firestore, aws, PWA and more.`,
     author: {
       name: "Hans García",
@@ -70,12 +70,6 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
-    {
-      resolve: `gatsby-plugin-typography`,
-      options: {
-        pathToConfigModule: `src/utils/typography`
-      }
-    },
     {
       resolve: "gatsby-plugin-mailchimp",
       options: {
