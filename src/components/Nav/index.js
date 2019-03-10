@@ -81,7 +81,7 @@ function Nav({ location }) {
           {pages.map(page => {
             const active = pathname === page.to;
             return (
-              <li css={styles.list_item}>
+              <li key={page.label} css={styles.list_item}>
                 <Link
                   to={page.to}
                   css={css`${styles.link},${active ? styles.selected : ""}`}
