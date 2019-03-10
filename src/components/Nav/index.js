@@ -9,19 +9,23 @@ const styles = {
     left: 0;
     right: 0;
     top: 0;
-    min-height: 44px;
     padding: 0;
     border-bottom-width: 2px;
     line-height: 44px;
     width: 100%;
-    background-color: white;
+    background-color: rgb(87, 148, 197);
+    background: linear-gradient(
+      to left,
+      rgba(33, 150, 243, 0.9),
+      rgb(87, 148, 197)
+    );
   `,
   link: css`
     font-size: 1.2em;
-    color: rgb(90, 90, 90);
+    color: white;
     text-decoration: none;
     &:hover {
-      color: red;
+      color: white;
     }
   `,
   active: css`
