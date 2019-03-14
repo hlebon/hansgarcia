@@ -6,8 +6,32 @@ import SEO from "../components/Seo";
 import Header from "../components/Header";
 import Aside from "../components/Aside";
 import Posts from "../components/Posts";
-import { rhythm } from "../utils/typography";
 import panamaFlag from "../assets/images/panama_flag.svg";
+
+const styles = {
+  main: css`
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    p {
+      font-size: 18px;
+    }
+    & > section,
+    & > aside {
+      width: 100%;
+      height: 100%;
+    }
+    @media (min-width: 1000px) {
+      & > section {
+        width: 70%;
+        padding-right: 2rem;
+      }
+      & > aside {
+        width: 30%;
+      }
+    }
+  `
+};
 
 const queryPosts = graphql`
   query {
@@ -38,34 +62,10 @@ const queryPosts = graphql`
 
 export default ({ location }) => (
   <div>
-    <Header />
-    <Layout location={location} maxWidth="950px">
+    <Layout location={location} maxWidth="900px">
       <SEO />
-      <main
-        css={css`
-          width: 100%;
-          display: flex;
-          flex-wrap: wrap;
-          margin-bottom: ${rhythm(2)};
-          p {
-            font-size: 18px;
-          }
-          & > section,
-          & > aside {
-            width: 100%;
-            height: 100%;
-          }
-          @media (min-width: 1000px) {
-            & > section {
-              width: 70%;
-              padding-right: 2rem;
-            }
-            & > aside {
-              width: 30%;
-            }
-          }
-        `}
-      >
+      <Header />
+      <main css={styles.main}>
         <section>
           <StaticQuery
             query={queryPosts}

@@ -1,7 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
 import PropTypes from "prop-types";
-import { DiscussionEmbed } from "disqus-react";
 import { css } from "@emotion/core";
 import { FaFire } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
@@ -13,13 +12,8 @@ import { getDate } from "../utils/helpers";
 export default function BlogPost({ data, pageContext, location }) {
   const { prev, next } = pageContext;
   const post = data.markdownRemark;
-  const disqusShortname = "hansgarcia";
-  const disqusConfig = {
-    identifier: post.fields.slug,
-    title: post.frontmatter.title
-  };
   return (
-    <Layout location={location} maxWidth="750px">
+    <Layout location={location} maxWidth="600px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
       <article>
         <header
@@ -27,30 +21,38 @@ export default function BlogPost({ data, pageContext, location }) {
             margin: 2rem 0;
           `}
         >
-          <h1>{post.frontmatter.title}</h1>
-          <small
+          <h1
             css={css`
-              font-size: 16px;
+              font-size: 55px;
+              color: rgb(52, 52, 52);
+              font-family: "Raleway", sans-serif;
             `}
           >
-            <span
-              css={css`
-                margin-right: 0.5rem;
-              `}
-            >
-              <MdDateRange style={{ marginRight: "3px" }} />
-              {getDate(post.frontmatter.date)}
-            </span>
-            <FaFire fill="orange" />
-            <span
-              css={css`
-                margin-left: 0.3rem;
-              `}
-            >
-              {post.timeToRead}
-            </span>
-            min read
-          </small>
+            {post.frontmatter.title}
+          </h1>
+          <div>
+            <div>
+              <div
+                css={css`
+                  margin-right: 0.5rem;
+                `}
+              >
+                <MdDateRange style={{ marginRight: "3px" }} />
+                {getDate(post.frontmatter.date)}
+              </div>
+              <div>
+                <FaFire fill="orange" />
+                <span
+                  css={css`
+                    margin-left: 0.3rem;
+                  `}
+                >
+                  {post.timeToRead}
+                </span>
+                min read
+              </div>
+            </div>
+          </div>
         </header>
         <div
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -92,14 +94,14 @@ export default function BlogPost({ data, pageContext, location }) {
         <section
           css={css`
             background-color: white;
-            padding: 1rem;
+            padding: 1rem 0;
             margin: 2rem 0;
           `}
         >
           <ul
             css={css`
-              margin-bottom: 0;
-              margin-left: 0;
+              margin: 0;
+              padding: 0;
               list-style: none;
               & > li:last-child {
                 margin-bottom: 0;
@@ -153,9 +155,6 @@ export default function BlogPost({ data, pageContext, location }) {
           </ul>
         </section>
       ) : null}
-      <section>
-        <DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
-      </section>
     </Layout>
   );
 }

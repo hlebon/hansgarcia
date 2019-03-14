@@ -2,7 +2,7 @@ import { css } from "@emotion/core";
 
 export const footerContainer = css`
   font-size: 0.9rem;
-  padding: 1rem 0;
+  padding: 1.5rem 0;
   color: #484848;
   background: white;
   background: linear-gradient(to right, white, white);
@@ -10,7 +10,8 @@ export const footerContainer = css`
 `;
 
 export const footerContent = css`
-  width: 100%;
+  width: 90%;
+  margin: auto;
   display: flex;
   flex-direction: column;
   div,

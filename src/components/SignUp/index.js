@@ -3,7 +3,6 @@ import { navigate } from "gatsby";
 import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 import addToMailchimp from "gatsby-plugin-mailchimp";
-import { rhythm } from "../../utils/typography";
 
 class Signup extends React.Component {
   state = {

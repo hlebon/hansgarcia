@@ -3,76 +3,109 @@ import { Link } from "gatsby";
 import PropTypes from "prop-types";
 import { FaFire } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
+import { css } from "@emotion/core";
 import { getDate } from "../../utils/helpers";
-import { rhythm } from "../../utils/typography";
 import Tags from "../Tags";
+import "typeface-roboto-slab";
 
 function Posts({ posts, panamaFlag }) {
   return (
-    <ul style={{ listStyle: "none", marginLeft: 0 }}>
-      {posts.map(({ node, last }) => (
-        <li key={node.fields.slug}>
-          <article
-            style={{
-              marginBottom: rhythm(2),
-              padding: "1rem",
-              background: last ? "#f8f8f8" : "white",
-              border: last ? "1px solid #cecece" : "none",
-              boxShadow: last ? "15px 15px 15px #e8e8e8" : "none"
-            }}
-            className="article"
+    <ul
+      css={css`
+        list-style: none;
+        margin-left: 0;
+        background-color: white;
+        padding: 0;
+        margin: 0;
+      `}
+    >
+      {posts.map(({ node, last }, index) => {
+        console.log(node.fields.slug, index);
+        return (
+          <li
+            key={node.fields.slug}
+            css={css`
+              margin-bottom: 1rem;
+            `}
           >
-            <header
+            <article
               style={{
-                marginBottom: `${rhythm(2 / 4)}`
+                padding: "1rem",
+                background: last ? "white" : "white",
+                border: last ? "1px solid #cecece" : "none",
+                boxShadow: last ? "15px 15px 15px #e8e8e8" : "none",
+                borderRadius: "7px"
               }}
+              className="article"
             >
-              {node.frontmatter.language === "PA" ? (
-                <div>
-                  <img
-                    src={panamaFlag}
-                    alt="Logo"
-                    style={{ width: 25, height: 25, borderRadius: "7px" }}
-                  />
-                </div>
-              ) : null}
+              <header>
+                {node.frontmatter.language === "PA" ? (
+                  <div>
+                    <img
+                      src={panamaFlag}
+                      alt="Logo"
+                      style={{ width: 25, height: 25, borderRadius: "7px" }}
+                    />
+                  </div>
+                ) : null}
 
-              <h2
-                style={{
-                  margin: "1rem 0"
-                }}
+                <h3
+                  css={css`
+                    font-size: 1.7rem;
+                  `}
+                  style={{
+                    margin: "1rem 0"
+                  }}
+                >
+                  <Link
+                    to={node.fields.slug}
+                    css={css`
+                      text-decoration: none;
+                    `}
+                    style={{
+                      boxShadow: "none",
+                      color: "#212529"
+                    }}
+                  >
+                    <span>{node.frontmatter.title}</span>
+                  </Link>
+                </h3>
+                <small
+                  css={css`
+                    font-size: 0.9rem;
+                    color: #464141;
+                  `}
+                >
+                  <span
+                    css={css`
+                      margin-right: 5px;
+                    `}
+                  >
+                    <MdDateRange style={{ marginRight: "3px" }} />
+                    {getDate(node.frontmatter.date)}
+                  </span>
+                  <FaFire fill="orange" />
+                  <span>{node.timeToRead}</span>
+                  min read
+                </small>
+              </header>
+              <p
+                css={css`
+                  font-family: "Roboto Slab", serif;
+                  font-size: 16px;
+                  color: #3d3b3b;
+                  line-height: 1.6;
+                `}
               >
-                <Link
-                  to={node.fields.slug}
-                  style={{
-                    boxShadow: "none",
-                    color: "#212529"
-                  }}
-                >
-                  <span>{node.frontmatter.title}</span>
-                </Link>
-              </h2>
-              <small style={{ fontSize: "16px" }}>
-                <span
-                  style={{
-                    marginRight: rhythm(1 / 2)
-                  }}
-                >
-                  <MdDateRange style={{ marginRight: "3px" }} />
-                  {getDate(node.frontmatter.date)}
-                </span>
-                <FaFire fill="orange" />
-                <span>{node.timeToRead}</span>
-                min read
-              </small>
-            </header>
-            <p>{node.excerpt}</p>
-            <div>
-              <Tags data={node.frontmatter.tags} />
-            </div>
-          </article>
-        </li>
-      ))}
+                {node.excerpt}
+              </p>
+              <div>
+                <Tags data={node.frontmatter.tags} />
+              </div>
+            </article>
+          </li>
+        );
+      })}
     </ul>
   );
 }
