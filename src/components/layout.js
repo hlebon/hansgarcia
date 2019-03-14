@@ -9,7 +9,6 @@ import "typeface-roboto-slab";
 
 export default function Layout(props) {
   const { children, location, maxWidth } = props;
-  console.log(maxWidth);
   return (
     <div
       css={css`

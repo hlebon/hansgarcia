@@ -5,6 +5,7 @@ import { css } from "@emotion/core";
 import { FaTags } from "react-icons/fa";
 
 function Tags({ data: tags }) {
+  console.log(tags);
   return (
     <ul
       css={css`
@@ -16,7 +17,6 @@ function Tags({ data: tags }) {
       {tags.map(tag => (
         <li
           key={tag}
-          style={{}}
           css={css`
             padding: 3px;
             margin: 0 10px 0 0;
