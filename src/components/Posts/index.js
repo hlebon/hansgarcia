@@ -25,7 +25,7 @@ function Posts({ posts, panamaFlag }) {
           <li
             key={node.fields.slug}
             css={css`
-              margin-bottom: 1rem;
+              margin-bottom: 2.5rem;
             `}
           >
             <article
@@ -33,7 +33,7 @@ function Posts({ posts, panamaFlag }) {
                 padding: "1rem",
                 background: last ? "white" : "white",
                 border: last ? "1px solid #cecece" : "none",
-                boxShadow: last ? "15px 15px 15px #e8e8e8" : "none",
+                boxShadow: last ? "15px 15px 25px rgb(222, 238, 251)" : "none",
                 borderRadius: "7px"
               }}
               className="article"
@@ -92,7 +92,7 @@ function Posts({ posts, panamaFlag }) {
               <p
                 css={css`
                   font-family: "Roboto Slab", serif;
-                  font-size: 16px;
+                  font-size: 1rem;
                   color: #3d3b3b;
                   line-height: 1.6;
                 `}

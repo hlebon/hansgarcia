@@ -57,7 +57,8 @@ export default function BlogPost({ data, pageContext, location }) {
         <div
           dangerouslySetInnerHTML={{ __html: post.html }}
           css={css`
-            font-size: 18px;
+            font-size: 1.3rem;
+            color: #353535;
             & img {
               display: flex;
               width: 100%;

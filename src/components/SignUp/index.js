@@ -2,7 +2,7 @@ import React from "react";
 import { navigate } from "gatsby";
 import PropTypes from "prop-types";
 import { css } from "@emotion/core";
-import addToMailchimp from "gatsby-plugin-mailchimp";
+// import addToMailchimp from "gatsby-plugin-mailchimp";
 
 class Signup extends React.Component {
   state = {
@@ -37,11 +37,13 @@ class Signup extends React.Component {
       msg: !canSubmitForm ? `Invalid email` : ``
     });
     try {
-      const { result, msg } = await addToMailchimp(email, {
-        PATHNAME: pathname,
-        FNAME: name,
-        LNAME: lastName
-      });
+      // const { result, msg } = await addToMailchimp(email, {
+      //   PATHNAME: pathname,
+      //   FNAME: name,
+      //   LNAME: lastName
+      // });
+      const result = "";
+      const msg = "";
       if (result === "error") {
         this.setState({
           loading: false,

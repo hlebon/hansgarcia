@@ -16,7 +16,7 @@ const tooltip = css`
   opacity: 0;
   padding: 0.25em 0.5em;
   position: absolute;
-  bottom: 1em;
+  bottom: 4em;
   left: calc(50% - 8em);
   text-align: center;
   transform: translateY(-0.25em);

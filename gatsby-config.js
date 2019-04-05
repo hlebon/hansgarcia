@@ -71,13 +71,6 @@ module.exports = {
     `gatsby-transformer-sharp`,
     `gatsby-plugin-react-helmet`,
     {
-      resolve: "gatsby-plugin-mailchimp",
-      options: {
-        endpoint:
-          "https://hanslebon.us7.list-manage.com/subscribe/post?u=087fd9c746a82ae9dfa71b0df&amp;id=fbb89f01e9" // see instructions section below
-      }
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: "UA-130239906-1",
