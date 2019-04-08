@@ -5,7 +5,6 @@ import { css } from "@emotion/core";
 import { FaTags } from "react-icons/fa";
 
 function Tags({ data: tags }) {
-  console.log(tags);
   return (
     <ul
       css={css`

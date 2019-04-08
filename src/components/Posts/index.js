@@ -20,7 +20,6 @@ function Posts({ posts, panamaFlag }) {
       `}
     >
       {posts.map(({ node, last }, index) => {
-        console.log(node.fields.slug, index);
         return (
           <li
             key={node.fields.slug}

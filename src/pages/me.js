@@ -36,7 +36,6 @@ export const query = graphql`
 `;
 
 function Me(props) {
-  console.log("Me", props);
   const { location, data } = props;
   return (
     <Layout location={location} maxWidth="650px">
