@@ -1,204 +1,147 @@
 import React from "react";
-import { navigate } from "gatsby";
-import PropTypes from "prop-types";
-import { css } from "@emotion/core";
-// import addToMailchimp from "gatsby-plugin-mailchimp";
 
-class Signup extends React.Component {
-  state = {
-    email: "",
-    name: "",
-    lastName: "",
-    error: false,
-    msg: "",
-    canSubmitForm: false,
-    loading: false
-  };
+import "./style.css";
 
-  handleOnChange = e => {
-    const { name, value } = e.target;
-    let { canSubmitForm } = this.state;
-    if (name === "email") {
-      canSubmitForm = this.isValidEmail(value);
-    }
-    this.setState({
-      [name]: value,
-      canSubmitForm
-    });
-  };
-
-  handleOnSubmit = async e => {
-    e.preventDefault();
-    const { email, name, lastName, canSubmitForm } = this.state;
-    const { pathname } = this.props;
-    this.setState({
-      loading: true,
-      error: !canSubmitForm,
-      msg: !canSubmitForm ? `Invalid email` : ``
-    });
-    try {
-      // const { result, msg } = await addToMailchimp(email, {
-      //   PATHNAME: pathname,
-      //   FNAME: name,
-      //   LNAME: lastName
-      // });
-      const result = "";
-      const msg = "";
-      if (result === "error") {
-        this.setState({
-          loading: false,
-          error: true,
-          msg: msg.split("<")[0]
-        });
-      } else {
-        this.setState({
-          loading: true
-        });
-        navigate(`/confirm/`, { state: { name } });
-      }
-    } catch (error) {
-      this.setState({
-        loading: false,
-        error: true,
-        msg: "Ups! We had a problem, try again"
-      });
-    }
-  };
-
-  isValidEmail = email => {
-    const re = /\S+@\S+\.\S+/;
-    return re.test(email);
-  };
-
-  render() {
-    const { name, email, error, msg, loading } = this.state;
-    const { clean } = this.props;
-    return (
-      <section>
-        <form
-          onSubmit={this.handleOnSubmit}
-          css={css`
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin: 0;
-          `}
+function SignUp() {
+  return (
+    <form
+      action="https://app.convertkit.com/forms/904464/subscriptions"
+      className="seva-form formkit-form"
+      method="post"
+      min-width="400 500 600 700 800"
+      style={{ backgroundColor: "rgb(255, 255, 255)", borderRadius: "6px" }}
+    >
+      <div data-style="full">
+        <div
+          data-element="column"
+          className="formkit-column"
+          style={{ backgroundColor: "rgb(249, 250, 251)" }}
         >
-          <div
-            css={css`
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            ${!clean && `padding: 30px 20px;`}
-            ${!clean && `border: 1px solid #e4e3e3;`}
-            ${!clean && `box-shadow: 1px 2px 10px #e4e3e3;`}
-            ${!clean &&
-              `@media (min-width: 620px) {
-              flex-direction: row ;
-              justify-content: space-between;
-              & > div:nth-of-type(1) {
-                width: 45%;
-                margin: auto;
-                margin-top: 0;
-                padding: 20px;
-              }
-              & > div:nth-of-type(2) {
-                width: 55%;
-                padding: 20px;
-              }
-            }`}
-          `}
+          <h1
+            className="formkit-header"
+            data-element="header"
+            style={{
+              color: "rgb(77, 77, 77)",
+              fontSize: "20px",
+              fontWeight: 700
+            }}
           >
-            <div id="newsletter">
-              <h3
-                style={{
-                  margin: `${rhythm(2 / 4)} 0 ${rhythm(2 / 4)} 0`
-                }}
-              >
-                Join the Newsletter
-              </h3>
-              {!clean && (
-                <p style={{ marginTop: "5px" }}>
-                  Subscribe to get my latest content by email.
-                </p>
-              )}
-            </div>
-            <div
-              id="form"
-              css={css`
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                input {
-                  margin-bottom: 10px;
-                  padding: 8px;
-                  border: 1px solid #d4d4d4;
-                  border-radius: 5px;
-                }
-              `}
-            >
-              {!clean && (
-                <React.Fragment>
-                  <input
-                    type="text"
-                    placeholder="Name"
-                    name="name"
-                    value={name}
-                    onChange={this.handleOnChange}
-                    required
-                  />
-                </React.Fragment>
-              )}
-              <input
-                type="email"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={this.handleOnChange}
-                required
-              />
-
-              <button
-                type="submit"
-                css={css`
-                  width: 100%;
-                  max-width: 120px;
-                  border: 1px solid rgba(33, 150, 243, 1);
-                  padding: 9px 7px;
-                  border-radius: 7px;
-                  background-color: #2196f3;
-                  color: white;
-                  cursor: pointer;
-                  box-shadow: 1px 2px 7px #bcbcbc;
-                  &:hover {
-                    background-color: #1166a9;
-                  }
-                  &:disabled {
-                    background-color: #c0c0c0;
-                    border-color: #c0c0c0;
-                    cursor: default;
-                  }
-                `}
-                disabled={loading}
-              >
-                {loading ? `Subscribing...` : `Subscribe`}
-              </button>
-              {error && <div style={{ color: "red" }}>{msg}</div>}
-            </div>
+            Join the Newsletter
+          </h1>
+          <div
+            data-element="subheader"
+            className="formkit-subheader"
+            style={{ color: "rgb(104, 104, 104)" }}
+          >
+            <p>Subscribe to get my latest content by email.</p>
           </div>
-        </form>
-      </section>
-    );
-  }
+          <div className="formkit-image">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="46"
+              height="46"
+              viewBox="0 0 46 46"
+              style={{ maxWidth: "100%" }}
+            >
+              <g fill="none" fillRule="evenodd">
+                <path
+                  fill="#03a9f44f"
+                  d="M23,36 C22.813,36 22.627,35.948 22.463,35.844 L0.463,21.844 C0.159,21.651 -0.017,21.308 0.001,20.948 C0.02,20.589 0.23,20.266 0.553,20.105 L23,6 L45.447,20.105 C45.769,20.266 45.98,20.588 45.999,20.948 C46.018,21.308 45.841,21.65 45.537,21.844 L23.537,35.844 C23.373,35.948 23.187,36 23,36 Z"
+                />
+                <path
+                  fill="#FFF"
+                  d="M38,37 L8,37 L8,1 C8,0.448 8.448,0 9,0 L37,0 C37.552,0 38,0.448 38,1 L38,37 Z"
+                />
+                <path
+                  fill="rgb(87,148,197)"
+                  d="M45,46 C44.916,46 44.831,45.989 44.748,45.968 L21.748,39.968 L22,33 L46,21 L46,45 C46,45.31 45.856,45.602 45.611,45.792 C45.435,45.928 45.219,46 45,46 Z"
+                />
+                <path
+                  fill="rgb(87,148,197)"
+                  d="M45,46 L1,46 C0.447,46 0,45.552 0,45 L0,21 L45.479,44.122 C45.88,44.341 46.083,44.804 45.969,45.247 C45.856,45.69 45.457,46 45,46 Z"
+                />
+                <path
+                  fill="rgba(33, 150, 243, 0.9)"
+                  d="M19 20.414L14.293 15.707C13.902 15.316 13.902 14.684 14.293 14.293L19 9.586 20.414 11 16.414 15 20.414 19 19 20.414zM27 20.414L25.586 19 29.586 15 25.586 11 27 9.586 31.707 14.293C32.098 14.684 32.098 15.316 31.707 15.707L27 20.414z"
+                />
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div data-element="column" className="formkit-column">
+          <ul
+            className="formkit-alert formkit-alert-error"
+            data-element="errors"
+            data-group="alert"
+          />
+
+          <div data-element="fields" className="seva-fields formkit-fields">
+            <div className="formkit-field">
+              <input
+                className="formkit-input"
+                aria-label="Your first name"
+                name="fields[first_name]"
+                placeholder="Your first name"
+                type="text"
+                style={{
+                  borderColor: "rgb(227, 227, 227)",
+                  borderRadius: "4px",
+                  color: "rgb(0, 0, 0)",
+                  fontWeight: 400
+                }}
+              />
+            </div>
+            <div className="formkit-field">
+              <input
+                className="formkit-input"
+                name="email_address"
+                aria-label="Your email address"
+                placeholder="Your email address"
+                required=""
+                type="email"
+                style={{
+                  borderColor: "rgb(227, 227, 227)",
+                  borderRadius: "4px",
+                  color: "rgb(0, 0, 0)",
+                  fontWeight: 400
+                }}
+              />
+            </div>
+            <button
+              type="button"
+              data-element="submit"
+              className="formkit-submit formkit-submit"
+              style={{
+                backgroundColor: "rgb(87,148,197)",
+                borderRadius: "24px",
+                color: "white",
+                fontWeight: 700
+              }}
+            >
+              <div className="formkit-spinner" />
+              <span>Subscribe</span>
+            </button>
+          </div>
+          <div
+            data-element="guarantee"
+            className="formkit-guarantee"
+            style={{
+              color: "rgb(77, 77, 77)",
+              fontSize: "13px",
+              fontWeight: 400
+            }}
+          >
+            <p>I won’t send you spam.</p>
+            <p>
+              Unsubscribe at <em>any</em>
+{' '}
+time.
+</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  );
 }
 
-Signup.defaultProps = {
-  clean: false
-};
-
-Signup.propTypes = {
-  clean: PropTypes.bool,
-  pathname: PropTypes.string.isRequired
-};
-
-export default Signup;
+export default SignUp;
