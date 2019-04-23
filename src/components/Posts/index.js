@@ -19,56 +19,72 @@ function Posts({ posts, panamaFlag }) {
         margin: 0;
       `}
     >
-      {posts.map(({ node, last }, index) => {
-        return (
-          <li
-            key={node.fields.slug}
-            css={css`
-              margin-bottom: 2.5rem;
-            `}
+      {posts.map(({ node }) => (
+        <li
+          key={node.fields.slug}
+          css={css`
+            margin-bottom: 2.5rem;
+          `}
+        >
+          <article
+            style={{
+              padding: "1rem",
+              background: "white",
+              border: "0.5px solid rgb(87, 148, 197)"
+            }}
+            className="article"
           >
-            <article
-              style={{
-                padding: "1rem",
-                background: last ? "white" : "white",
-                border: last ? "1px solid #cecece" : "none",
-                boxShadow: last ? "15px 15px 25px rgb(222, 238, 251)" : "none",
-                borderRadius: "7px"
-              }}
-              className="article"
-            >
-              <header>
-                {node.frontmatter.language === "PA" ? (
-                  <div>
-                    <img
-                      src={panamaFlag}
-                      alt="Logo"
-                      style={{ width: 25, height: 25, borderRadius: "7px" }}
-                    />
-                  </div>
-                ) : null}
+            <header>
+              {node.frontmatter.language === "PA" ? (
+                <div>
+                  <img
+                    src={panamaFlag}
+                    alt="Logo"
+                    style={{ width: 25, height: 25, borderRadius: "7px" }}
+                  />
+                </div>
+              ) : null}
 
-                <h3
+              <h3
+                css={css`
+                  font-size: 1.7rem;
+                  background-image: linear-gradient(
+                    to left,
+                    rgba(33, 150, 243, 0.46),
+                    rgba(87, 148, 197, 0.48)
+                  );
+                  background-position: 0 0.8em;
+                  background-repeat: no-repeat;
+                  background-size: 100%;
+                  display: inline;
+                  transition: background-position 0.15s 0.1s;
+                  &:hover {
+                    background-position: 0 0;
+                    transition: background-position 0.3s ease-in-out;
+                  }
+                `}
+                style={{
+                  margin: "1rem 0"
+                }}
+              >
+                <Link
+                  to={node.fields.slug}
                   css={css`
-                    font-size: 1.7rem;
+                    text-decoration: none;
                   `}
                   style={{
-                    margin: "1rem 0"
+                    boxShadow: "none",
+                    color: "#212529"
                   }}
                 >
-                  <Link
-                    to={node.fields.slug}
-                    css={css`
-                      text-decoration: none;
-                    `}
-                    style={{
-                      boxShadow: "none",
-                      color: "#212529"
-                    }}
-                  >
-                    <span>{node.frontmatter.title}</span>
-                  </Link>
-                </h3>
+                  <span>{node.frontmatter.title}</span>
+                </Link>
+              </h3>
+              <div
+                css={css`
+                  margin-top: 10px;
+                `}
+              >
                 <small
                   css={css`
                     font-size: 0.9rem;
@@ -87,24 +103,24 @@ function Posts({ posts, panamaFlag }) {
                   <span>{node.timeToRead}</span>
                   min read
                 </small>
-              </header>
-              <p
-                css={css`
-                  font-family: "Roboto Slab", serif;
-                  font-size: 1rem;
-                  color: #3d3b3b;
-                  line-height: 1.6;
-                `}
-              >
-                {node.excerpt}
-              </p>
-              <div>
-                <Tags data={node.frontmatter.tags} />
               </div>
-            </article>
-          </li>
-        );
-      })}
+            </header>
+            <p
+              css={css`
+                font-family: "Roboto Slab", serif;
+                font-size: 1rem;
+                color: #3d3b3b;
+                line-height: 1.6;
+              `}
+            >
+              {node.excerpt}
+            </p>
+            <div>
+              <Tags data={node.frontmatter.tags} />
+            </div>
+          </article>
+        </li>
+      ))}
     </ul>
   );
 }
