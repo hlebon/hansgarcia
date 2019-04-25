@@ -30,6 +30,7 @@ function Posts({ posts, panamaFlag }) {
             style={{
               padding: "1rem",
               background: "white",
+              boxShadow: "7px 7px 7px rgba(87, 148, 197, 0.3)",
               border: "0.5px dashed rgb(87, 148, 197)"
             }}
             className="article"
