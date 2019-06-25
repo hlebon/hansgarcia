@@ -13,7 +13,7 @@ export default function BlogPost({ data, pageContext, location }) {
   const { prev, next } = pageContext;
   const post = data.markdownRemark;
   return (
-    <Layout location={location} maxWidth="600px">
+    <Layout location={location} maxWidth="800px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
       <article>
         <header
