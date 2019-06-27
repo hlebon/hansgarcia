@@ -19,7 +19,7 @@ pre[class*="language-"].line-numbers > code {
   width: 3em; /* works for line-numbers below 1000 lines */
   margin: 1em;
   letter-spacing: -1px;
-  border-right: 1px solid #999;
+  border-right: 1px solid #3a3838;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
