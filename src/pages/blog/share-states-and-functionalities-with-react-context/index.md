@@ -1,7 +1,7 @@
 ---
 path: ''
 date: '2019-06-27'
-title: "share states and functionalities with react context"
+title: "Share states and functionalities with react context"
 public: true
 language: ""
 tags: ["react", "context", "javascript"]
