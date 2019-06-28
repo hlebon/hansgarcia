@@ -10,6 +10,10 @@ body {
   margin: 0;
 }
 
+strong {
+  color: #4f97d0;
+}
+
 figcaption {
   text-align: center;
   font-size: 0.9rem;
