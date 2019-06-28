@@ -7,6 +7,8 @@ const asideStyle = css`
   padding: 1em;
   border-left: 1px solid #b0def3;
   background-color: white;
+  max-width: 565px;
+  margin: 0 auto;
 `;
 
 function Aside() {
@@ -14,7 +16,7 @@ function Aside() {
     <aside css={asideStyle}>
       <Bio />
       <br />
-      <SocialMedia title="Follow me on" />
+      <SocialMedia title="Find me on" />
     </aside>
   );
 }
