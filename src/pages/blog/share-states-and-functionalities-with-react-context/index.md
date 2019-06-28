@@ -125,7 +125,7 @@ Let's create a context with `React.createContext()` and the return value will be
 const RadioContext = React.createContext();
 ```
 
-We are going to change the name of the stateful component from `Form` to `RadioGroup` and now it will recieve three new prop **defaultValue**, **onChange** and **children**.
+We are going to change the name of the stateful component from **Form** to **RadioGroup** and now it will recieve three new prop **defaultValue**, **onChange** and **children**.
 
 ```git
 - function Form()
@@ -189,7 +189,7 @@ function RadioGroup({ children, defaultValue, onChange }) {
 ## Consuming changes of states from context.
 
 Our components need a way to get the values provided by our context.
-We are going to use `React.useContext` we'll passed the `RadioContext` created before as an input `React.useContext(RadioContext)`, this will return the values from the provider that we set on `<RadioContext.Provider value={[state, onChange]}>`
+We are going to use **React.useContext**, we'll passed the **RadioContext** created before as an input `React.useContext(RadioContext)`, this will return the values from the provider that we set on `<RadioContext.Provider value={[state, onChange]}>`
 
 ```jsx
 function useRadioContext(){
@@ -208,7 +208,7 @@ Here we are only validating the **RadioButton** component is used inside the **R
 
 ## Subscribe to changes
 
-The Radio Button Component need to subscribe to changes in the `RadioGroup` Component.
+The Radio Button Component need to subscribe to changes in the **RadioGroup** Component.
 
 ```jsx
 { /* highlight-range{2-3} */ }
@@ -228,7 +228,7 @@ function RadioButton({ value, children }) {
   );
 }
 ```
-then only need to tell if the component is **checked**, comparing the state (value) coming from the context and the `value` of the component`
+then only need to tell if the component is **checked**, comparing the state (value) coming from the context and the **value** of the component`
 
 let's see the code of the file complete.
 
@@ -288,7 +288,7 @@ RadioGroup.RadioButton = RadioButton; // highlight-line
 export default RadioGroup; // highlight-line
 ```
 
-At the bottom of the file, we export the Radio component as a `default export` but before we added the `Button` component as a property of the Component.
+At the bottom of the file, we export the Radio component as a **export default** but before we added the **RadioGroup** component as a property of the Component.
 
 ## Using our custom component
 
