@@ -3,7 +3,7 @@ import { Link } from "gatsby";
 
 function Bio() {
   return (
-    <section key="about">
+    <section>
       <article>
         <h3>About me</h3>
         <p>Hello, my name is Hans, I am a software engineer from Panama.</p>

@@ -60,24 +60,49 @@ const queryPosts = graphql`
   }
 `;
 
-export default ({ location }) => (
-  <div>
-    <Layout location={location} maxWidth="900px">
-      <SEO />
-      <Header />
-      <main css={styles.main}>
-        <section>
-          <StaticQuery
-            query={queryPosts}
-            render={({ allMarkdownRemark }) => {
-              const { edges } = allMarkdownRemark;
-              edges[0].last = true;
-              return <Posts posts={edges} panamaFlag={panamaFlag} />;
-            }}
-          />
-        </section>
-        <Aside />
-      </main>
-    </Layout>
-  </div>
-);
+function App({ location }) {
+  return (
+    <div>
+      <Layout location={location} maxWidth="900px">
+        <SEO />
+        <Header />
+        <main css={styles.main}>
+          <section>
+            <StaticQuery
+              query={queryPosts}
+              render={({ allMarkdownRemark }) => {
+                const { edges } = allMarkdownRemark;
+                edges[0].last = true;
+                return <Posts posts={edges} panamaFlag={panamaFlag} />;
+              }}
+            />
+          </section>
+          <Aside />
+        </main>
+      </Layout>
+    </div>
+  );
+}
+export default App;
+
+// export default ({ location }) => (
+//   <div>
+//     <Layout location={location} maxWidth="900px">
+//       <SEO />
+//       <Header />
+//       <main css={styles.main}>
+//         <section>
+//           <StaticQuery
+//             query={queryPosts}
+//             render={({ allMarkdownRemark }) => {
+//               const { edges } = allMarkdownRemark;
+//               edges[0].last = true;
+//               return <Posts posts={edges} panamaFlag={panamaFlag} />;
+//             }}
+//           />
+//         </section>
+//         <Aside />
+//       </main>
+//     </Layout>
+//   </div>
+// );

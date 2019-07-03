@@ -1,6 +1,6 @@
-import { css } from "@emotion/core";
+import styled from "@emotion/styled";
 
-export const footerContainer = css`
+export const Container = styled.section`
   font-size: 0.9rem;
   padding: 1.5rem 0;
   color: #484848;
@@ -9,7 +9,7 @@ export const footerContainer = css`
   border-top: 1px solid #e8e8e8;
 `;
 
-export const footerContent = css`
+export const Content = styled.div`
   width: 90%;
   margin: auto;
   display: flex;

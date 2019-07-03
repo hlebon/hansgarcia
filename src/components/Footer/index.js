@@ -1,12 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import SocialMedia from "../SocialMedia";
-import { footerContent, footerContainer } from "./style";
+import { Container, Content } from "./style";
 
-function Footer({ maxWidth }) {
+function Footer() {
   return (
-    <section css={footerContainer}>
-      <div css={footerContent}>
+    <Container>
+      <Content>
         <SocialMedia />
         <div>
           Hans
@@ -15,13 +14,9 @@ function Footer({ maxWidth }) {
           </span>
           Fullstack developer
         </div>
-      </div>
-    </section>
+      </Content>
+    </Container>
   );
 }
-
-Footer.propTypes = {
-  maxWidth: PropTypes.string.isRequired
-};
 
 export default Footer;

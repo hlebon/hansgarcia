@@ -7,7 +7,7 @@ import "../styles/prims-line-number.css";
 import "../styles/app.css";
 import "typeface-roboto-slab";
 
-export default function Layout(props) {
+function Layout(props) {
   const { children, location, maxWidth } = props;
   return (
     <div
@@ -44,32 +44,37 @@ Layout.propTypes = {
   maxWidth: PropTypes.string.isRequired
 };
 
-export const Content = ({ children, maxWidth = "960px" }) => (
-  <div
-    css={css`
-      width: 100%;
-    `}
-  >
+function Content({ children, maxWidth = "960px" }) {
+  return (
     <div
       css={css`
-        max-width: ${maxWidth};
-        height: 100%;
-        margin: auto;
-        margin-top: 65px;
-        padding: 0 7px;
-        @media (min-width: 700px) {
-          width: 85%;
-        }
-        @media (min-width: 900px) {
-          width: 90%;
-        }
+        width: 100%;
       `}
     >
-      {children}
+      <div
+        css={css`
+          max-width: ${maxWidth};
+          height: 100%;
+          margin: auto;
+          margin-top: 65px;
+          padding: 0 7px;
+          @media (min-width: 700px) {
+            width: 85%;
+          }
+          @media (min-width: 900px) {
+            width: 90%;
+          }
+        `}
+      >
+        {children}
+      </div>
     </div>
-  </div>
-);
+  );
+}
 
 Content.propTypes = {
   maxWidth: PropTypes.string.isRequired
 };
+
+export { Content };
+export default Layout;

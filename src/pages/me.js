@@ -48,11 +48,13 @@ function Me(props) {
             Hello world, my name is Hans Garcia, I am a computer science
             engineer from Panama, I've been programming for +6 years as
             fullstack developer with frontend tendencies, the last two years I
-            have been using react.js, react-native, firebase/firestore/cloud
-            functions, postgresql, node.js and aws lambda functions
+            have been using <strong>react.js</strong>,
+            <strong>react-native</strong>,{" "}
+            <strong>firebase/firestore/cloud functions</strong>,{" "}
+            <strong>postgresql</strong>, <strong>node.js and aws lambda functions</strong>
           </p>
           <p>
-            In the pass I worked with .net core, knockout.js and Java. I think
+            In the pass I worked with <strong>.net core</strong>, <strong>knockout.js</strong> and <strong>Java</strong>. I think
             the present/future is serverless side
           </p>
           <p>

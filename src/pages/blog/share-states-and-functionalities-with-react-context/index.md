@@ -7,13 +7,12 @@ language: ""
 tags: ["react", "context", "javascript"]
 ---
 
-State management has been always a trend in the react community.
 
 In this post, we are going to learn how to use **React Context** to create and provide a state and functionalities to a group of components.
 
 ## A Basic Radio Button Component
 
-First, let's create a Component that we will call **RadioButton**, it will receive **checked**, **value**, **onChange** and **children** as a prop. We want to encapsulate the **'input'** html tag into a react component to make it reusable.
+First, let's create a Component that we will call **RadioButton**, it will receive **checked**, **value**, **onChange** and **children** as a props. We want to encapsulate the **'input'** html tag into a react component to make it reusable.
 
 ```jsx
 import React from "react";
@@ -91,13 +90,13 @@ function Form() {
 ```
 let's review what we did here.
 
-First, we declare a stateful component called **Form**.
+First, we declared a stateful component called **Form**.
 
 A **stateful component** is a component that can have one or more local states.
 
-* at **line 2** we use `React.useState` with an initial value `"cat"`.
-* then at **line 4 to 6**, we declare a function `handleOnChange` that will update the state of the component.
-* and finally at lines **14 to 16** and **22 to 24** we pass the `cat` and `dog` emojis with their appropriated tags to the RadioButton component.
+* at **line 2** we have used `React.useState` with an initial value `"cat"`.
+* then at **line 4 to 6**, we declared a function `handleOnChange` that will update the state of the component.
+* and finally at lines **14 to 16** and **22 to 24** we have passed the `cat` and `dog` emojis with their appropriated tags to the RadioButton component.
 
 ```jsx
 <RadioButton
@@ -115,7 +114,7 @@ A **stateful component** is a component that can have one or more local states.
 
 ## Using context to share states through components
 
-The logic behind a **radio button** is simple, it allows an user to choose only one of a group of options, in this case, an user only must choose between <span role="img" aria-label="cat">🐱</span> or <span role="img" aria-label="dog">🐶</span>.
+The logic behind a **radio button** is simple, it allows an user to choose only one of a group of options, in this case, an user only can choose between <span role="img" aria-label="cat">🐱</span> or <span role="img" aria-label="dog">🐶</span>.
 
 We are going to use React Context to share the state through the Radio Button Components.
 
@@ -125,7 +124,7 @@ Let's create a context with `React.createContext()` and the return value will be
 const RadioContext = React.createContext();
 ```
 
-We are going to change the name of the stateful component from **Form** to **RadioGroup** and now it will recieve three new prop **defaultValue**, **onChange** and **children**.
+We are going to change the name of the stateful component from **Form** to **RadioGroup** and now it will recieve three new props **defaultValue**, **onChange** and **children**.
 
 ```git
 - function Form()
@@ -189,7 +188,7 @@ function RadioGroup({ children, defaultValue, onChange }) {
 ## Consuming changes of states from context.
 
 Our components need a way to get the values provided by our context.
-We are going to use **React.useContext**, we'll passed the **RadioContext** created before as an input `React.useContext(RadioContext)`, this will return the values from the provider that we set on `<RadioContext.Provider value={[state, onChange]}>`
+We are going to use **React.useContext**, we'll passed the **RadioContext** created before as an input `React.useContext(RadioContext)`, this will return the values from the provider on `<RadioContext.Provider value={[state, onChange]}>`
 
 ```jsx
 function useRadioContext(){
@@ -228,9 +227,9 @@ function RadioButton({ value, children }) {
   );
 }
 ```
-then only need to tell if the component is **checked**, comparing the state (value) coming from the context and the **value** of the component`
+then we only need to know if the component is **checked**, by comparing the state (value) coming from the context and the **value** of the component`
 
-let's see the code of the file complete.
+let's see the code.
 
 ```jsx
 // radioButton.js
@@ -321,7 +320,7 @@ const rootElement = document.getElementById("root");
 ReactDOM.render(<App />, rootElement);
 ```
 
-Now our new component works!, may it is a little verbose but I like it.
+Now our new component works, may be it's a little verbose but I like it.
 
 This is not a detail implementation but a started point to use **React Context**.
 
