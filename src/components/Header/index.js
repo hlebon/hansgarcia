@@ -3,53 +3,55 @@ import PropTypes from "prop-types";
 import { StaticQuery, graphql } from "gatsby";
 import { css } from "@emotion/core";
 import "typeface-raleway";
+import firebaseLogo from "../../assets/images/logos/firebase.png";
+import graphqlLogo from "../../assets/images/logos/graphql.png";
+import jsLogo from "../../assets/images/logos/js.png";
+import netCoreLogo from "../../assets/images/logos/NET_Coreg.png";
+import nodeLogo from "../../assets/images/logos/nodejs.png";
+import reactLogo from "../../assets/images/logos/React.png";
+import posgresqlLogo from "../../assets/images/logos/posgresql.png";
 
 function getImage(img) {
   switch (img) {
     case "node":
       return {
         label: "node",
-        img: "https://oauth.net/images/code/nodejs.png"
+        img: nodeLogo
       };
     case "javaScript":
       return {
         label: "javascript",
-        img:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png"
+        img: jsLogo
       };
     case "react":
       return {
         label: "react",
-        img:
-          "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+        img: reactLogo
       };
     case "react-native":
       return {
         label: "react native",
-        img:
-          "https://cdn4.iconfinder.com/data/icons/logos-3/600/React.js_logo-512.png"
+        img: reactLogo
       };
     case "graphql":
       return {
         label: "graphql",
-        img:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/1/17/GraphQL_Logo.svg/1024px-GraphQL_Logo.svg.png"
+        img: graphqlLogo
       };
     case "firebase":
       return {
         label: "firebase",
-        img: "https://miro.medium.com/max/500/1*JktK87FL_sqDDnuxHxe6Fw.png"
+        img: firebaseLogo
       };
     case "posgresql":
       return {
         label: "posgresql",
-        img: "https://www.postgresql.org/media/img/about/press/elephant.png"
+        img: posgresqlLogo
       };
     case ".net":
       return {
         label: ".Net",
-        img:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ee/.NET_Core_Logo.svg/1024px-.NET_Core_Logo.svg.png"
+        img: netCoreLogo
       };
     case "aws":
       return {
@@ -60,8 +62,7 @@ function getImage(img) {
     default:
       return {
         label: img,
-        img:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/99/Unofficial_JavaScript_logo_2.svg/1024px-Unofficial_JavaScript_logo_2.svg.png"
+        img: jsLogo
       };
   }
 }
