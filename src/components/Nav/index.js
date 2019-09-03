@@ -14,6 +14,7 @@ const styles = {
     line-height: 44px;
     width: 100%;
     background-color: rgb(87, 148, 197);
+    z-index: 999;
     background: linear-gradient(
       to left,
       rgba(33, 150, 243, 0.9),
