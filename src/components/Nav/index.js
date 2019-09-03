@@ -5,7 +5,7 @@ import PropTypes from "prop-types";
 
 const styles = {
   container: css`
-    position: relative;
+    position: fixed;
     left: 0;
     right: 0;
     top: 0;

@@ -7,23 +7,34 @@ import "../styles/prims-line-number.css";
 import "../styles/app.css";
 import "typeface-roboto-slab";
 
+const styles = {
+  container: css`
+    font-family: "Roboto Slab", serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  `,
+  fullHeight: css`
+    flex: 1 0 auto;
+  `,
+  footer: css`
+    flexshrink: 0;
+  `
+};
+
 function Layout(props) {
   const { children, location, maxWidth } = props;
   return (
-    <div
-      css={css`
-        font-family: "Roboto Slab", serif;
-      `}
-      style={{ display: "flex", flexDirection: "column", height: "100vh" }}
-    >
+    <div css={styles.container}>
       <Nav location={location} />
-      <div style={{ flex: "1 0 auto" }}>
+      <div css={styles.fullHeight}>
         <div
           css={css`
             max-width: ${maxWidth};
             width: 90%;
             height: 100%;
             margin: auto;
+            margin-top: 80px;
             @media (min-width: 900px) {
               width: 80%;
             }
@@ -32,7 +43,7 @@ function Layout(props) {
           {children}
         </div>
       </div>
-      <footer style={{ flexShrink: 0 }}>
+      <footer css={styles.footer}>
         <Footer maxWidth={maxWidth} />
       </footer>
     </div>
