@@ -27,7 +27,7 @@ const styles = {
     background: white;
     box-shadow: 7px 7px 25px rgba(87, 148, 197, 0.1);
     border: 0.5px solid rgb(87, 148, 197);
-    border-radius: 0.8rem;
+    border-radius: 0.6rem;
   `,
   title: css`
     font-size: 1.7rem;
