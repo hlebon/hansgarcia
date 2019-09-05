@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-one-expression-per-line */
 /* eslint-disable prettier/prettier */
 import React from "react";
 import PropTypes from "prop-types";
@@ -21,7 +22,7 @@ const styles = {
     margin: auto;
   `,
   content: css`
-    padding: 2rem 0;
+    width: 65%
   `
 };
 
@@ -51,66 +52,38 @@ function Me(props) {
         console.log(site, fileName)
         const { techstack } = site.siteMetadata;
         return (
-          <Layout location={location} maxWidth="650px">
+          <Layout location={location} maxWidth="850px">
             <article>
               <h1 css={styles.title}>Hello, My name is Hans</h1>
-              <div css={css`
-          displa: flex;
-        `}
-              >
-                <div>
+              <div css={css`display: flex; flex-wrap: wrap`}>
+                <div css={css`width: 35%`}>
                   <Img css={styles.img} fluid={fileName.childImageSharp.fluid} />
                   <Techstack stack={techstack} />
                 </div>
-                <div css={styles.content}>
+                <div css={css`width: 65%; justify-content: center; align-items: center; font-size: 1.2rem`}>
                   <p>
-              Hello world, my name is Hans Garcia, I am a computer science
-              engineer from Panama, I've been programming for +6 years as
-              fullstack developer with frontend tendencies, the last two years I
-              have been using
-                    {' '}
-                    <strong>react.js</strong>
-,
-                    {' '}
-                    <strong>react-native</strong>
-,
-                    {' '}
-                    {" "}
-                    <strong>firebase/firestore/cloud functions</strong>
-,
-                    {" "}
-                    <strong>postgresql</strong>
-,
-                    {" "}
-                    <strong>node.js and aws lambda functions</strong>
+                    Hello world, my name is Hans García, I am a computer science
+                    engineer from Panamá, I've been programming for 6+ years as
+                    fullstack developer with frontend tendencies, the last two years I
+                    have been using <strong>react.js</strong>, <strong>react-native</strong>, <strong>firebase/firestore/cloud functions</strong>
+                    , <strong>postgresql</strong>, <strong>node.js and aws lambda functions</strong> as a my primary stack.
                   </p>
                   <p>
-              In the pass I worked with
-                    {' '}
-                    <strong>.net core</strong>
-,
-                    {" "}
-                    <strong>knockout.js</strong>
-                    {' '}
-and
-                    {' '}
-                    <strong>Java</strong>
-. I think
-              the present/future is serverless side
+                    In the pass I worked with <strong>.net core</strong>, <strong>knockout.js</strong> and
+                    <strong>Java</strong>. I think the present/future is serverless.
                   </p>
                   <p>
-              I love pizza (with pineapple plis), coffee and I prefer tabs over
-              space
+                   This blog was build using <a href="https://gatsby.com">gatsby.js</a>
+                  </p>
+                  <p>
+                    I love pizza (with pineapple plis), coffee and I prefer tabs over space.
                   </p>
                 </div>
               </div>
             </article>
           </Layout>
-)
-      }}
+        )}}
     />
-
-
   );
 }
 
