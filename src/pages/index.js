@@ -49,7 +49,7 @@ const queryPosts = graphql`
             public
             language
           }
-          excerpt
+          excerpt(pruneLength: 180)
           timeToRead
           fields {
             slug

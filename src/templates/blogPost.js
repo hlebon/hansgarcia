@@ -44,7 +44,7 @@ export default function BlogPost({ data, pageContext, location }) {
                 <FaFire fill="orange" />
                 <span
                   css={css`
-                    margin-left: 0.3rem;
+                    margin: 0 5px;
                   `}
                 >
                   {post.timeToRead}
