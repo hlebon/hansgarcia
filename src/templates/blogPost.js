@@ -1,5 +1,6 @@
 import React from "react";
 import { graphql, Link } from "gatsby";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { css } from "@emotion/core";
 import { FaFire } from "react-icons/fa";
@@ -12,6 +13,10 @@ import { getDate } from "../utils/helpers";
 export default function BlogPost({ data, pageContext, location }) {
   const { prev, next } = pageContext;
   const post = data.markdownRemark;
+  console.log(post);
+  const featuredImgFluid = post.frontmatter.featuredImage
+    ? post.frontmatter.featuredImage.childImageSharp.fluid
+    : false;
   return (
     <Layout location={location} maxWidth="800px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
@@ -30,7 +35,11 @@ export default function BlogPost({ data, pageContext, location }) {
           >
             {post.frontmatter.title}
           </h1>
-          <div>
+          <div
+            css={css`
+              margin-bottom: 1rem;
+            `}
+          >
             <div>
               <div
                 css={css`
@@ -53,6 +62,7 @@ export default function BlogPost({ data, pageContext, location }) {
               </div>
             </div>
           </div>
+          {featuredImgFluid ? <Img fluid={featuredImgFluid} /> : null}
         </header>
         <div
           dangerouslySetInnerHTML={{ __html: post.html }}
@@ -173,6 +183,13 @@ export const query = graphql`
       frontmatter {
         title
         date
+        featuredImage {
+          childImageSharp {
+            fluid(maxWidth: 800) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
       timeToRead
       fields {

@@ -5,6 +5,7 @@ title: "Bienvenidos a mi blog personal"
 public: true
 language: "PA"
 tags: ["blog", "2019", "inicio"]
+featuredImage: ./open-letters.jpg
 ---
 ## Bienvenida
 

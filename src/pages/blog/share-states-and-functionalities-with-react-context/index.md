@@ -5,6 +5,7 @@ title: "Share states and functionalities with react context"
 public: true
 language: ""
 tags: ["react", "context", "javascript"]
+featuredImage: ./react_context.png
 ---
 
 
