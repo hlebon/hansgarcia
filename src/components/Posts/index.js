@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "gatsby";
+import Img from "gatsby-image";
 import PropTypes from "prop-types";
 import { FaFire } from "react-icons/fa";
 import { MdDateRange } from "react-icons/md";
@@ -23,11 +24,8 @@ const styles = {
   article: css`
     max-width: 565px;
     margin: auto;
-    padding: 1rem;
     background: white;
     box-shadow: 7px 7px 25px rgba(87, 148, 197, 0.1);
-    border: 0.5px solid rgb(87, 148, 197);
-    border-radius: 0.6rem;
   `,
   title: css`
     font-size: 1.7rem;
@@ -80,49 +78,70 @@ function Posts({ posts, panamaFlag }) {
       {posts.map(({ node }) => (
         <li key={node.fields.slug} css={styles.item}>
           <article css={styles.article}>
-            <header>
-              {node.frontmatter.language === "PA" ? (
-                <div css={styles.topHeader}>
-                  <img
-                    src={panamaFlag}
-                    alt="Logo"
-                    style={{ width: 25, height: 25, borderRadius: "7px" }}
-                  />
-                </div>
-              ) : null}
-              <h3 css={styles.title}>
-                <Link to={node.fields.slug} css={styles.link}>
-                  <span>{node.frontmatter.title}</span>
-                </Link>
-              </h3>
-              <div
+            {node.frontmatter.featuredImage ? (
+              <Img
+                fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
                 css={css`
-                  margin-top: 10px;
+                  border-radius: 0.6rem 0.6rem 0 0;
                 `}
-              >
-                <small
+              />
+            ) : null}
+            <div
+              css={css`
+                border: 0.5px solid #d9d9d9;
+                border-top-width: ${node.frontmatter.featuredImage
+                  ? 0
+                  : "0.5px"};
+                padding: 1em;
+                border-radius: ${node.frontmatter.featuredImage
+                  ? "0 0 0.6rem 0.6rem"
+                  : "0.6rem"};
+              `}
+            >
+              <header>
+                {node.frontmatter.language === "PA" ? (
+                  <div css={styles.topHeader}>
+                    <img
+                      src={panamaFlag}
+                      alt="Logo"
+                      style={{ width: 25, height: 25, borderRadius: "7px" }}
+                    />
+                  </div>
+                ) : null}
+                <h3 css={styles.title}>
+                  <Link to={node.fields.slug} css={styles.link}>
+                    <span>{node.frontmatter.title}</span>
+                  </Link>
+                </h3>
+                <div
                   css={css`
-                    font-size: 0.9rem;
-                    color: #464141;
+                    margin-top: 10px;
                   `}
                 >
-                  <span
+                  <small
                     css={css`
-                      margin-right: 5px;
+                      font-size: 0.9rem;
+                      color: #464141;
                     `}
                   >
-                    <MdDateRange style={{ marginRight: "3px" }} />
-                    {getDate(node.frontmatter.date)}
-                  </span>
-                  <FaFire fill="orange" />
-                  <span>{node.timeToRead}</span>
-                  min read
-                </small>
+                    <span
+                      css={css`
+                        margin-right: 5px;
+                      `}
+                    >
+                      <MdDateRange style={{ marginRight: "3px" }} />
+                      {getDate(node.frontmatter.date)}
+                    </span>
+                    <FaFire fill="orange" />
+                    <span>{node.timeToRead}</span>
+                    min read
+                  </small>
+                </div>
+              </header>
+              <p css={styles.excerpt}>{node.excerpt}</p>
+              <div>
+                <Tags data={node.frontmatter.tags} />
               </div>
-            </header>
-            <p css={styles.excerpt}>{node.excerpt}</p>
-            <div>
-              <Tags data={node.frontmatter.tags} />
             </div>
           </article>
         </li>

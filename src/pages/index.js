@@ -48,6 +48,13 @@ const queryPosts = graphql`
             tags
             public
             language
+            featuredImage {
+              childImageSharp {
+                fluid(maxWidth: 400) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
           excerpt(pruneLength: 180)
           timeToRead

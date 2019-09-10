@@ -49,7 +49,6 @@ function Me(props) {
     <StaticQuery
       query={query}
       render={({ site, fileName }) => {
-        console.log(site, fileName)
         const { techstack } = site.siteMetadata;
         return (
           <Layout location={location} maxWidth="850px">
