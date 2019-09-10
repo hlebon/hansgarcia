@@ -78,7 +78,6 @@ function App({ location }) {
             <StaticQuery
               query={queryPosts}
               render={({ allMarkdownRemark }) => {
-                console.log(allMarkdownRemark);
                 const { edges } = allMarkdownRemark;
                 edges[0].last = true;
                 return <Posts posts={edges} panamaFlag={panamaFlag} />;

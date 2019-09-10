@@ -13,7 +13,6 @@ import { getDate } from "../utils/helpers";
 export default function BlogPost({ data, pageContext, location }) {
   const { prev, next } = pageContext;
   const post = data.markdownRemark;
-  console.log(post);
   const featuredImgFluid = post.frontmatter.featuredImage
     ? post.frontmatter.featuredImage.childImageSharp.fluid
     : false;
