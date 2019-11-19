@@ -1,14 +1,13 @@
-import React from 'react'
-import { graphql, Link } from 'gatsby'
-import Img from 'gatsby-image'
-import PropTypes from 'prop-types'
-import { css } from '@emotion/core'
-import { FaFire } from 'react-icons/fa'
-import { MdDateRange } from 'react-icons/md'
-import Layout from '../components/layout'
-import Signup from '../components/SignUp'
-import SEO from '../components/Seo'
-import { getDate } from '../utils/helpers'
+import React from 'react';
+import { graphql, Link } from 'gatsby';
+import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
+import { FaFire } from 'react-icons/fa';
+import { MdDateRange } from 'react-icons/md';
+import Layout from '../components/layout';
+import SEO from '../components/Seo';
+import { getDate } from '../utils/helpers';
 
 function Header({ title, date, timeToRead, featuredImgFluid }) {
   return (
@@ -55,7 +54,7 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
       </div>
       {featuredImgFluid ? <Img fluid={featuredImgFluid} /> : null}
     </header>
-  )
+  );
 }
 
 Header.propTypes = {
@@ -63,14 +62,14 @@ Header.propTypes = {
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.string.isRequired,
   featuredImgFluid: PropTypes.string.isRequired,
-}
+};
 
 export default function BlogPost({ data, pageContext, location }) {
-  const { prev, next } = pageContext
-  const post = data.markdownRemark
+  const { prev, next } = pageContext;
+  const post = data.markdownRemark;
   const featuredImgFluid = post.frontmatter.featuredImage
     ? post.frontmatter.featuredImage.childImageSharp.fluid
-    : false
+    : false;
   return (
     <Layout location={location} maxWidth="800px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
@@ -109,16 +108,7 @@ export default function BlogPost({ data, pageContext, location }) {
         />
       </article>
       <br />
-      {false && (
-        <React.Fragment>
-          <div style={{ margin: '90px 0 40px 0' }}>
-            <Signup pathname={location.pathname} />
-          </div>
-          <br />
-        </React.Fragment>
-      )}
-      {(prev && prev.frontmatter.public) ||
-      (next && next.frontmatter.public) ? (
+      {prev || next ? (
         <section
           css={css`
             background-color: white;
@@ -184,14 +174,14 @@ export default function BlogPost({ data, pageContext, location }) {
         </section>
       ) : null}
     </Layout>
-  )
+  );
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
   location: PropTypes.object.isRequired,
-}
+};
 
 export const query = graphql`
   query($slug: String!) {
@@ -214,4 +204,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
