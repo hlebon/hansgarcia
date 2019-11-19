@@ -15,10 +15,19 @@ const styles = {
     background-color: white;
     padding: 0;
     margin: 0;
+    @media (min-width: 700px) {
+      display: flex;
+      flex-wrap: wrap;
+    }
   `,
   item: css`
     position: relative;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
+    @media (min-width: 700px) {
+      width: calc((100% / 2));
+      padding: 5px;
+      margin-bottom: 0;
+    }
   `,
   article: css`
     max-width: 565px;
@@ -50,7 +59,6 @@ const styles = {
     color: #212529;
   `,
   excerpt: css`
-    font-family: 'Roboto Slab', serif;
     font-size: 1rem;
     color: #3d3b3b;
     line-height: 1.6;
@@ -59,91 +67,17 @@ const styles = {
     display: flex;
     justify-content: space-between;
   `,
-  new: css`
-  padding: 4px;
-  text-align: center;
-  border: 1px solid #4CAF50;
-  width: 80px;
-  box-shadow: 1px 3px 5px #4caf5052;
-  background: #b0e2b2;
-  color: #f7b801 text-align:center;
-  transform: rotate(0);
+  img: css`
+    border-radius: 0.6rem 0.6rem 0 0;
   `,
 };
 
-function Posts({ posts, panamaFlag }) {
+function Posts({ posts }) {
   return (
     <ul css={styles.list}>
-      {posts.map(({ node }) => (
-        <li key={node.fields.slug} css={styles.item}>
-          <article css={styles.article}>
-            {node.frontmatter.featuredImage ? (
-              <Img
-                fluid={node.frontmatter.featuredImage.childImageSharp.fluid}
-                css={css`
-                  border-radius: 0.6rem 0.6rem 0 0;
-                `}
-              />
-            ) : null}
-            <div
-              css={css`
-                border: 0.5px solid #c7c7c7;
-                border-top-width: ${node.frontmatter.featuredImage
-                  ? 0
-                  : '0.5px'};
-                padding: 1em;
-                border-radius: ${node.frontmatter.featuredImage
-                  ? '0 0 0.6rem 0.6rem'
-                  : '0.6rem'};
-              `}
-            >
-              <header>
-                {node.frontmatter.language === 'PA' ? (
-                  <div css={styles.topHeader}>
-                    <img
-                      src={panamaFlag}
-                      alt="Logo"
-                      style={{ width: 25, height: 25, borderRadius: '7px' }}
-                    />
-                  </div>
-                ) : null}
-                <h3 css={styles.title}>
-                  <Link to={node.fields.slug} css={styles.link}>
-                    <span>{node.frontmatter.title}</span>
-                  </Link>
-                </h3>
-                <div
-                  css={css`
-                    margin-top: 10px;
-                  `}
-                >
-                  <small
-                    css={css`
-                      font-size: 0.9rem;
-                      color: #464141;
-                    `}
-                  >
-                    <span
-                      css={css`
-                        margin-right: 5px;
-                      `}
-                    >
-                      <MdDateRange style={{ marginRight: '3px' }} />
-                      {getDate(node.frontmatter.date)}
-                    </span>
-                    <FaFire fill="orange" />
-                    <span>{node.timeToRead}</span>
-
-                    min read
-</small>
-                </div>
-              </header>
-              <p css={styles.excerpt}>{node.excerpt}</p>
-              <div>
-                <Tags data={node.frontmatter.tags} />
-              </div>
-            </div>
-          </article>
+      {posts.map(post => (
+        <li key={post.fields.slug} css={styles.item}>
+          <PostCard data={post} />
         </li>
       ))}
     </ul>
@@ -152,7 +86,67 @@ function Posts({ posts, panamaFlag }) {
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,
-  panamaFlag: PropTypes.string.isRequired,
+};
+
+function PostCard({ data }) {
+  const { frontmatter, fields } = data;
+  return (
+    <article css={styles.article}>
+      {frontmatter.featuredImage ? (
+        <Img
+          fluid={frontmatter.featuredImage.childImageSharp.fluid}
+          css={styles.img}
+        />
+      ) : null}
+      <div
+        css={css`
+          border: 0.5px solid #c7c7c7;
+          border-top-width: ${frontmatter.featuredImage ? 0 : '0.5px'};
+          padding: 1em;
+          border-radius: ${frontmatter.featuredImage ? '0 0 7px 7px' : '7px'};
+        `}
+      >
+        <header>
+          <h3 css={styles.title}>
+            <Link to={fields.slug} css={styles.link}>
+              <span>{frontmatter.title}</span>
+            </Link>
+          </h3>
+          <div
+            css={css`
+              margin: 10px 0;
+            `}
+          >
+            <small
+              css={css`
+                font-size: 0.9rem;
+                color: #464141;
+              `}
+            >
+              <span
+                css={css`
+                  margin-right: 5px;
+                `}
+              >
+                <MdDateRange style={{ marginRight: '3px' }} />
+                {getDate(frontmatter.date)}
+              </span>
+              <FaFire fill="orange" />
+              <span>{data.timeToRead}</span>
+              <span>min read</span>
+            </small>
+          </div>
+        </header>
+        <div>
+          <Tags data={frontmatter.tags} />
+        </div>
+      </div>
+    </article>
+  );
+}
+
+PostCard.propTypes = {
+  data: PropTypes.object.isRequired,
 };
 
 export default Posts;
