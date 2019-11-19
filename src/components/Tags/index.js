@@ -1,7 +1,7 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { Link } from "gatsby";
-import { css } from "@emotion/core";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link } from 'gatsby';
+import { css } from '@emotion/core';
 
 const styles = {
   list: css`
@@ -13,7 +13,6 @@ const styles = {
   `,
   item: css`
     padding: 3px;
-    margin: 0 10px 0 0;
     border-radius: 25px;
     font-size: 14px;
     font-weight: 400;
@@ -33,7 +32,7 @@ const styles = {
       text-decoration: none;
       transition: color 300ms ease-in, text-decoraion 300ms ease-in-out;
     }
-  `
+  `,
 };
 
 function Tags({ data: tags }) {
@@ -51,7 +50,7 @@ function Tags({ data: tags }) {
 }
 
 Tags.propTypes = {
-  data: PropTypes.array.isRequired
+  data: PropTypes.array.isRequired,
 };
 
 export default Tags;
