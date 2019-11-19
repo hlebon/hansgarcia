@@ -1,13 +1,12 @@
-import React from "react";
-import { Link } from "gatsby";
-import Img from "gatsby-image";
-import PropTypes from "prop-types";
-import { FaFire } from "react-icons/fa";
-import { MdDateRange } from "react-icons/md";
-import { css } from "@emotion/core";
-import { getDate } from "../../utils/helpers";
-import Tags from "../Tags";
-import "typeface-roboto-slab";
+import React from 'react';
+import { Link } from 'gatsby';
+import Img from 'gatsby-image';
+import PropTypes from 'prop-types';
+import { FaFire } from 'react-icons/fa';
+import { MdDateRange } from 'react-icons/md';
+import { css } from '@emotion/core';
+import { getDate } from '../../utils/helpers';
+import Tags from '../Tags';
 
 const styles = {
   list: css`
@@ -51,7 +50,7 @@ const styles = {
     color: #212529;
   `,
   excerpt: css`
-    font-family: "Roboto Slab", serif;
+    font-family: 'Roboto Slab', serif;
     font-size: 1rem;
     color: #3d3b3b;
     line-height: 1.6;
@@ -69,7 +68,7 @@ const styles = {
   background: #b0e2b2;
   color: #f7b801 text-align:center;
   transform: rotate(0);
-  `
+  `,
 };
 
 function Posts({ posts, panamaFlag }) {
@@ -88,23 +87,23 @@ function Posts({ posts, panamaFlag }) {
             ) : null}
             <div
               css={css`
-                border: 0.5px solid #d9d9d9;
+                border: 0.5px solid #c7c7c7;
                 border-top-width: ${node.frontmatter.featuredImage
                   ? 0
-                  : "0.5px"};
+                  : '0.5px'};
                 padding: 1em;
                 border-radius: ${node.frontmatter.featuredImage
-                  ? "0 0 0.6rem 0.6rem"
-                  : "0.6rem"};
+                  ? '0 0 0.6rem 0.6rem'
+                  : '0.6rem'};
               `}
             >
               <header>
-                {node.frontmatter.language === "PA" ? (
+                {node.frontmatter.language === 'PA' ? (
                   <div css={styles.topHeader}>
                     <img
                       src={panamaFlag}
                       alt="Logo"
-                      style={{ width: 25, height: 25, borderRadius: "7px" }}
+                      style={{ width: 25, height: 25, borderRadius: '7px' }}
                     />
                   </div>
                 ) : null}
@@ -129,13 +128,14 @@ function Posts({ posts, panamaFlag }) {
                         margin-right: 5px;
                       `}
                     >
-                      <MdDateRange style={{ marginRight: "3px" }} />
+                      <MdDateRange style={{ marginRight: '3px' }} />
                       {getDate(node.frontmatter.date)}
                     </span>
                     <FaFire fill="orange" />
                     <span>{node.timeToRead}</span>
+
                     min read
-                  </small>
+</small>
                 </div>
               </header>
               <p css={styles.excerpt}>{node.excerpt}</p>
@@ -152,7 +152,7 @@ function Posts({ posts, panamaFlag }) {
 
 Posts.propTypes = {
   posts: PropTypes.array.isRequired,
-  panamaFlag: PropTypes.string.isRequired
+  panamaFlag: PropTypes.string.isRequired,
 };
 
 export default Posts;

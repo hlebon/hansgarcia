@@ -1,12 +1,9 @@
-/* eslint-disable react/jsx-one-expression-per-line */
-/* eslint-disable prettier/prettier */
-import React from "react";
-import PropTypes from "prop-types";
-import { css } from "@emotion/core";
-import { graphql, StaticQuery } from "gatsby";
-import Img from "gatsby-image";
-import Techstack from "../components/Techstack";
-import Layout from "../components/layout";
+import React from 'react';
+import { css } from '@emotion/core';
+import { graphql, StaticQuery } from 'gatsby';
+import Img from 'gatsby-image';
+import Techstack from '../components/Techstack';
+import Layout from '../components/layout';
 
 const styles = {
   title: css`
@@ -22,8 +19,15 @@ const styles = {
     margin: auto;
   `,
   content: css`
-    width: 65%
-  `
+    display: flex;
+    flex-wrap: wrap;
+  `,
+  description: css`
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+  `,
 };
 
 export const query = graphql`
@@ -43,51 +47,82 @@ export const query = graphql`
   }
 `;
 
-function Me(props) {
-  const { location } = props;
+function Me() {
   return (
     <StaticQuery
       query={query}
       render={({ site, fileName }) => {
         const { techstack } = site.siteMetadata;
         return (
-          <Layout location={location} maxWidth="850px">
+          <Layout>
             <article>
               <h1 css={styles.title}>Hello, My name is Hans</h1>
-              <div css={css`display: flex; flex-wrap: wrap`}>
-                <div css={css`width: 35%`}>
-                  <Img css={styles.img} fluid={fileName.childImageSharp.fluid} />
+              <div css={styles.content}>
+                <div>
+                  <Img
+                    css={styles.img}
+                    fluid={fileName.childImageSharp.fluid}
+                  />
                   <Techstack stack={techstack} />
                 </div>
-                <div css={css`width: 65%; justify-content: center; align-items: center; font-size: 1.2rem`}>
+                <div css={styles.description}>
                   <p>
+
                     Hello world, my name is Hans García, I am a computer science
                     engineer from Panamá, I've been programming for 6+ years as
-                    fullstack developer with frontend tendencies, the last two years I
-                    have been using <strong>react.js</strong>, <strong>react-native</strong>, <strong>firebase/firestore/cloud functions</strong>
-                    , <strong>postgresql</strong>, <strong>node.js and aws lambda functions</strong> as a my primary stack.
+                    fullstack developer with frontend tendencies, the last two
+                    years I have been using
+{' '}
+<strong>react.js</strong>
+,
+{' '}
+                    <strong>react-native</strong>
+,
+{' '}
+                    <strong>firebase/firestore/cloud functions</strong>
+,
+{' '}
+                    <strong>postgresql</strong>
+,
+{' '}
+                    <strong>node.js and aws lambda functions</strong>
+{' '}
+as a my
+                    primary stack.
+</p>
+                  <p>
+
+                    In the pass I worked with
+{' '}
+<strong>.net core</strong>
+,
+{' '}
+                    <strong>knockout.js</strong>
+{' '}
+and
+<strong>Java</strong>
+. I think the present/future is
+                    serverless.
+</p>
+                  <p>
+
+                    This blog was build using
+{' '}
+                    <a href="https://gatsby.com">gatsby.js</a>
                   </p>
                   <p>
-                    In the pass I worked with <strong>.net core</strong>, <strong>knockout.js</strong> and
-                    <strong>Java</strong>. I think the present/future is serverless.
-                  </p>
-                  <p>
-                   This blog was build using <a href="https://gatsby.com">gatsby.js</a>
-                  </p>
-                  <p>
-                    I love pizza (with pineapple plis), coffee and I prefer tabs over space.
-                  </p>
+
+                    I love pizza (with pineapple plis), coffee and I prefer tabs
+                    over space.
+</p>
                 </div>
               </div>
             </article>
           </Layout>
-        )}}
+        );
+      }}
     />
   );
 }
-
-Me.propTypes = {
-  location: PropTypes.object.isRequired
-};
 
 export default Me;

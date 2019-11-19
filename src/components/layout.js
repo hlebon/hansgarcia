@@ -1,15 +1,13 @@
-import React from "react";
-import { css } from "@emotion/core";
-import PropTypes from "prop-types";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import "../styles/prims-line-number.css";
-import "../styles/app.css";
-import "typeface-roboto-slab";
+import React from 'react';
+import { css } from '@emotion/core';
+import PropTypes from 'prop-types';
+import Nav from './Nav';
+import Footer from './Footer';
+import '../styles/prims-line-number.css';
+import '../styles/app.css';
 
 const styles = {
   container: css`
-    font-family: "Roboto Slab", serif;
     display: flex;
     flex-direction: column;
     height: 100vh;
@@ -19,43 +17,32 @@ const styles = {
   `,
   footer: css`
     flexshrink: 0;
-  `
+  `,
+  main: css`
+    width: 90%;
+    max-width: 700px;
+    margin: auto;
+    margin-top: 50px;
+    padding: 40px 0 0;
+  `,
 };
 
 function Layout(props) {
-  const { children, location, maxWidth } = props;
+  const { children } = props;
   return (
     <div css={styles.container}>
-      <Nav location={location} />
+      <Nav />
       <div css={styles.fullHeight}>
-        <div
-          css={css`
-            max-width: ${maxWidth};
-            width: 90%;
-            height: 100%;
-            margin: auto;
-            margin-top: 80px;
-            @media (min-width: 900px) {
-              width: 80%;
-            }
-          `}
-        >
-          {children}
-        </div>
+        <main css={styles.main}>{children}</main>
       </div>
       <footer css={styles.footer}>
-        <Footer maxWidth={maxWidth} />
+        <Footer />
       </footer>
     </div>
   );
 }
 
-Layout.propTypes = {
-  location: PropTypes.object.isRequired,
-  maxWidth: PropTypes.string.isRequired
-};
-
-function Content({ children, maxWidth = "960px" }) {
+function Content({ children, maxWidth = '960px' }) {
   return (
     <div
       css={css`
@@ -84,7 +71,7 @@ function Content({ children, maxWidth = "960px" }) {
 }
 
 Content.propTypes = {
-  maxWidth: PropTypes.string.isRequired
+  maxWidth: PropTypes.string.isRequired,
 };
 
 export { Content };

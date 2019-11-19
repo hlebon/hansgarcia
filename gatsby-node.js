@@ -9,66 +9,50 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-exports.createPages = ({ graphql, actions }) => {
+const uniqueArray = arr => [...new Set(arr)];
+
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  return new Promise(resolve => {
-    graphql(`
-      {
-        allMarkdownRemark {
-          edges {
-            node {
-              html
-              frontmatter {
-                path
-                title
-                date
-                tags
-                public
-                language
-              }
-              fields {
-                slug
-              }
-            }
+  const { errors, data } = await graphql(`{
+    allMdx{
+        posts: nodes{
+          frontmatter{
+            tags
+          }
+          fields {
+            slug
           }
         }
       }
-    `).then(result => {
-      const posts = result.data.allMarkdownRemark.edges;
-      const tags = [];
-      posts.forEach(({ node }, index) => {
-        const { public: publicPost } = node.frontmatter;
-        if (publicPost) {
-          tags.push(...node.frontmatter.tags);
-          const newPath = node.fields.slug;
-          createPage({
-            path: newPath,
-            component: path.resolve(`./src/templates/blogPost.js`),
-            context: {
-              slug: node.fields.slug,
-              prev: index === 0 ? null : posts[index - 1].node,
-              next: index < posts.length - 1 ? posts[index + 1].node : null
-            }
-          });
-        }
-      });
+    }
+  }`);
+  if (errors) {
+    reporter.panic('failed to create post pages', errors);
+  }
+  const { allMdx } = data;
+  const { posts } = allMdx;
+  const tags = [];
+  posts.forEach(({ fields, frontmatter }, index) => {
+    const { slug } = fields;
+    tags.push(...frontmatter.tags);
+    createPage({
+      path: slug,
+      component: path.resolve('./src/templates/blogPost.js'),
+      context: {
+        slug,
+        prev: index === 0 ? null : posts[index - 1],
+        next: index < posts.length - 1 ? posts[index + 1] : null,
+      },
+    });
+  });
 
-      const myTags = [];
-      tags.forEach(tag => {
-        if (!myTags.includes(tag)) {
-          myTags.push(tag);
-        }
-      });
-      myTags.forEach(tag => {
-        createPage({
-          path: `/tags/${tag.trim()}/`,
-          component: path.resolve(`./src/templates/tags.js`),
-          context: {
-            tag
-          }
-        });
-      });
-      resolve();
+  uniqueArray(tags).forEach(tag => {
+    createPage({
+      path: `/tags/${tag.trim()}/`,
+      component: path.resolve(`./src/templates/tags.js`),
+      context: {
+        tag,
+      },
     });
   });
 };

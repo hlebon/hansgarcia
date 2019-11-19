@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "gatsby";
-import { css } from "@emotion/core";
-import PropTypes from "prop-types";
+import React from 'react';
+import { Link } from 'gatsby';
+import { css } from '@emotion/core';
+import PropTypes from 'prop-types';
 
 const styles = {
   container: css`
@@ -34,6 +34,7 @@ const styles = {
   `,
   nav_content: css`
     width: 90%;
+    max-width: 700px;
     margin: auto;
     display: flex;
     justify-content: space-between;
@@ -55,43 +56,34 @@ const styles = {
     &:not(:last-child) {
       margin-right: 1em;
     }
-  `
+  `,
 };
 
 const pages = [
   {
-    to: "/me",
-    label: "me"
-  }
+    to: '/about',
+    label: 'me',
+  },
 ];
 
-function Nav({ location }) {
-  let { pathname } = location;
-  pathname = pathname.trim();
-
-  // const rootPath = pathname === `${__PATH_PREFIX__}/`;
+function Nav() {
   return (
     <nav css={styles.container}>
       <div css={styles.nav_content}>
         <div>
           <Link to="/" css={styles.link}>
+
             Hans
-          </Link>
+</Link>
         </div>
         <ul css={styles.pages_list}>
-          {pages.map(page => {
-            const active = pathname === page.to;
-            return (
-              <li key={page.label} css={styles.list_item}>
-                <Link
-                  to={page.to}
-                  css={css`${styles.link},${active ? styles.selected : ""}`}
-                >
-                  {page.label}
-                </Link>
-              </li>
-            );
-          })}
+          {pages.map(page => (
+            <li key={page.label} css={styles.list_item}>
+              <Link to={page.to} css={styles.link}>
+                {page.label}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
     </nav>
@@ -101,7 +93,7 @@ function Nav({ location }) {
 Nav.defaultProp = {};
 
 Nav.propTypes = {
-  location: PropTypes.object.isRequired
+  location: PropTypes.object.isRequired,
 };
 
 export default Nav;

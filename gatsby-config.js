@@ -1,7 +1,7 @@
 module.exports = {
   siteMetadata: {
     title: `Hans García`,
-    subtitle: `Full Stack developer, pizza and coffee lover`,
+    subtitle: `Full Stack Developer. Pizza and coffee lover`,
     techstack: [
       'javascript',
       'node',
@@ -47,7 +47,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/`,
+        path: `${__dirname}/src/pages/blog/`,
         name: `post`,
       },
     },
@@ -141,18 +141,18 @@ module.exports = {
           {
             serialize: ({ query: { site, allMarkdownRemark } }) =>
               allMarkdownRemark.edges.map(edge => {
-                const { siteUrl } = site.siteMetadata
+                const { siteUrl } = site.siteMetadata;
                 const postText = `
                 <div style="margin-top=55px; font-style: italic;">(Este articulo fue publicado en mi blog hanslebon.com. Puedes leer online <a href="${siteUrl +
                   edge.node.fields.slug}">clicking here</a>.)</div>
-              `
+              `;
 
-                let { html } = edge.node
+                let { html } = edge.node;
                 html = html
                   .replace(/href="\//g, `href="${siteUrl}/`)
                   .replace(/src="\//g, `src="${siteUrl}/`)
                   .replace(/"\/static\//g, `"${siteUrl}/static/`)
-                  .replace(/,\s*\/static\//g, `,${siteUrl}/static/`)
+                  .replace(/,\s*\/static\//g, `,${siteUrl}/static/`);
 
                 return Object.assign({}, edge.node.frontmatter, {
                   description: edge.node.excerpt,
@@ -164,7 +164,7 @@ module.exports = {
                       'content:encoded': html + postText,
                     },
                   ],
-                })
+                });
               }),
             query: `
               {
@@ -211,4 +211,4 @@ module.exports = {
     },
     'gatsby-plugin-offline',
   ],
-}
+};

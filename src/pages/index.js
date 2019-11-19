@@ -1,12 +1,11 @@
-import React from "react";
-import { graphql, StaticQuery } from "gatsby";
-import { css } from "@emotion/core";
-import Layout from "../components/layout";
-import SEO from "../components/Seo";
-import Header from "../components/Header";
-import Aside from "../components/Aside";
-import Posts from "../components/Posts";
-import panamaFlag from "../assets/images/panama_flag.svg";
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import { css } from '@emotion/core';
+import Layout from '../components/layout';
+import SEO from '../components/Seo';
+import Header from '../components/Header';
+import Posts from '../components/Posts';
+import panamaFlag from '../assets/images/panama_flag.svg';
 
 const styles = {
   main: css`
@@ -30,7 +29,7 @@ const styles = {
         width: 30%;
       }
     }
-  `
+  `,
 };
 
 const queryPosts = graphql`
@@ -50,7 +49,7 @@ const queryPosts = graphql`
             language
             featuredImage {
               childImageSharp {
-                fluid(maxWidth: 400) {
+                fluid {
                   ...GatsbyImageSharpFluid
                 }
               }
@@ -67,49 +66,24 @@ const queryPosts = graphql`
   }
 `;
 
-function App({ location }) {
+function App() {
   return (
-    <div>
-      <Layout location={location} maxWidth="900px">
-        <SEO />
+    <>
+      <SEO />
+      <Layout>
         <Header />
-        <main css={styles.main}>
-          <section>
-            <StaticQuery
-              query={queryPosts}
-              render={({ allMarkdownRemark }) => {
-                const { edges } = allMarkdownRemark;
-                edges[0].last = true;
-                return <Posts posts={edges} panamaFlag={panamaFlag} />;
-              }}
-            />
-          </section>
-          <Aside />
-        </main>
+        <section>
+          <StaticQuery
+            query={queryPosts}
+            render={({ allMarkdownRemark }) => {
+              const { edges } = allMarkdownRemark;
+              edges[0].last = true;
+              return <Posts posts={edges} panamaFlag={panamaFlag} />;
+            }}
+          />
+        </section>
       </Layout>
-    </div>
+    </>
   );
 }
 export default App;
-
-// export default ({ location }) => (
-//   <div>
-//     <Layout location={location} maxWidth="900px">
-//       <SEO />
-//       <Header />
-//       <main css={styles.main}>
-//         <section>
-//           <StaticQuery
-//             query={queryPosts}
-//             render={({ allMarkdownRemark }) => {
-//               const { edges } = allMarkdownRemark;
-//               edges[0].last = true;
-//               return <Posts posts={edges} panamaFlag={panamaFlag} />;
-//             }}
-//           />
-//         </section>
-//         <Aside />
-//       </main>
-//     </Layout>
-//   </div>
-// );

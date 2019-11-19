@@ -1,68 +1,86 @@
-import React from "react";
-import { graphql, Link } from "gatsby";
-import Img from "gatsby-image";
-import PropTypes from "prop-types";
-import { css } from "@emotion/core";
-import { FaFire } from "react-icons/fa";
-import { MdDateRange } from "react-icons/md";
-import Layout from "../components/layout";
-import Signup from "../components/SignUp";
-import SEO from "../components/Seo";
-import { getDate } from "../utils/helpers";
+import React from 'react'
+import { graphql, Link } from 'gatsby'
+import Img from 'gatsby-image'
+import PropTypes from 'prop-types'
+import { css } from '@emotion/core'
+import { FaFire } from 'react-icons/fa'
+import { MdDateRange } from 'react-icons/md'
+import Layout from '../components/layout'
+import Signup from '../components/SignUp'
+import SEO from '../components/Seo'
+import { getDate } from '../utils/helpers'
+
+function Header({ title, date, timeToRead, featuredImgFluid }) {
+  return (
+    <header
+      css={css`
+        margin: 2rem 0;
+      `}
+    >
+      <h1
+        css={css`
+          font-size: 55px;
+          color: rgb(52, 52, 52);
+          font-family: 'Raleway', sans-serif;
+        `}
+      >
+        {title}
+      </h1>
+      <div
+        css={css`
+          margin-bottom: 1rem;
+        `}
+      >
+        <div>
+          <div
+            css={css`
+              margin-right: 0.5rem;
+            `}
+          >
+            <MdDateRange style={{ marginRight: '3px' }} />
+            {getDate(date)}
+          </div>
+          <div>
+            <FaFire fill="orange" />
+            <span
+              css={css`
+                margin: 0 5px;
+              `}
+            >
+              {timeToRead}
+            </span>
+            min read
+          </div>
+        </div>
+      </div>
+      {featuredImgFluid ? <Img fluid={featuredImgFluid} /> : null}
+    </header>
+  )
+}
+
+Header.propTypes = {
+  title: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  timeToRead: PropTypes.string.isRequired,
+  featuredImgFluid: PropTypes.string.isRequired,
+}
 
 export default function BlogPost({ data, pageContext, location }) {
-  const { prev, next } = pageContext;
-  const post = data.markdownRemark;
+  const { prev, next } = pageContext
+  const post = data.markdownRemark
   const featuredImgFluid = post.frontmatter.featuredImage
     ? post.frontmatter.featuredImage.childImageSharp.fluid
-    : false;
+    : false
   return (
     <Layout location={location} maxWidth="800px">
       <SEO frontmatter={post.frontmatter} isBlogPost />
       <article>
-        <header
-          css={css`
-            margin: 2rem 0;
-          `}
-        >
-          <h1
-            css={css`
-              font-size: 55px;
-              color: rgb(52, 52, 52);
-              font-family: "Raleway", sans-serif;
-            `}
-          >
-            {post.frontmatter.title}
-          </h1>
-          <div
-            css={css`
-              margin-bottom: 1rem;
-            `}
-          >
-            <div>
-              <div
-                css={css`
-                  margin-right: 0.5rem;
-                `}
-              >
-                <MdDateRange style={{ marginRight: "3px" }} />
-                {getDate(post.frontmatter.date)}
-              </div>
-              <div>
-                <FaFire fill="orange" />
-                <span
-                  css={css`
-                    margin: 0 5px;
-                  `}
-                >
-                  {post.timeToRead}
-                </span>
-                min read
-              </div>
-            </div>
-          </div>
-          {featuredImgFluid ? <Img fluid={featuredImgFluid} /> : null}
-        </header>
+        <Header
+          title={post.frontmatter.title}
+          date={post.frontmatter.date}
+          timeToRead={post.timeToRead}
+          featuredImgFluid={featuredImgFluid}
+        />
         <div
           dangerouslySetInnerHTML={{ __html: post.html }}
           css={css`
@@ -93,7 +111,7 @@ export default function BlogPost({ data, pageContext, location }) {
       <br />
       {false && (
         <React.Fragment>
-          <div style={{ margin: "90px 0 40px 0" }}>
+          <div style={{ margin: '90px 0 40px 0' }}>
             <Signup pathname={location.pathname} />
           </div>
           <br />
@@ -133,7 +151,7 @@ export default function BlogPost({ data, pageContext, location }) {
                 <Link
                   to={prev.fields.slug}
                   style={{
-                    color: "#2196f3"
+                    color: '#2196f3',
                   }}
                 >
                   {prev.frontmatter.title}
@@ -155,7 +173,7 @@ export default function BlogPost({ data, pageContext, location }) {
                 <Link
                   to={next.fields.slug}
                   style={{
-                    color: "#2196f3"
+                    color: '#2196f3',
                   }}
                 >
                   {next.frontmatter.title}
@@ -166,14 +184,14 @@ export default function BlogPost({ data, pageContext, location }) {
         </section>
       ) : null}
     </Layout>
-  );
+  )
 }
 
 BlogPost.propTypes = {
   data: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired
-};
+  location: PropTypes.object.isRequired,
+}
 
 export const query = graphql`
   query($slug: String!) {
@@ -196,4 +214,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

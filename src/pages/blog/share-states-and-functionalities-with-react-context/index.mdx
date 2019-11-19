@@ -1,13 +1,11 @@
 ---
 path: ''
 date: '2019-06-27'
-title: "Share states and functionalities with react context"
-public: true
-language: ""
-tags: ["react", "context", "javascript"]
+title: 'Share states and functionalities with react context'
+language: ''
+tags: ['react', 'context', 'javascript']
 featuredImage: ./react_context.png
 ---
-
 
 In this post, we are going to learn how to use **React Context** to create and provide a state and functionalities to a group of components.
 
@@ -16,9 +14,9 @@ In this post, we are going to learn how to use **React Context** to create and p
 First, let's create a Component that we will call **RadioButton**, it will receive **checked**, **value**, **onChange** and **children** as a props. We want to encapsulate the **'input'** html tag into a react component to make it reusable.
 
 ```jsx
-import React from "react";
+import React from 'react';
 
-function RadioButton({ checked, value, onChange, children }){
+function RadioButton({ checked, value, onChange, children }) {
   return (
     <label>
       <input
@@ -27,9 +25,9 @@ function RadioButton({ checked, value, onChange, children }){
         checked={checked}
         onChange={({ target }) => onChange(target.value)}
       />
-      { children }
+      {children}
     </label>
-  )
+  );
 }
 ```
 
@@ -38,7 +36,7 @@ This component works as a **presentation component**, this is not a thing offici
 Now we can use this component to display a group of inputs of **type="radio"**, for example of animals.
 
 ```jsx
-function Animals(){
+function Animals() {
   return (
     <div>
       <RadioButton>🐱</RadioButton>
@@ -46,9 +44,10 @@ function Animals(){
       <RadioButton>🐰</RadioButton>
       <RadioButton>🐵</RadioButton>
     </div>
-  )
+  );
 }
 ```
+
 ![alt text](./radiobtn_animals.png)
 
 To select one of a group of options we need a state to hold the current value selected.
@@ -59,9 +58,11 @@ For example, if the selected value is **"cat"**, the state is **"cat"**, if chan
 Let's create a stateful component in which we want to know if users prefer a cat or a dog as a pet. I know, I know, this is a tough decision. 🤔
 
 ```jsx{numberLines: true}
-  { /* highlight-range{2,4-6,14-16,22-24} */ }
+{
+  /* highlight-range{2,4-6,14-16,22-24} */
+}
 function Form() {
-  const [pet, setPet] = React.useState("cat");
+  const [pet, setPet] = React.useState('cat');
 
   function handleOnChange(value) {
     setPet(value);
@@ -69,18 +70,12 @@ function Form() {
 
   return (
     <div>
-      <RadioButton
-      value="cat"
-      checked={"cat" === pet}
-      onChange={onChange}>
+      <RadioButton value="cat" checked={'cat' === pet} onChange={onChange}>
         <span role="img" aria-label="cat">
           🐱
         </span>
       </RadioButton>
-      <RadioButton
-      value="dog"
-      checked={"dog" === pet}
-      onChange={onChange}>
+      <RadioButton value="dog" checked={'dog' === pet} onChange={onChange}>
         <span role="img" aria-label="dog">
           🐶
         </span>
@@ -89,21 +84,19 @@ function Form() {
   );
 }
 ```
+
 let's review what we did here.
 
 First, we declared a stateful component called **Form**.
 
 A **stateful component** is a component that can have one or more local states.
 
-* at **line 2** we have used `React.useState` with an initial value `"cat"`.
-* then at **line 4 to 6**, we declared a function `handleOnChange` that will update the state of the component.
-* and finally at lines **14 to 16** and **22 to 24** we have passed the `cat` and `dog` emojis with their appropriated tags to the RadioButton component.
+- at **line 2** we have used `React.useState` with an initial value `"cat"`.
+- then at **line 4 to 6**, we declared a function `handleOnChange` that will update the state of the component.
+- and finally at lines **14 to 16** and **22 to 24** we have passed the `cat` and `dog` emojis with their appropriated tags to the RadioButton component.
 
 ```jsx
-<RadioButton
-  value="dog"
-  checked={"dog" === pet}
-  onChange={handleOnChange}>
+<RadioButton value="dog" checked={'dog' === pet} onChange={handleOnChange}>
   <span role="img" aria-label="dog">
     🐶
   </span>
@@ -111,7 +104,6 @@ A **stateful component** is a component that can have one or more local states.
 ```
 
 ![radio button](./choose_a_pet.gif)
-
 
 ## Using context to share states through components
 
@@ -144,18 +136,16 @@ We'll rename the old `pet` and `setPet` variable names to more generic ones like
 Now that we are receiving a new prop **defaultValue** we need to add it to the state every time it changes so We'll use **React.useEffect** for this.
 
 ```jsx
-React.useEffect(()=>{
-    setState(defaultValue)
-  }, [defaultValue])
+React.useEffect(() => {
+  setState(defaultValue);
+}, [defaultValue]);
 ```
 
 In the return statement, we will use `RadioContext.Provider` to allow other components to subscribe to the context changes, we will provide these values in `value={[state, onChange]}`
 
 ```jsx
 <RadioContext.Provider value={[state, onChange]}>
-  <div role="radiogroup">
-    {children}
-  </div>
+  <div role="radiogroup">{children}</div>
 </RadioContext.Provider>
 ```
 
@@ -163,11 +153,11 @@ Now let's move all of this to another file `radioButton.js`
 
 ```jsx
 // radioButton.js
-import React from "react";
+import React from 'react';
 const RadioContext = React.createContext();
 
 function RadioGroup({ children, defaultValue, onChange }) {
-  const [state, setState] = React.useState("");
+  const [state, setState] = React.useState('');
 
   function handleOnChange(value) {
     setState(value);
@@ -192,18 +182,19 @@ Our components need a way to get the values provided by our context.
 We are going to use **React.useContext**, we'll passed the **RadioContext** created before as an input `React.useContext(RadioContext)`, this will return the values from the provider on `<RadioContext.Provider value={[state, onChange]}>`
 
 ```jsx
-function useRadioContext(){
+function useRadioContext() {
   // we could use array destructuring if we want
   // const [state, onChange] = React.useContext(RadioContext);
   const context = React.useContext(RadioContext);
   if (!context) {
     throw new Error(
-      `Radio compound components cannot be rendered outside the Radio component`
+      `Radio compound components cannot be rendered outside the Radio component`,
     );
   }
   return context;
 }
 ```
+
 Here we are only validating the **RadioButton** component is used inside the **RadioGroup** context component, if not it will throw an error.
 
 ## Subscribe to changes
@@ -211,7 +202,9 @@ Here we are only validating the **RadioButton** component is used inside the **R
 The Radio Button Component need to subscribe to changes in the **RadioGroup** Component.
 
 ```jsx
-{ /* highlight-range{2-3} */ }
+{
+  /* highlight-range{2-3} */
+}
 function RadioButton({ value, children }) {
   const [state, onChange] = useRadioContext();
   const checked = value === state;
@@ -228,13 +221,14 @@ function RadioButton({ value, children }) {
   );
 }
 ```
+
 then we only need to know if the component is **checked**, by comparing the state (value) coming from the context and the **value** of the component`
 
 let's see the code.
 
 ```jsx
 // radioButton.js
-import React from "react";
+import React from 'react';
 
 const RadioContext = React.createContext();
 
@@ -242,14 +236,14 @@ function useRadioContext() {
   const context = React.useContext(RadioContext);
   if (!context) {
     throw new Error(
-      `Radio compound components cannot be rendered outside the Radio component`
+      `Radio compound components cannot be rendered outside the Radio component`,
     );
   }
   return context;
 }
 
 function RadioGroup({ children, defaultValue, onChange }) {
-  const [state, setState] = React.useState("");
+  const [state, setState] = React.useState('');
 
   function handleOnChange(value) {
     setState(value);
@@ -293,15 +287,15 @@ At the bottom of the file, we export the Radio component as a **export default**
 ## Using our custom component
 
 ```jsx
-import React from "react";
-import ReactDOM from "react-dom";
-import RadioGroup from "./radioButton";
+import React from 'react';
+import ReactDOM from 'react-dom';
+import RadioGroup from './radioButton';
 
 function App() {
   return (
     <RadioGroup
       defaultValue="cat"
-      onChange={value => console.log("value: ", value)}
+      onChange={value => console.log('value: ', value)}
     >
       <RadioGroup.RadioButton value="cat">
         <span role="img" aria-label="cat">
@@ -317,7 +311,7 @@ function App() {
   );
 }
 
-const rootElement = document.getElementById("root");
+const rootElement = document.getElementById('root');
 ReactDOM.render(<App />, rootElement);
 ```
 
