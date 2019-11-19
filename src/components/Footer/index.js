@@ -4,8 +4,9 @@ import SocialMedia from '../SocialMedia';
 
 const styles = {
   container: css`
-    font-size: 0.9rem;
-    padding: 1.5rem 0;
+    font-size: 1rem;
+    padding: 1.2rem 0;
+    margin-top: 20px;
     color: #484848;
     background: white;
     background: linear-gradient(to right, white, white);
@@ -28,6 +29,10 @@ const styles = {
       justify-content: space-between;
     }
   `,
+  text: css`
+    color: rgba(33, 150, 243, 1);
+    margin: 0 0.4rem;
+  `,
 };
 
 function Footer() {
@@ -35,15 +40,7 @@ function Footer() {
     <div css={styles.container}>
       <div css={styles.content}>
         <SocialMedia />
-        <div
-          css={css`
-            color: rgba(33, 150, 243, 1);
-            margin: 0 0.4rem;
-          `}
-        >
-
-          Fullstack Developer
-</div>
+        <div css={styles.text}>Fullstack Developer</div>
       </div>
     </div>
   );
