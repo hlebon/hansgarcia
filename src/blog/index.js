@@ -1,9 +1,9 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import PropTypes from 'prop-types';
-import SEO from '../../components/Seo';
-import Posts from '../../components/Posts';
-import Layout from '../../components/layout';
+import SEO from '../components/Seo';
+import Articles from '../components/Article';
+import Layout from '../components/layout';
 
 const queryPosts = graphql`
   query {
@@ -13,8 +13,18 @@ const queryPosts = graphql`
           title
           date
           tags
+          featuredImage {
+            childImageSharp {
+              fluid {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
-        excerpt
+        fields {
+          slug
+        }
+        excerpt(pruneLength: 100)
         timeToRead
       }
     }
@@ -36,7 +46,7 @@ function Blog({ location }) {
         </h1>
         <StaticQuery
           query={queryPosts}
-          render={({ allMdx }) => <Posts posts={allMdx.posts} />}
+          render={({ allMdx }) => <Articles posts={allMdx.posts} />}
         />
       </section>
     </Layout>

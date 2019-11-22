@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
-import PropTypes from 'prop-types';
 
 const styles = {
   container: css`
@@ -72,9 +71,8 @@ function Nav() {
       <div css={styles.nav_content}>
         <div>
           <Link to="/" css={styles.link}>
-
             Hans
-</Link>
+          </Link>
         </div>
         <ul css={styles.pages_list}>
           {pages.map(page => (
@@ -89,11 +87,5 @@ function Nav() {
     </nav>
   );
 }
-
-Nav.defaultProp = {};
-
-Nav.propTypes = {
-  location: PropTypes.object.isRequired,
-};
 
 export default Nav;

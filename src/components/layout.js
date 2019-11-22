@@ -3,7 +3,6 @@ import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import Nav from './Nav';
 import Footer from './Footer';
-import '../styles/prims-line-number.css';
 import '../styles/app.css';
 
 const styles = {

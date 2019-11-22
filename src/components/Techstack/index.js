@@ -1,67 +1,66 @@
-import React from "react";
-import PropTypes from "prop-types";
-import { css } from "@emotion/core";
-import "typeface-raleway";
-import firebaseLogo from "../../assets/images/logos/firebase.png";
-import graphqlLogo from "../../assets/images/logos/graphql.png";
-import jsLogo from "../../assets/images/logos/js.png";
-import netCoreLogo from "../../assets/images/logos/NET_Coreg.png";
-import nodeLogo from "../../assets/images/logos/nodejs.png";
-import reactLogo from "../../assets/images/logos/React.png";
-import posgresqlLogo from "../../assets/images/logos/posgresql.png";
+import React from 'react';
+import PropTypes from 'prop-types';
+import { css } from '@emotion/core';
+import firebaseLogo from '../../assets/images/logos/firebase.png';
+import graphqlLogo from '../../assets/images/logos/graphql.png';
+import jsLogo from '../../assets/images/logos/js.png';
+import netCoreLogo from '../../assets/images/logos/NET_Coreg.png';
+import nodeLogo from '../../assets/images/logos/nodejs.png';
+import reactLogo from '../../assets/images/logos/React.png';
+import posgresqlLogo from '../../assets/images/logos/posgresql.png';
 
 function getImage(img) {
   switch (img) {
-    case "node":
+    case 'node':
       return {
-        label: "node",
-        img: nodeLogo
+        label: 'node',
+        img: nodeLogo,
       };
-    case "javaScript":
+    case 'javaScript':
       return {
-        label: "javascript",
-        img: jsLogo
+        label: 'javascript',
+        img: jsLogo,
       };
-    case "react":
+    case 'react':
       return {
-        label: "react",
-        img: reactLogo
+        label: 'react',
+        img: reactLogo,
       };
-    case "react-native":
+    case 'react-native':
       return {
-        label: "react native",
-        img: reactLogo
+        label: 'react native',
+        img: reactLogo,
       };
-    case "graphql":
+    case 'graphql':
       return {
-        label: "graphql",
-        img: graphqlLogo
+        label: 'graphql',
+        img: graphqlLogo,
       };
-    case "firebase":
+    case 'firebase':
       return {
-        label: "firebase",
-        img: firebaseLogo
+        label: 'firebase',
+        img: firebaseLogo,
       };
-    case "posgresql":
+    case 'posgresql':
       return {
-        label: "posgresql",
-        img: posgresqlLogo
+        label: 'posgresql',
+        img: posgresqlLogo,
       };
-    case ".net":
+    case '.net':
       return {
-        label: ".Net",
-        img: netCoreLogo
+        label: '.Net',
+        img: netCoreLogo,
       };
-    case "aws":
+    case 'aws':
       return {
-        label: "aws",
+        label: 'aws',
         img:
-          "https://yt3.ggpht.com/a/AGF-l7-u7yEh25yIxycgauR489fes7ax2_soZQgj8g=s288-c-k-c0xffffffff-no-rj-mo"
+          'https://yt3.ggpht.com/a/AGF-l7-u7yEh25yIxycgauR489fes7ax2_soZQgj8g=s288-c-k-c0xffffffff-no-rj-mo',
       };
     default:
       return {
         label: img,
-        img: jsLogo
+        img: jsLogo,
       };
   }
 }
@@ -88,7 +87,7 @@ const styles = {
     & :nth-child(n + 2) {
       margin-left: 7px;
     }
-  `
+  `,
 };
 
 function Techstack({ stack = [] }) {
@@ -99,7 +98,7 @@ function Techstack({ stack = [] }) {
           <img
             width={25}
             height={25}
-            style={{ marginRight: "5px", borderRadius: "50%" }}
+            style={{ marginRight: '5px', borderRadius: '50%' }}
             alt="javascript"
             src={getImage(tech).img}
           />
@@ -110,7 +109,7 @@ function Techstack({ stack = [] }) {
   );
 }
 Techstack.propTypes = {
-  stack: PropTypes.array.isRequired
+  stack: PropTypes.array.isRequired,
 };
 
 export default Techstack;

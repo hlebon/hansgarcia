@@ -48,7 +48,7 @@ function Animals() {
 }
 ```
 
-![alt text](./radiobtn_animals.png)
+![radio button with emoji of animals](./radiobtn_animals.png)
 
 To select one of a group of options we need a state to hold the current value selected.
 For example, if the selected value is **"cat"**, the state is **"cat"**, if change to **"monkey"** the state will be **"monkey"**.
@@ -58,9 +58,7 @@ For example, if the selected value is **"cat"**, the state is **"cat"**, if chan
 Let's create a stateful component in which we want to know if users prefer a cat or a dog as a pet. I know, I know, this is a tough decision. 🤔
 
 ```jsx{numberLines: true}
-{
-  /* highlight-range{2,4-6,14-16,22-24} */
-}
+/* highlight-range{2,4-6,14-16,22-24} */
 function Form() {
   const [pet, setPet] = React.useState('cat');
 
@@ -203,7 +201,7 @@ The Radio Button Component need to subscribe to changes in the **RadioGroup** Co
 
 ```jsx
 {
-  /* highlight-range{2-3} */
+  highlight-range{2-3}
 }
 function RadioButton({ value, children }) {
   const [state, onChange] = useRadioContext();
@@ -321,4 +319,10 @@ This is not a detail implementation but a started point to use **React Context**
 
 If you want to play a little bit with it, try on **codesandbox**
 
-<iframe src="https://codesandbox.io/embed/wandering-frog-ktkf4?fontsize=14" title="wandering-frog-ktkf4" allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media" style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;" sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"></iframe>
+<iframe
+  src="https://codesandbox.io/embed/wandering-frog-ktkf4?fontsize=14"
+  title="wandering-frog-ktkf4"
+  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media"
+  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+></iframe>

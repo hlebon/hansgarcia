@@ -1,6 +1,8 @@
 const path = require(`path`);
 const { createFilePath } = require(`gatsby-source-filesystem`);
 
+const uniqueArray = arr => [...new Set(arr)];
+
 exports.onCreateNode = ({ node, getNode, actions }) => {
   const { createNodeField } = actions;
   if (node.internal.type === `MarkdownRemark` || node.internal.type === `Mdx`) {
@@ -9,17 +11,15 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
   }
 };
 
-/*
-
-const uniqueArray = arr => [...new Set(arr)];
-
 exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
-  const { errors, data } = await graphql(`{
-    allMdx{
-        posts: nodes{
-          frontmatter{
+  const { errors, data } = await graphql(`
+    {
+      allMdx {
+        posts: nodes {
+          frontmatter {
             tags
+            title
           }
           fields {
             slug
@@ -27,7 +27,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         }
       }
     }
-  }`);
+  `);
   if (errors) {
     reporter.panic('failed to create post pages', errors);
   }
@@ -38,7 +38,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     const { slug } = fields;
     tags.push(...frontmatter.tags);
     createPage({
-      path: slug,
+      path: `blog${slug}`,
       component: path.resolve('./src/templates/blogPost.js'),
       context: {
         slug,
@@ -58,4 +58,3 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 };
-*/
