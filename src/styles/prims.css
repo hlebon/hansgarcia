@@ -9,7 +9,7 @@ pre[class*='language-'] {
   color: #f8f8f2;
   background: none;
   text-shadow: 0 1px rgba(0, 0, 0, 0.3);
-  font-size: 1rem;
+  font-size: 0.7rem;
   font-family: Consolas, Monaco, Andale Mono, Ubuntu Mono, monospace;
   text-align: left;
   white-space: pre;
@@ -26,6 +26,13 @@ pre[class*='language-'] {
   -moz-hyphens: none;
   -ms-hyphens: none;
   hyphens: none;
+}
+
+@media (min-width: 420px) {
+  code[class*='language-'],
+  pre[class*='language-'] {
+    font-size: 1em;
+  }
 }
 
 /* Code blocks */
