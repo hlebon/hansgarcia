@@ -5,7 +5,7 @@ import { Link, graphql } from 'gatsby';
 import SEO from '../components/Seo';
 import Layout from '../components/layout';
 
-const Tags = ({ pageContext, data, location }) => {
+const Tags = ({ pageContext, data }) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMdx;
   const tagHeader = `${totalCount} post${
@@ -13,7 +13,7 @@ const Tags = ({ pageContext, data, location }) => {
   } tagged with "${tag}"`;
 
   return (
-    <Layout location={location} maxWidth="700px">
+    <Layout maxWidth="700px">
       <SEO title={`Hans blog | ${tag}`} keywords={[`web development`, tag]} />
       <h1 style={{ marginTop: '2rem' }}>{tagHeader}</h1>
       <ul
@@ -27,7 +27,7 @@ const Tags = ({ pageContext, data, location }) => {
           return (
             <li key={path}>
               <Link
-                to={path}
+                to={`blog${path}`}
                 css={css`
                   box-shadow: none;
                   &:hover {
@@ -46,29 +46,29 @@ const Tags = ({ pageContext, data, location }) => {
   );
 };
 
-// Tags.propTypes = {
-//   pageContext: PropTypes.shape({
-//     tag: PropTypes.string.isRequired
-//   }),
-//   data: PropTypes.shape({
-//     allMarkdownRemark: PropTypes.shape({
-//       totalCount: PropTypes.number.isRequired,
-//       edges: PropTypes.arrayOf(
-//         PropTypes.shape({
-//           node: PropTypes.shape({
-//             frontmatter: PropTypes.shape({
-//               path: PropTypes.string.isRequired,
-//               title: PropTypes.string.isRequired
-//             }),
-//             fields: PropTypes.shape({
-//               slug: PropTypes.string.isRequired
-//             })
-//           })
-//         }).isRequired
-//       )
-//     })
-//   })
-// };
+Tags.propTypes = {
+  pageContext: PropTypes.shape({
+    tag: PropTypes.string.isRequired,
+  }).isRequired,
+  data: PropTypes.shape({
+    allMdx: PropTypes.shape({
+      totalCount: PropTypes.number.isRequired,
+      edges: PropTypes.arrayOf(
+        PropTypes.shape({
+          node: PropTypes.shape({
+            frontmatter: PropTypes.shape({
+              path: PropTypes.string,
+              title: PropTypes.string,
+            }),
+            fields: PropTypes.shape({
+              slug: PropTypes.string.isRequired,
+            }),
+          }),
+        }).isRequired,
+      ),
+    }),
+  }).isRequired,
+};
 
 export const query = graphql`
   query($tag: String) {
