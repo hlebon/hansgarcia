@@ -6,7 +6,7 @@ import Layout from '../../components/layout';
 
 const query = graphql`
   query {
-    allMarkdownRemark(limit: 2000) {
+    allMdx(limit: 2000) {
       group(field: frontmatter___tags) {
         fieldValue
         totalCount
@@ -30,8 +30,8 @@ function Tags({ location }) {
         </h1>
         <StaticQuery
           query={query}
-          render={({ allMarkdownRemark }) => {
-            const { group } = allMarkdownRemark;
+          render={({ allMdx }) => {
+            const { group } = allMdx;
             return (
               <ul>
                 {group.map(tag => (
