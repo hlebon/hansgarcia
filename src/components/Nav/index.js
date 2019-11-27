@@ -61,7 +61,7 @@ const styles = {
 const pages = [
   {
     to: '/about',
-    label: 'me',
+    label: 'Me',
   },
 ];
 

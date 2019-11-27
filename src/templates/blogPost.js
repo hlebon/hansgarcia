@@ -19,9 +19,13 @@ const styles = {
     border-radius: 7px;
   `,
   article: css`
-    font-size: 1.2em;
+    font-size: 1em;
+    @media (min-width: 620px) {
+      font-size: 1.2em;
+    }
   `,
   postContent: css`
+    width: 100%;
     color: #353535;
     & img {
       display: flex;
@@ -66,9 +70,12 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
     >
       <h1
         css={css`
-          font-size: 55px;
+          font-size: 35px;
           color: rgb(52, 52, 52);
           font-family: 'Raleway', sans-serif;
+          @media (min-width: 620px) {
+            font-size: 55px;
+          }
         `}
       >
         {title}
@@ -230,11 +237,13 @@ RelatedLinks.propTypes = {
     frontmatter: shape({
       title: PropTypes.string.isRequired,
     }),
+    fields: PropTypes.string.isRequired,
   }),
   next: PropTypes.shape({
     frontmatter: shape({
       title: PropTypes.string.isRequired,
     }),
+    fields: PropTypes.string.isRequired,
   }),
 };
 

@@ -15,11 +15,11 @@ const styles = {
     flex: 1 0 auto;
   `,
   footer: css`
-    flexshrink: 0;
+    flex-shrink: 0;
   `,
   main: css`
     width: 90%;
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
     margin-top: 50px;
     padding: 40px 0 0;
