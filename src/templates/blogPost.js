@@ -1,6 +1,5 @@
-/** @jsx jsx */
 import React from 'react';
-import { jsx, css } from '@emotion/core';
+import { css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
@@ -228,8 +227,8 @@ function RelatedLinks({ previous, next }) {
 }
 
 RelatedLinks.defaultProps = {
-  previous: false,
-  next: false,
+  previous: null,
+  next: null,
 };
 
 RelatedLinks.propTypes = {
@@ -237,13 +236,13 @@ RelatedLinks.propTypes = {
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
     }),
-    fields: PropTypes.string.isRequired,
+    fields: PropTypes.object.isRequired,
   }),
   next: PropTypes.shape({
     frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
     }),
-    fields: PropTypes.string.isRequired,
+    fields: PropTypes.object.isRequired,
   }),
 };
 
