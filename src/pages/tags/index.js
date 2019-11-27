@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery, Link } from 'gatsby';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import SEO from '../../components/Seo';
 import Layout from '../../components/layout';
 
@@ -17,17 +17,10 @@ const query = graphql`
 
 function Tags({ location }) {
   return (
-    <Layout location={location} maxWidth="650px">
+    <Layout location={location}>
       <SEO />
       <section>
-        <h1
-          style={{
-            marginTop: '1rem',
-            marginBottom: '1.5rem',
-          }}
-        >
-          All Tags
-        </h1>
+        <h1>All Tags</h1>
         <StaticQuery
           query={query}
           render={({ allMdx }) => {
