@@ -33,7 +33,7 @@ const styles = {
   `,
   nav_content: css`
     width: 90%;
-    max-width: 700px;
+    max-width: 750px;
     margin: auto;
     display: flex;
     justify-content: space-between;
