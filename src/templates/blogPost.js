@@ -4,7 +4,7 @@ import { jsx, css } from '@emotion/core';
 import { graphql, Link } from 'gatsby';
 import { MDXRenderer } from 'gatsby-plugin-mdx';
 import Img from 'gatsby-image';
-import PropTypes, { shape } from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { FaFire } from 'react-icons/fa';
 import { MdDateRange, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import Layout from '../components/layout';
@@ -234,13 +234,13 @@ RelatedLinks.defaultProps = {
 
 RelatedLinks.propTypes = {
   previous: PropTypes.shape({
-    frontmatter: shape({
+    frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
     }),
     fields: PropTypes.string.isRequired,
   }),
   next: PropTypes.shape({
-    frontmatter: shape({
+    frontmatter: PropTypes.shape({
       title: PropTypes.string.isRequired,
     }),
     fields: PropTypes.string.isRequired,
