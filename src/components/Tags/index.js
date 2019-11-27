@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { Link } from 'gatsby';
 import { css } from '@emotion/core';
 
@@ -9,7 +9,6 @@ const styles = {
     padding: 0;
     display: flex;
     list-style: none;
-    marginleft: 0;
   `,
   item: css`
     padding: 3px;
