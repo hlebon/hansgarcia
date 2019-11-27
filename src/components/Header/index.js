@@ -1,8 +1,8 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import * as PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 import { css } from '@emotion/core';
-import Techstack from '../Techstack';
+import TechStack from '../Techstack';
 
 const styles = {
   content: css`
@@ -20,13 +20,13 @@ const styles = {
   `,
 };
 
-function BasicHeader({ title, subtitle, techstack }) {
+function BasicHeader({ title, subtitle, techStack }) {
   return (
     <header>
       <div css={styles.content}>
         <h1 css={styles.title}>{title}</h1>
         <h2 css={styles.subtitle}>{subtitle}</h2>
-        <Techstack stack={techstack} />
+        <TechStack stack={techStack} />
       </div>
     </header>
   );
@@ -34,12 +34,12 @@ function BasicHeader({ title, subtitle, techstack }) {
 BasicHeader.defaultProps = {
   title: 'The Personal Blog',
   subtitle: 'Articles about web and software development',
-  techstack: [],
+  techStack: [],
 };
 BasicHeader.propTypes = {
   title: PropTypes.string,
   subtitle: PropTypes.string,
-  techstack: PropTypes.array,
+  techStack: PropTypes.array,
 };
 
 function Header() {
@@ -62,7 +62,7 @@ function Header() {
           <BasicHeader
             title={title}
             subtitle={subtitle}
-            techstack={techstack}
+            techStack={techstack}
           />
         );
       }}
