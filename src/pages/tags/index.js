@@ -24,14 +24,13 @@ const styles = {
     background-color: #f7f7f7;
     color: gray;
     text-decoration: none;
-    box-shadow: none;
     border-radius: 7px;
     transition: color 200ms ease-in, text-decoration 200ms ease-in-out;
     &:hover {
       color: #2196f3;
       border-color: #2196f3;
       text-decoration: none;
-      transition: color 300ms ease-in, text-decoraion 300ms ease-in-out;
+      transition: color 300ms ease-in, text-decoration 300ms ease-in-out;
     }
   `,
 };
