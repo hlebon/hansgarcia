@@ -200,9 +200,7 @@ Here we are only validating the **RadioButton** component is used inside the **R
 The Radio Button Component need to subscribe to changes in the **RadioGroup** Component.
 
 ```jsx
-{
-  highlight-range{2-3}
-}
+/* highlight-range{2-3} */
 function RadioButton({ value, children }) {
   const [state, onChange] = useRadioContext();
   const checked = value === state;
