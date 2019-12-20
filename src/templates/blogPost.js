@@ -9,6 +9,7 @@ import { MdDateRange, MdArrowBack, MdArrowForward } from 'react-icons/md';
 import Layout from '../components/layout';
 import SEO from '../components/Seo';
 import { getDate } from '../utils/helpers';
+import Tags from '../components/Tags';
 import '../styles/prims-line-number.css';
 
 const styles = {
@@ -60,7 +61,7 @@ const styles = {
   `,
 };
 
-function Header({ title, date, timeToRead, featuredImgFluid }) {
+function Header({ title, date, timeToRead, featuredImgFluid, tags }) {
   return (
     <header
       css={css`
@@ -72,6 +73,7 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
           font-size: 35px;
           color: rgb(52, 52, 52);
           font-family: 'Raleway', sans-serif;
+          margin: 1rem 0;
           @media (min-width: 620px) {
             font-size: 55px;
           }
@@ -79,15 +81,20 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
       >
         {title}
       </h1>
+      <Tags data={tags} />
       <div
         css={css`
-          margin-bottom: 1rem;
+          margin: 1rem 0;
         `}
       >
-        <div>
+        <div
+          css={css`
+            display: flex;
+          `}
+        >
           <div
             css={css`
-              margin-right: 0.5rem;
+              margin-right: 1rem;
             `}
           >
             <MdDateRange style={{ marginRight: '3px' }} />
@@ -106,6 +113,7 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
           </div>
         </div>
       </div>
+
       {featuredImgFluid ? <Img fluid={featuredImgFluid} /> : null}
     </header>
   );
@@ -113,6 +121,7 @@ function Header({ title, date, timeToRead, featuredImgFluid }) {
 
 Header.defaultProps = {
   featuredImgFluid: null,
+  tags: [],
 };
 
 Header.propTypes = {
@@ -120,6 +129,7 @@ Header.propTypes = {
   date: PropTypes.string.isRequired,
   timeToRead: PropTypes.number.isRequired,
   featuredImgFluid: PropTypes.object,
+  tags: PropTypes.array,
 };
 
 export default function BlogPost(props) {
@@ -140,6 +150,7 @@ export default function BlogPost(props) {
           title={post.frontmatter.title}
           date={post.frontmatter.date}
           timeToRead={post.timeToRead}
+          tags={post.frontmatter.tags || []}
           featuredImgFluid={featuredImgFluid}
         />
         <div css={styles.postContent}>
@@ -252,6 +263,7 @@ export const query = graphql`
       frontmatter {
         title
         date
+        tags
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 800) {
