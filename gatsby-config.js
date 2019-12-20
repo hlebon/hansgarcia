@@ -16,16 +16,16 @@ module.exports = {
     author: {
       name: 'Hans García',
       minibio: `
-      <strong>hanslebon.com</strong> is a personal blog about software development.
+      <strong>hansgarcia.dev</strong> is a personal blog about software development.
     `,
     },
-    siteUrl: `https://hanslebon.com/`,
+    siteUrl: `https://hansgarcia.dev/`,
     keywords: ['Video Blogger', 'Javascript', 'React', 'PWA'],
-    canonicalUrl: 'https://hanslebon.com',
+    canonicalUrl: 'https://hansgarcia.dev',
     image: '',
     organization: {
       name: 'Hans García',
-      url: 'https://hanslebon.com',
+      url: 'https://hansgarcia.dev',
       logo: '',
     },
     social: {

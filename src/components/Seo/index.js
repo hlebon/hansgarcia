@@ -1,9 +1,9 @@
-import React from "react";
-import path from "path";
-import PropTypes from "prop-types";
-import Helmet from "react-helmet";
-import { StaticQuery, graphql } from "gatsby";
-import SchemaOrg from "./components/SchemaOrg";
+import React from 'react';
+import path from 'path';
+import PropTypes from 'prop-types';
+import Helmet from 'react-helmet';
+import { StaticQuery, graphql } from 'gatsby';
+import SchemaOrg from './components/SchemaOrg';
 
 const detailsQuery = graphql`
   query DefaultSEOQuery {
@@ -94,18 +94,18 @@ SEO.propTypes = {
   postData: PropTypes.shape({
     childMarkdownRemark: PropTypes.shape({
       frontmatter: PropTypes.any,
-      excerpt: PropTypes.any
-    })
+      excerpt: PropTypes.any,
+    }),
   }),
   postImage: PropTypes.string,
-  frontmatter: PropTypes.any
+  frontmatter: PropTypes.any,
 };
 
 SEO.defaultProps = {
   isBlogPost: false,
   postData: { childMarkdownRemark: {} },
   postImage: null,
-  frontmatter: {}
+  frontmatter: {},
 };
 
 export default SEO;
