@@ -4,11 +4,6 @@ import { css } from '@emotion/core';
 
 const styles = {
   container: css`
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    padding: 0;
     border-bottom-width: 2px;
     line-height: 44px;
     width: 100%;

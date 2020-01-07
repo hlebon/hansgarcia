@@ -4,6 +4,8 @@ import Layout from '../components/layout';
 import SEO from '../components/Seo';
 import Header from '../components/Header';
 import Articles from '../components/Article';
+import Hireme from '../components/HireMe';
+import Contact from '../components/Contact';
 
 const queryPosts = graphql`
   query {
@@ -32,9 +34,12 @@ const queryPosts = graphql`
 `;
 
 function App() {
+  const [openModal, setOpenModal] = React.useState(false);
   return (
     <>
       <SEO />
+      <Hireme onClick={() => setOpenModal(true)} />
+      <Contact isOpen={openModal} onClose={() => setOpenModal(false)} />
       <Layout>
         <Header />
         <section>

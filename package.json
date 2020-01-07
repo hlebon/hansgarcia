@@ -43,6 +43,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.0",
     "react-icons": "^3.5.0",
+    "react-spring": "^8.0.27",
     "typeface-dancing-script": "0.0.72",
     "typeface-merriweather": "0.0.72",
     "typeface-montserrat": "0.0.54",
