@@ -47,13 +47,6 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        path: `${__dirname}/src/blog/`,
-        name: `post`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
         path: `${__dirname}/src/assets/`,
         name: `assets`,
       },
@@ -162,79 +155,6 @@ module.exports = {
         // Any additional create only fields (optional)
         sampleRate: 5,
         siteSpeedSampleRate: 10,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) =>
-              allMarkdownRemark.edges.map(edge => {
-                const { siteUrl } = site.siteMetadata;
-                const postText = `
-                <div style="margin-top=55px; font-style: italic;">(Este articulo fue publicado en mi blog hanslebon.com. Puedes leer online <a href="${siteUrl +
-                  edge.node.fields.slug}">clicking here</a>.)</div>
-              `;
-
-                let { html } = edge.node;
-                html = html
-                  .replace(/href="\//g, `href="${siteUrl}/`)
-                  .replace(/src="\//g, `src="${siteUrl}/`)
-                  .replace(/"\/static\//g, `"${siteUrl}/static/`)
-                  .replace(/,\s*\/static\//g, `,${siteUrl}/static/`);
-
-                return Object.assign({}, edge.node.frontmatter, {
-                  description: edge.node.excerpt,
-                  date: edge.node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + edge.node.fields.slug,
-                  custom_elements: [
-                    {
-                      'content:encoded': html + postText,
-                    },
-                  ],
-                });
-              }),
-            query: `
-              {
-                allMarkdownRemark(
-                  limit: 1000,
-                  sort: { order: DESC, fields: [frontmatter___date] }
-                ) {
-                  edges {
-                    node {
-                      html
-                      frontmatter {
-                        title
-                        date
-                      }
-                      excerpt
-                      timeToRead
-                      fields {
-                        slug
-                      }
-                  }
-                }
-              }
-            }
-            `,
-            output: '/rss.xml',
-            title: "Hans's Blog RSS Feed",
-          },
-        ],
       },
     },
     {

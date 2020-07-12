@@ -74,19 +74,19 @@ const styles = {
     padding: 0;
   `,
   item: css`
+    font-size: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 5px 7px;
-    background: #f6f9f6;
+    background: #fff;
     border-radius: 3px;
     border: 1px solid #e0e0e0;
     color: #485448;
     font-weight: 600;
     margin-bottom: 7px;
-    & :nth-child(n + 2) {
-      margin-left: 7px;
-    }
+    margin-left: 7px;
+    box-shadow: 2px 4px 7px lightgray;
   `,
 };
 
